@@ -1,0 +1,14 @@
+{
+  "name": "bpl",
+  "version": "1.0.0",
+  "description": "bpl - a cricket league",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@angular/flex-layout": "^6.0.0-beta.16"
+  }
+}
