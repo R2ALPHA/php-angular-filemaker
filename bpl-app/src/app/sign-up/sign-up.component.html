@@ -1,24 +1,24 @@
 
 <div class="form-size">
   <!-- <form novalidate[formGroup]="regForm" (ngSubmit)="onSubmit()"> -->
-  <div class="container">
+  <!-- <div class="container">
   <form>
     <p>
       <mat-form-field class="half-width">
-        <span>Email Id</span>
+        <span>Email Id*</span>
       </mat-form-field>
       <mat-form-field class="half-width">
-        <input matInput formControlName=" " placeholder =" " type="text">
+        <input matInput formControlName=" " placeholder =" Enter your Email" type="text">
       </mat-form-field>
     </p>
   </form>
   </div>
-</div>
+</div> -->
 
 <form id="regform" autocomplete="on" enctype="multipart/form-data">
   <div class="container">
     <div class="row">
-      <div class="col-12 col-md-8">
+      <div class="col-md-6">
         <fieldset class="fieldset1">
           <h3>
             <span class="text-wrapping">REGISTER</span>
@@ -29,7 +29,7 @@
             <div class="col-md-4 col-form-label">
               <span>Email id </span><span title="required" class="requiredField">*</span>
             </div>
-            <div class="col-md-8">
+            <div class="col-md-4">
               <label for="email-id">
                 <input  id="email-id" class="form-control" type="email" name="text[email]" placeholder="Enter your email">
               </label>
@@ -97,8 +97,10 @@
         
         </fieldset>
       </div>
-      <div class="col-12 col-md-4 decor">
+
+      <div class="col-12 col-md-6 decor">
         <span class="badge badge-pill badge-secondary">NOTE</span> 
+        <br><br>
         <ol>
           <li> The username should be unique </li>
           <li> password should contains:-
@@ -113,19 +115,20 @@
       </div>
     </div>
   </div>
-  <br>
-    
+
   <div class="container">
     <div class="row">
-      <div  class="col-12 col-md-4 decor">
+      <div  class="col-12 col-md-5 decor">
         <span class="badge badge-pill badge-primary">Disclaimer</span>
+        <br><br>
         <p> We respect the privacy of an individual and hence we dont share any kind of data to the third party
           application, in any form. Though the data provied by you can be used to improve the user experience.
           Apart from this ensure to use the real name, in case of fake name being used the account can be 
           permanently blocked. The field marked with the * marks are mandate to be filled.
         </p>
       </div>
-      <div class="col-12 col-md-8">
+      <div class="col-12 col-md-7">
+        <br><br>
         <fieldset class="fieldset1">
           <h3>
             <span class="text-wrapping">Personal Information </span>
@@ -158,8 +161,8 @@
             <div class="col-md-4 col-form-label">
               <span>Blood Group </span>
             </div>
-            <div class="col-md-8">
-              <select name="text[blood]" class="blood" id="bgroup" class="form-control" >
+            <div class="col-md-3">
+              <select name="text[blood]"  id="bgroup" class="blood">
                 <option value="O+">O+</option>
                 <option value="AB+">AB+</option>
                 <option value="A+">A+</option>
@@ -186,13 +189,13 @@
             </div>
             <div  class="col-md-8" id="gender">
               <label for="male">
-                <input type="radio" id="male" name="text[gender]"value="M" checked> M
+                <input type="radio" id="male" name="text[gender]"value="M" checked>&nbsp;M &nbsp;
               </label>
               <label for="female">
-                <input type="radio"  id="female" name="text[gender]" value="F"> F
+                <input type="radio"  id="female" name="text[gender]" value="F">&nbsp;F&nbsp;
               </label>
               <label for="other">  
-                <input type="radio" id="other" name="text[gender]" value="O"> O
+                <input type="radio" id="other" name="text[gender]" value="O">&nbsp;O&nbsp;
               </label>
             </div>
           </div>
@@ -226,7 +229,7 @@
   
   <div class="container">
     <div class="row">
-      <div class="col-12 col-md-8">
+      <div class="col-12 col-md-7">
         <fieldset class="fieldset1">
           <h3>
             <span class="text-wrapping">Address & Certificates</span>
@@ -299,7 +302,7 @@
         </fieldset>
       </div>
       
-      <div class="col-12 col-md-4 decor">
+      <div class="col-12 col-md-5 decor">
         <span class="badge badge-pill badge-primary">OR</span>
         <hr>
         <span class="badge badge-pill badge-danger">Connect Using Social Sites </span>
@@ -320,7 +323,7 @@
   <div class="container">
     <div id="buttonId" class="row">
       <div class="col-sm-6 offset-sm-2">
-        <button type="submit" name="submit" id="submitBtn" class="btn btn-primary">Submit </button>
+        <button type="submit" name="submit" id="submitBtn" class="btn btn-primary">Submit </button> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <button type="button" name="reset" id="resetBtn" class="btn btn-info">Reset</button>
       </div>
     </div>

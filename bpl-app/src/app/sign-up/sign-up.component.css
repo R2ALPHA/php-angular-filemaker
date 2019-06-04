@@ -1,0 +1,185 @@
+
+	/*	* { outline: 2px dotted red }
+		* * { outline: 2px dotted green }
+		* * * { outline: 1px solid blue }
+		* * * * { outline: 1px solid purple }
+		* * * * * { outline: 1px solid red }
+		* * * * * * { outline: 2px dotted green }
+		* * * * * * * { outline: 2px dotted blue }
+		* * * * * * * * { outline: 2px dotted purple }
+	*/
+		
+    /* #Heading {
+        padding-left:100px;
+        margin:15px;
+        text-align:center;
+        background: linear-gradient(35deg,#CCFFFF,#FFCCCC);
+    } */
+
+    .blood {
+        color:blue;
+    }
+
+    /* .lobster-font {
+        color: #AA9B39;
+        font-family: Lobster, monospace;
+        font-size: 40px;
+    } */
+
+    /* body {
+        padding:50px 0px 0px 0px;
+        z-index:0;
+    } */
+/*     
+    .navbar-dark {
+         background-color: #512DA8;
+    } */
+
+    /* .logo {
+        float:left;
+        width:25%;
+    }
+     */
+    /* .logoImage {
+        position:relative;
+        height: 106px;
+        width: 100px;
+    } */
+    
+/*     
+    .hint {
+        display:none;
+        font-size:12px;
+        color:red;
+    } */
+    
+    .text-wrapping {
+        background-color:orange;
+        color:black;
+        text-align:center;
+        font-family:monospace;
+        margin-right:50px;
+    }
+    
+    /* .requiredField {
+        color:red;
+        font-size:15px;
+    }
+     */
+
+    /* #recordId {
+        margin-left:20%;
+        margin-right:20%;
+        background-color:white;
+    } */
+
+    #loginId {
+        margin-left:20%;
+        margin-right:20%;			
+        background-color:white;
+    }
+    
+    hr {
+        border-style: solid;
+        margin-right: 50px;
+        margin-left: 50px;
+    }
+
+    /* #recordTable {
+            border: 1px solid black;
+            border-collapse:collapse;
+            width:100%;
+            text-align:center;
+        
+    } */
+    /* #tablerow {		
+            border: 1px solid black;
+            padding: 15px;
+        
+    }
+     */
+    /* th, tr {
+            border: 1px solid black;
+            padding: 15px;
+            color:white;
+    } */
+     
+    .form-container {
+        max-width:10px;
+        padding:15px;
+        background-color:white;
+    }
+    
+    #logId {
+        display:none;
+        position:fixed;
+        top:25%;
+        bottom:35%;
+        right:25%;
+        left:28%;
+        border:10px solid #f1f1f1;
+        z-index:9;
+        background:LightSalmon;
+        font-size:20px;
+    }
+    
+    .logHeader {
+    /*TODO*/
+        background:LightSalmon;
+        padding-top:0%;
+        padding-left:13%;
+    }
+    
+     #nameId {
+    /*TODO*/ 
+        background:lightSkyBlue;
+        padding:20px;
+        padding-left:100px;
+    } 
+
+    #pwdId {
+    /*TODO*/
+        background:PaleTurquoise;
+        padding:20px;
+        padding-left:100px;
+    }
+    
+    #logBtn {
+        padding:20px;
+        padding-left:100px;
+    }
+    
+    #btnLogin {
+        background-color:#4CAF50;
+        color:white;
+    }
+    
+    #btnCancel {
+        background-color:red;
+        color:white;
+    }
+    
+    .decor {
+         margin-top:10%;
+    }
+    
+    .fieldset1 {
+        padding:5%;
+        border: 4px groove;
+    }
+    
+    #displayT {
+        background-color:brown;
+    }
+    
+    #mycarousel {
+        background-color:#5DBCD2;
+    }
+    
+    .cardFix {
+        width:300px;
+    }
+    
+    footer {
+        background-color:#B3B3B3;
+    }
