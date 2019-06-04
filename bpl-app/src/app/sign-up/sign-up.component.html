@@ -100,13 +100,10 @@
         <br><br>
         <ol>
           <li> The username should be unique </li>
-          <li> password should contains:-
-            <ol>
-              <li>An uppercase letter </li>
-              <li>A lowecase letter</li>
-              <li>A digit</li>
-              <li>A special character </li>
-            </ol>
+          <li> password should contains atleast:
+            <ol *ngFor="let pwd of passwordHint">
+              <li>{{pwd}}</li>
+            </ol> 
           </li>
         </ol>
       </div>
@@ -118,10 +115,7 @@
       <div  class="col-12 col-lg-5 decor">
         <span class="badge badge-pill badge-primary">Disclaimer</span>
         <br><br>
-        <p> We respect the privacy of an individual and hence we dont share any kind of data to the third party
-          application, in any form. Though the data provied by you can be used to improve the user experience.
-          Apart from this ensure to use the real name, in case of fake name being used the account can be 
-          permanently blocked. The field marked with the * marks are mandate to be filled.
+        <p> {{disclaimer}}
         </p>
       </div>
       <div class="col-12 col-lg-7">
@@ -304,7 +298,7 @@
           <a class="btn btn-social-icon " href="mailto:"><i class="fa fa-envelope fa-lg"></i></a>
         </div>
       </div>
-      
+
     </div>
   </div>
   <hr>
