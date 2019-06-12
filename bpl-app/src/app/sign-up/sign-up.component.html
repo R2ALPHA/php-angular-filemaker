@@ -16,7 +16,10 @@
               <label for="email-id">
                 <input  id="email-id" class="form-control" type="email" name="text[email]" placeholder="Enter your email"
                   formControlName="email" [ngClass]="{'is-invalid':form.get('email').touched && form.get('email').invalid}">
-                <div class="invalid-feedback">Email is required</div>
+                <div class="invalid-feedback">
+                  <div *ngIf="form.get('email').errors.required">Email is required </div>
+                  <div *ngIf="form.get('email').errors.email">Not a valid Email</div>
+                </div>
               </label>
             </div>
           </div>
@@ -45,7 +48,12 @@
                 <input  id="pwd" class="form-control" type="password" name="text[pwd]" placeholder="********" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
                 formControlName="password" [ngClass]="{'is-invalid':form.get('password').touched && form.get('password').invalid}">
                 <div class="invalid-feedback">
-                  <div>Password is required</div>
+                  <div *ngIf="form.get('password').errors.required">Password is required</div>
+                  <!-- <div> Must have one uppercase letter</div>
+                  <div> Must have one lowercase letter</div>
+                  <div> Must have one digit</div>
+                  <div> Must have one speacial character</div> -->
+                  <div *ngIf="form.get('password').errors.minlength"> Must have Length >8</div>
                 </div>
               </label>
             </div>
@@ -61,6 +69,7 @@
                 formControlName="cpassword" [ngClass]="{'is-invalid':form.get('cpassword').touched && form.get('cpassword').invalid}">
                 <div class="invalid-feedback">
                   <div>This field is required</div>
+                  <div>Password didnot match</div>
                 </div>
               </label>
             </div>

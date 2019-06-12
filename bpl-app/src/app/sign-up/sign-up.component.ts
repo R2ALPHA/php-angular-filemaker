@@ -9,9 +9,9 @@ import { User } from '../user';
 export class SignUpComponent implements OnInit {
 
   form = new FormGroup({
-    email     : new FormControl('',Validators.required),
+    email     : new FormControl('',[Validators.required, Validators.email]),
     username  : new FormControl('',Validators.required),
-    password  : new FormControl('',Validators.required),
+    password  : new FormControl('',[Validators.required,Validators.minLength(8)]),
     cpassword : new FormControl('',Validators.required),
     dob       : new FormControl('',Validators.required),
     sanswer   : new FormControl('',Validators.required),
