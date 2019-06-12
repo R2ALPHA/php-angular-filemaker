@@ -57,7 +57,7 @@ export class SignUpComponent implements OnInit {
     this.form = new FormGroup({
       email     : new FormControl('',[Validators.required,Validators.email]),
       username  : new FormControl('',[Validators.required,Validators.pattern('[a-zA-Z ]*')]),
-      password  : new FormControl('',[Validators.required,Validators.minLength(8),Validators.pattern('(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,}$')],),
+      password  : new FormControl('',[Validators.required,Validators.minLength(8),Validators.pattern('[a-zA-Z0-9]*')],),
       cpassword : new FormControl('',[Validators.required,this.passwordValidator]),
       squestion : new FormControl(''),
       sanswer   : new FormControl('',Validators.required),
@@ -112,8 +112,7 @@ export class SignUpComponent implements OnInit {
 
 passwordValidator(control: AbstractControl): { [key: string]: boolean } | null {
 
-  let password = control['password'];
-  // alert(password);
+  let password = control.value;
   if (control.value !== undefined && control.value==password) {
       return { 'password': true };
   }
@@ -142,4 +141,24 @@ passwordValidator(control: AbstractControl): { [key: string]: boolean } | null {
       cftk      :''
     })
   }
+
+
+  MustMatch(controlName: string, matchingControlName: string) {
+    return (formGroup: FormGroup) => {
+        const control = formGroup.controls[controlName];
+        const matchingControl = formGroup.controls[matchingControlName];
+
+        if (matchingControl.errors && !matchingControl.errors.mustMatch) {
+            // return if another validator has already found an error on the matchingControl
+            return;
+        }
+
+        // set error on matchingControl if validation fails
+        if (control.value !== matchingControl.value) {
+            matchingControl.setErrors({ mustMatch: true });
+        } else {
+            matchingControl.setErrors(null);
+        }
+    }
+}
 }

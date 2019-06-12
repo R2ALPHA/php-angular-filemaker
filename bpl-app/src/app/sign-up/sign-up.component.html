@@ -46,7 +46,7 @@
             </div>
             <div class="col-sm-8">
               <label for="pwd">
-                <input  id="pwd" class="form-control" type="password" name="text[pwd]" placeholder="********" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+                <input  id="pwd" class="form-control" type="password" name="text[pwd]" placeholder="********" 
                 formControlName="password" [ngClass]="{'is-invalid':form.get('password').touched && form.get('password').invalid}">
                 <div *ngIf="form.get('password').touched && form.get('password').invalid" class="invalid-feedback">
                   <div *ngIf="form.get('password').errors.required">{{validationMessages.password.required}}</div>
@@ -67,7 +67,7 @@
                 formControlName="cpassword" [ngClass]="{'is-invalid':form.get('cpassword').touched && form.get('cpassword').invalid}">
                 <div *ngIf="form.get('cpassword').touched && form.get('cpassword').invalid" class="invalid-feedback">
                   <div *ngIf="form.get('cpassword').errors.required">{{validationMessages.cpassword.required}}</div>
-                  <div>{{validationMessages.cpassword.password}}</div>
+                  <!-- <div>{{validationMessages.cpassword.password}}</div> -->
                 </div>
               </label>
             </div>
