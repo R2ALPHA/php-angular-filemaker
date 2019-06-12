@@ -1,4 +1,4 @@
-<form name="form" [formGroup]="form" autocomplete="on" enctype="multipart/form-data">
+<form name="form" [formGroup]="form" autocomplete="on"  (ngSubmit)="onSubmit()" enctype="multipart/form-data">
   <div class="container center_div">
     <div class="row">
       <div class="col-lg-6">
@@ -16,7 +16,7 @@
               <label for="email-id">
                 <input  id="email-id" class="form-control" type="email" name="text[email]" placeholder="Enter your email"
                   formControlName="email" [ngClass]="{'is-invalid':form.get('email').touched && form.get('email').invalid}">
-                <div class="invalid-feedback">
+                <div *ngIf="form.get('email').touched && form.get('email').invalid" class="invalid-feedback">
                   <div *ngIf="form.get('email').errors.required">Email is required </div>
                   <div *ngIf="form.get('email').errors.email">Not a valid Email</div>
                 </div>
@@ -47,7 +47,7 @@
               <label for="pwd">
                 <input  id="pwd" class="form-control" type="password" name="text[pwd]" placeholder="********" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
                 formControlName="password" [ngClass]="{'is-invalid':form.get('password').touched && form.get('password').invalid}">
-                <div class="invalid-feedback">
+                <div *ngIf="form.get('password').touched && form.get('password').invalid" class="invalid-feedback">
                   <div *ngIf="form.get('password').errors.required">Password is required</div>
                   <!-- <div> Must have one uppercase letter</div>
                   <div> Must have one lowercase letter</div>
@@ -179,7 +179,7 @@
             <div class="col-sm-8">
               <label for="birth-date">
                 <input type="date" name="text[birth-date]"  id="birth-date" class="form-control"
-                formControlName="sanswer" [ngClass]="{'is-invalid':form.get('sanswer').touched && form.get('sanswer').invalid}"> 
+                formControlName="dob" [ngClass]="{'is-invalid':form.get('dob').touched && form.get('dob').invalid}"> 
                 <div class="invalid-feedback">
                   <div>Birth date can't be empty</div>
                 </div>
@@ -318,13 +318,13 @@
 
     </div>
   </div>
-  <hr>
+  <hr> 
   
   <div class="container">
     <div id="buttonId" class="row">
-      <div class="col-sm-6 offset-sm-2">
+      <div class="form-group col-sm-6 offset-sm-2">
         <button type="submit" name="submit" id="submitBtn" class="btn btn-primary">Submit </button> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <button type="button" name="reset" id="resetBtn" class="btn btn-info">Reset</button>
+        <button type="reset" name="reset" id="resetBtn" class="btn btn-info">Reset</button>
       </div>
     </div>
   </div>

@@ -9,13 +9,24 @@ import { User } from '../user';
 export class SignUpComponent implements OnInit {
 
   form = new FormGroup({
-    email     : new FormControl('',[Validators.required, Validators.email]),
+    email     : new FormControl('',[Validators.required,Validators.email]),
     username  : new FormControl('',Validators.required),
     password  : new FormControl('',[Validators.required,Validators.minLength(8)]),
     cpassword : new FormControl('',Validators.required),
-    dob       : new FormControl('',Validators.required),
+    squestion : new FormControl(''),
     sanswer   : new FormControl('',Validators.required),
-    pname     : new FormControl('',Validators.required)
+    pname     : new FormControl('',Validators.required),
+    aname     : new FormControl(''),
+    blood     : new FormControl(''),
+    dob       : new FormControl('',Validators.required),
+    gender    : new FormControl(''),
+    mobile    : new FormControl(''),
+    altno     : new FormControl(''),
+    locality  : new FormControl(''),
+    city      : new FormControl(''),
+    state     : new FormControl(''),
+    profile   : new FormControl(''),
+    cftk      : new FormControl('')
   });
   constructor() { }
 
@@ -31,6 +42,6 @@ export class SignUpComponent implements OnInit {
   passwordHint=['uppercase letter','lowercase letter','digit','special character'];
 
   onSubmit() {
-    alert("hello World");
+    alert(JSON.stringify(this.form.value));
   }
 }
