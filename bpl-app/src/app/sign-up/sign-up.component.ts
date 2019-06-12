@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup, Validators, AbstractControl } from '@angular/forms';
 import { User } from '../user';
 @Component({
   selector: 'app-sign-up',
@@ -9,6 +9,7 @@ import { User } from '../user';
 export class SignUpComponent implements OnInit {
 
 
+  form:FormGroup;
 
   formErrors={
     'email'     :'',
@@ -27,7 +28,8 @@ export class SignUpComponent implements OnInit {
       'email':         'Email not in valid format.'
     },
     'username'  : {
-      'required':      'First Name is required.'
+      'required':      'First Name is required.',
+      'pattern' :      'Only alphabet ',
     },
     'password'  : {
       'required':      'Password is required.',
@@ -43,37 +45,37 @@ export class SignUpComponent implements OnInit {
     },
     'pname'     : {
       'required':      'Name is required.',
-      'minlength':     'First Name must be at least 2 characters long.',
+      'pattern' :      'Only alphabet ',
     },
     'dob'       : {
       'required':      'DOB is required ',
     }
   }
-
-  form = new FormGroup({
-    email     : new FormControl('',[Validators.required,Validators.email]),
-    username  : new FormControl('',Validators.required),
-    password  : new FormControl('',[Validators.required,Validators.minLength(8)]),
-    cpassword : new FormControl('',Validators.required),
-    squestion : new FormControl(''),
-    sanswer   : new FormControl('',Validators.required),
-    pname     : new FormControl('',Validators.required),
-    aname     : new FormControl(''),
-    blood     : new FormControl(''),
-    dob       : new FormControl('',Validators.required),
-    gender    : new FormControl(''),
-    mobile    : new FormControl(''),
-    altno     : new FormControl(''),
-    locality  : new FormControl(''),
-    city      : new FormControl(''),
-    state     : new FormControl(''),
-    profile   : new FormControl(''),
-    fcftk     : new FormControl(''),
-    cftk      : new FormControl('')
-  });
   constructor() { }
 
   ngOnInit() {
+    this.form = new FormGroup({
+      email     : new FormControl('',[Validators.required,Validators.email]),
+      username  : new FormControl('',[Validators.required,Validators.pattern('[a-zA-Z ]*')]),
+      password  : new FormControl('',[Validators.required,Validators.minLength(8),Validators.pattern('(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,}$')],),
+      cpassword : new FormControl('',[Validators.required,this.passwordValidator]),
+      squestion : new FormControl(''),
+      sanswer   : new FormControl('',Validators.required),
+      pname     : new FormControl('',[Validators.required,Validators.pattern('[a-zA-Z ]*')]),
+      aname     : new FormControl(''),
+      blood     : new FormControl(''),
+      dob       : new FormControl('',Validators.required),
+      gender    : new FormControl(''),
+      mobile    : new FormControl(''),
+      altno     : new FormControl(''),
+      locality  : new FormControl(''),
+      city      : new FormControl(''),
+      state     : new FormControl(''),
+      profile   : new FormControl(''),
+      fcftk     : new FormControl(''),
+      cftk      : new FormControl(''),
+      
+    });
   }
 
   securityQuestion = ['Childhood Hero Name','Favourite Book','First School','Favourite place'];
@@ -106,6 +108,17 @@ export class SignUpComponent implements OnInit {
     }
     }
   }
+
+
+passwordValidator(control: AbstractControl): { [key: string]: boolean } | null {
+
+  let password = control['password'];
+  // alert(password);
+  if (control.value !== undefined && control.value==password) {
+      return { 'password': true };
+  }
+  return null;
+}
 
   onSubmit() {
     alert(JSON.stringify(this.form.value));
