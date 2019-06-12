@@ -26,6 +26,7 @@ export class SignUpComponent implements OnInit {
     city      : new FormControl(''),
     state     : new FormControl(''),
     profile   : new FormControl(''),
+    fcftk     : new FormControl(''),
     cftk      : new FormControl('')
   });
   constructor() { }
@@ -43,5 +44,24 @@ export class SignUpComponent implements OnInit {
 
   onSubmit() {
     alert(JSON.stringify(this.form.value));
+    this.form.reset({
+      email     :'',
+      username  :'',
+      password  :'',
+      cpassword :'',
+      squestion :'',
+      sanswer   :'',
+      pname     :'',
+      aname     :'',
+      dob       :'',
+      mobile    :'',
+      altno     :'',
+      locality  :'',
+      city      :'',
+      state     :'',
+      profile   :'',
+      fcftk     :'',
+      cftk      :''
+    })
   }
 }
