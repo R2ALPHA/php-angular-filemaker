@@ -8,6 +8,48 @@ import { User } from '../user';
 })
 export class SignUpComponent implements OnInit {
 
+
+
+  formErrors={
+    'email'     :'',
+    'username'  :'',
+    'password'  :'',
+    'cpassword' :'',
+    'sanswer'   :'',
+    'pname'     :'',
+    'dob'       :''       
+  };
+
+
+  validationMessages = {
+    'email'     : {
+      'required':      'Email is required.',
+      'email':         'Email not in valid format.'
+    },
+    'username'  : {
+      'required':      'First Name is required.'
+    },
+    'password'  : {
+      'required':      'Password is required.',
+      'password':      'Enter the valid format',
+      'minlength':     'length should be > 8',
+    },
+    'cpassword' : {
+      'required':      'This field is required.',
+      'password':      'Password  not match'
+    },
+    'sanswer'   : {
+      'required':      'This field is required.',
+    },
+    'pname'     : {
+      'required':      'Name is required.',
+      'minlength':     'First Name must be at least 2 characters long.',
+    },
+    'dob'       : {
+      'required':      'DOB is required ',
+    }
+  }
+
   form = new FormGroup({
     email     : new FormControl('',[Validators.required,Validators.email]),
     username  : new FormControl('',Validators.required),
@@ -41,6 +83,29 @@ export class SignUpComponent implements OnInit {
     in any form. Though the data provied by you can be used to improve the user experience.Apart from this ensure to use the real\
     name, in case of fake name being used the account can be permanently blocked. The field marked with the * marks are mandate to be filled.";
   passwordHint=['uppercase letter','lowercase letter','digit','special character'];
+
+
+
+  //two separation versio of the value changed one passing the data and other not.
+  onValueChanged(data?: any){
+    if(!this.form){return ;}
+    const form=this.form;
+    for(const field in this.formErrors ){
+      if(this.formErrors.hasOwnProperty(field)){
+      //clear previous messages if any 
+      this.formErrors[field]='';
+      const control=form.get(field);
+      if(control && control.dirty && !control.valid){
+        const messages=this.validationMessages[field];
+        for(const key in control.errors){
+          if(control.errors.hasOwnProperty(key)){
+            this.formErrors[field]+=messages[key]+'';
+          }
+        }
+      }
+    }
+    }
+  }
 
   onSubmit() {
     alert(JSON.stringify(this.form.value));

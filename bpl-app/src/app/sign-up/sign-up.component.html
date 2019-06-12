@@ -17,9 +17,10 @@
                 <input  id="email-id" class="form-control" type="email" name="text[email]" placeholder="Enter your email"
                   formControlName="email" [ngClass]="{'is-invalid':form.get('email').touched && form.get('email').invalid}">
                 <div *ngIf="form.get('email').touched && form.get('email').invalid" class="invalid-feedback">
-                  <div *ngIf="form.get('email').errors.required">Email is required </div>
-                  <div *ngIf="form.get('email').errors.email">Not a valid Email</div>
+                  <div *ngIf="form.get('email').errors.required">{{validationMessages.email.required}}</div>
+                  <div *ngIf="form.get('email').errors.email">{{validationMessages.email.email}}</div>
                 </div>
+                <span [hidden]="!(formErrors.email)">{{formErrors.email}}</span>
               </label>
             </div>
           </div>
@@ -33,7 +34,7 @@
                 <input  id="user-name" class="form-control" type="text" name="text[uname]" placeholder="Enter your userName"
                 formControlName="username" [ngClass]="{'is-invalid':form.get('username').touched && form.get('username').invalid}">
                 <div class="invalid-feedback">
-                  <div>User Name is required</div>
+                  <div>{{validationMessages.username.required}}</div>
                 </div>
               </label>
             </div>
@@ -48,12 +49,12 @@
                 <input  id="pwd" class="form-control" type="password" name="text[pwd]" placeholder="********" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
                 formControlName="password" [ngClass]="{'is-invalid':form.get('password').touched && form.get('password').invalid}">
                 <div *ngIf="form.get('password').touched && form.get('password').invalid" class="invalid-feedback">
-                  <div *ngIf="form.get('password').errors.required">Password is required</div>
+                  <div *ngIf="form.get('password').errors.required">{{validationMessages.password.required}}</div>
                   <!-- <div> Must have one uppercase letter</div>
                   <div> Must have one lowercase letter</div>
                   <div> Must have one digit</div>
                   <div> Must have one speacial character</div> -->
-                  <div *ngIf="form.get('password').errors.minlength"> Must have Length >8</div>
+                  <div *ngIf="form.get('password').errors.minlength">{{validationMessages.password.minlength}}</div>
                 </div>
               </label>
             </div>
@@ -68,8 +69,8 @@
                 <input  id="cpassword" class="form-control" type="password" placeholder="********"
                 formControlName="cpassword" [ngClass]="{'is-invalid':form.get('cpassword').touched && form.get('cpassword').invalid}">
                 <div class="invalid-feedback">
-                  <div>This field is required</div>
-                  <div>Password didnot match</div>
+                  <div>{{validationMessages.cpassword.required}}</div>
+                  <div>{{validationMessages.cpassword.password}}</div>
                 </div>
               </label>
             </div>
@@ -95,7 +96,7 @@
                 <input type="text" name="text[security]" id="security" class="form-control" placeholder="Enter the Security Answer" 
                 formControlName="sanswer" [ngClass]="{'is-invalid':form.get('sanswer').touched && form.get('sanswer').invalid}">
                 <div class="invalid-feedback">
-                  <div>This field cant't be blank</div>
+                  <div>{{validationMessages.sanswer.required}}</div>
                 </div>
               </label>
             </div>
@@ -142,9 +143,9 @@
             <div class="col-sm-8">
               <label for="fname" >
                 <input type="text" name="text[fname]" id="fname" class="form-control" placeholder="Enter the players's Name"
-                formControlName="sanswer" [ngClass]="{'is-invalid':form.get('sanswer').touched && form.get('sanswer').invalid}"> 
+                formControlName="pname" [ngClass]="{'is-invalid':form.get('pname').touched && form.get('sanswer').invalid}"> 
                 <div class="invalid-feedback">
-                  <div>User name can't be empty</div>
+                  <div>{{validationMessages.pname.required}}</div>
                 </div>
               </label>
             </div>
@@ -181,7 +182,7 @@
                 <input type="date" name="text[birth-date]"  id="birth-date" class="form-control"
                 formControlName="dob" [ngClass]="{'is-invalid':form.get('dob').touched && form.get('dob').invalid}"> 
                 <div class="invalid-feedback">
-                  <div>Birth date can't be empty</div>
+                  <div>{{validationMessages.dob.required}}</div>
                 </div>
               </label>
             </div>
