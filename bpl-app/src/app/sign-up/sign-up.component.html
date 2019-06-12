@@ -1,21 +1,4 @@
-
-<div class="form-size">
-  <!-- <form novalidate[formGroup]="regForm" (ngSubmit)="onSubmit()"> -->
-  <!-- <div class="container">
-  <form>
-    <p>
-      <mat-form-field class="half-width">
-        <span>Email Id*</span>
-      </mat-form-field>
-      <mat-form-field class="half-width">
-        <input matInput formControlName=" " placeholder =" Enter your Email" type="text">
-      </mat-form-field>
-    </p>
-  </form>
-  </div>
-</div> -->
-
-<form id="regform" autocomplete="on" enctype="multipart/form-data">
+<form name="form" [formGroup]="form" autocomplete="on" enctype="multipart/form-data">
   <div class="container center_div">
     <div class="row">
       <div class="col-lg-6">
@@ -31,7 +14,9 @@
             </div>
             <div class="col-sm-8">
               <label for="email-id">
-                <input  id="email-id" class="form-control" type="email" name="text[email]" placeholder="Enter your email">
+                <input  id="email-id" class="form-control" type="email" name="text[email]" placeholder="Enter your email"
+                  formControlName="email" [ngClass]="{'is-invalid':form.get('email').touched && form.get('email').invalid}">
+                <div class="invalid-feedback">Email is required</div>
               </label>
             </div>
           </div>
@@ -42,7 +27,11 @@
             </div>
             <div class="col-sm-8">
               <label for="user-name">
-                <input  id="user-name" class="form-control" type="text" name="text[uname]" placeholder="Enter your userName">
+                <input  id="user-name" class="form-control" type="text" name="text[uname]" placeholder="Enter your userName"
+                formControlName="username" [ngClass]="{'is-invalid':form.get('username').touched && form.get('username').invalid}">
+                <div class="invalid-feedback">
+                  <div>User Name is required</div>
+                </div>
               </label>
             </div>
           </div>
@@ -53,19 +42,26 @@
             </div>
             <div class="col-sm-8">
               <label for="pwd">
-                <input  id="pwd" class="form-control" type="password" name="text[pwd]" placeholder="********" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Password should contain
-                atleast one lowercase letter, one uppercase letter, one digit and the length should be greater then 8">
+                <input  id="pwd" class="form-control" type="password" name="text[pwd]" placeholder="********" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+                formControlName="password" [ngClass]="{'is-invalid':form.get('password').touched && form.get('password').invalid}">
+                <div class="invalid-feedback">
+                  <div>Password is required</div>
+                </div>
               </label>
             </div>
           </div>
         
           <div class="form-group row">
             <div class="col-sm-4 col-form-label">
-              <span>Confirm Password </span><span title="required" class="requiredField">*</span>
+              <span>Confirm Password </span><span title="required" class="requiredField" >*</span>
             </div>
             <div class="col-sm-8">
               <label for="cpassword">
-                <input  id="cpassword" class="form-control" type="password" placeholder="********">
+                <input  id="cpassword" class="form-control" type="password" placeholder="********"
+                formControlName="cpassword" [ngClass]="{'is-invalid':form.get('cpassword').touched && form.get('cpassword').invalid}">
+                <div class="invalid-feedback">
+                  <div>This field is required</div>
+                </div>
               </label>
             </div>
           </div>
@@ -87,7 +83,11 @@
             </div>
             <div class="col-sm-8">
               <label for="security" >
-                <input type="text" name="text[security]" id="security" class="form-control" placeholder="Enter the Security Answer" > 
+                <input type="text" name="text[security]" id="security" class="form-control" placeholder="Enter the Security Answer" 
+                formControlName="sanswer" [ngClass]="{'is-invalid':form.get('sanswer').touched && form.get('sanswer').invalid}">
+                <div class="invalid-feedback">
+                  <div>This field cant't be blank</div>
+                </div>
               </label>
             </div>
           </div>
@@ -132,7 +132,11 @@
             </div>
             <div class="col-sm-8">
               <label for="fname" >
-                <input type="text" name="text[fname]" id="fname" class="form-control" placeholder="Enter the players's Name"> 
+                <input type="text" name="text[fname]" id="fname" class="form-control" placeholder="Enter the players's Name"
+                formControlName="sanswer" [ngClass]="{'is-invalid':form.get('sanswer').touched && form.get('sanswer').invalid}"> 
+                <div class="invalid-feedback">
+                  <div>User name can't be empty</div>
+                </div>
               </label>
             </div>
           </div>
@@ -165,7 +169,11 @@
             </div>
             <div class="col-sm-8">
               <label for="birth-date">
-                <input type="date" name="text[birth-date]"  id="birth-date" class="form-control"> 
+                <input type="date" name="text[birth-date]"  id="birth-date" class="form-control"
+                formControlName="sanswer" [ngClass]="{'is-invalid':form.get('sanswer').touched && form.get('sanswer').invalid}"> 
+                <div class="invalid-feedback">
+                  <div>Birth date can't be empty</div>
+                </div>
               </label>
             </div>
           </div>
@@ -212,7 +220,7 @@
       </div>
     </div>
   </div>
-  <br>
+  <br><br>
   
   <div class="container">
     <div class="row">

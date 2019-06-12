@@ -1,13 +1,22 @@
 import { Component, OnInit } from '@angular/core';
-//import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { User } from '../user';
 @Component({
   selector: 'app-sign-up',
   templateUrl: './sign-up.component.html',
-  styleUrls: ['./sign-up.component.css']
+  styleUrls: ['./sign-up.component.scss']
 })
 export class SignUpComponent implements OnInit {
 
+  form = new FormGroup({
+    email     : new FormControl('',Validators.required),
+    username  : new FormControl('',Validators.required),
+    password  : new FormControl('',Validators.required),
+    cpassword : new FormControl('',Validators.required),
+    dob       : new FormControl('',Validators.required),
+    sanswer   : new FormControl('',Validators.required),
+    pname     : new FormControl('',Validators.required)
+  });
   constructor() { }
 
   ngOnInit() {
@@ -20,4 +29,8 @@ export class SignUpComponent implements OnInit {
     in any form. Though the data provied by you can be used to improve the user experience.Apart from this ensure to use the real\
     name, in case of fake name being used the account can be permanently blocked. The field marked with the * marks are mandate to be filled.";
   passwordHint=['uppercase letter','lowercase letter','digit','special character'];
+
+  onSubmit() {
+    alert("hello World");
+  }
 }

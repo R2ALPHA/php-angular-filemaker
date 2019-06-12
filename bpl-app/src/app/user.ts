@@ -15,7 +15,8 @@ export class User {
         public alt?: string,
         public locality?: string,
         public city?: string,
-        public state?: string
+        public state?: string,
+        public sanswer?: string
     ) { }
 
 }
