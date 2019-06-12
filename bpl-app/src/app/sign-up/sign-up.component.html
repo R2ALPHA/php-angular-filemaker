@@ -20,7 +20,6 @@
                   <div *ngIf="form.get('email').errors.required">{{validationMessages.email.required}}</div>
                   <div *ngIf="form.get('email').errors.email">{{validationMessages.email.email}}</div>
                 </div>
-                <span [hidden]="!(formErrors.email)">{{formErrors.email}}</span>
               </label>
             </div>
           </div>

@@ -1,0 +1,40 @@
+
+    .blood {
+        color:blue;
+    }
+    
+    .text-wrapping {
+        background-color:orange;
+        color:black;
+        text-align:center;
+        font-family:monospace;
+        margin-right:50px;
+    }
+
+    hr {
+        border-style: solid;
+        margin-right: 50px;
+        margin-left: 50px;
+    }
+
+    .form-container {
+        max-width:10px;
+        padding:15px;
+        background-color:white;
+    }
+       
+    .decor {
+         margin-top:10%;
+    }
+    
+    .fieldset1 {
+        padding:2% 5% 5% 15%;
+        border: 4px groove;
+        margin-right:18%;
+        margin-top:5%;
+    }
+
+    .position {
+        padding-left:1%;
+        margin-left:20%;
+    }

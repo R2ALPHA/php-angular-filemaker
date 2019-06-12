@@ -11,13 +11,18 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
 import { FooterComponent } from './footer/footer.component';
+import { LoginComponent } from './login/login.component';
+import { AppRoutingModule } from './app-routing/app-routing.module';
+
+import 'hammerjs';
 
 @NgModule({
   declarations: [
     AppComponent,
     SignUpComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -26,8 +31,12 @@ import { FooterComponent } from './footer/footer.component';
     FlexLayoutModule,
     MatSelectModule,
     MatSlideToggleModule,
+    AppRoutingModule,
     ReactiveFormsModule,
     FormsModule
+  ],
+  entryComponents: [
+    LoginComponent
   ],
   providers: [],
   bootstrap: [AppComponent]
