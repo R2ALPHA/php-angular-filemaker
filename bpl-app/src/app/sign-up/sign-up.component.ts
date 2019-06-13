@@ -49,6 +49,7 @@ export class SignUpComponent implements OnInit {
     },
     'dob'       : {
       'required':      'DOB is required ',
+      'bday'    :      'Outside the limit'
     }
   }
   constructor() { }
@@ -58,13 +59,13 @@ export class SignUpComponent implements OnInit {
       email     : new FormControl('',[Validators.required,Validators.email]),
       username  : new FormControl('',[Validators.required,Validators.pattern('[a-zA-Z ]*')]),
       password  : new FormControl('',[Validators.required,Validators.minLength(8),Validators.pattern('[a-zA-Z0-9]*')],),
-      cpassword : new FormControl('',[Validators.required,this.passwordValidator]),
+      cpassword : new FormControl('',[Validators.required]),
       squestion : new FormControl(''),
       sanswer   : new FormControl('',Validators.required),
       pname     : new FormControl('',[Validators.required,Validators.pattern('[a-zA-Z ]*')]),
       aname     : new FormControl(''),
       blood     : new FormControl(''),
-      dob       : new FormControl('',Validators.required),
+      dob       : new FormControl('',[Validators.required,this.ageValidator]),
       gender    : new FormControl(''),
       mobile    : new FormControl(''),
       altno     : new FormControl(''),
@@ -118,6 +119,23 @@ passwordValidator(control: AbstractControl): { [key: string]: boolean } | null {
   }
   return null;
 }
+
+
+ageValidator(control: AbstractControl): { [key: string]: boolean } | null {
+
+  let bday= control.value;
+  let bdayArr=bday.split('-');
+  let bdayYr=parseInt(bdayArr[0]);
+  let currDt= new Date();
+  let currYr = currDt.getFullYear();
+
+  if((currYr-bdayYr)<18|| (currYr-bdayYr)>30)
+      return {'bday':true}
+
+  // alert(currYr-bdayYr);
+  return null;
+}
+
 
   onSubmit() {
     alert(JSON.stringify(this.form.value));
