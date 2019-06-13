@@ -4,7 +4,6 @@ export class User {
         public email: string,
         public username: string,
         public password: string,
-        public cpassword: string,
         public squestion: string,
         public dob: string,
         public name: string,

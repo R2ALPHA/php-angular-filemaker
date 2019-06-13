@@ -12,6 +12,8 @@ export class SignUpComponent implements OnInit {
 
   form:FormGroup;
 
+  userModal  = new User("abc@gmail.com","anana","dffdfd","dfdfdf","asfsdfs","sdfsdfsdaf","sdfasdfad");
+
   formErrors={
     'email'     :'',
     'username'  :'',
@@ -160,7 +162,7 @@ ageValidator(control: AbstractControl): { [key: string]: boolean } | null {
       fcftk     :'',
       cftk      :''
     })
-    this._enrollmentService.enroll()
+    this._enrollmentService.enroll(this.userModal)
       .subscribe(
         data=>console.log('Success!',data),
         error=>console.error('Error',error)
