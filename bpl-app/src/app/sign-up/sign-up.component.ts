@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators, AbstractControl } from '@angular/forms';
 import { User } from '../user';
+import { EnrollmentService } from '../enrollment.service';
 @Component({
   selector: 'app-sign-up',
   templateUrl: './sign-up.component.html',
@@ -52,7 +53,7 @@ export class SignUpComponent implements OnInit {
       'bday'    :      'Outside the limit'
     }
   }
-  constructor() { }
+  constructor(private _enrollmentService: EnrollmentService) { }
 
   ngOnInit() {
     this.form = new FormGroup({
@@ -138,7 +139,8 @@ ageValidator(control: AbstractControl): { [key: string]: boolean } | null {
 
 
   onSubmit() {
-    alert(JSON.stringify(this.form.value));
+    alert("Form Successfully Submitted");
+    console.log(JSON.stringify(this.form.value));
     this.form.reset({
       email     :'',
       username  :'',
@@ -158,6 +160,11 @@ ageValidator(control: AbstractControl): { [key: string]: boolean } | null {
       fcftk     :'',
       cftk      :''
     })
+    this._enrollmentService.enroll()
+      .subscribe(
+        data=>console.log('Success!',data),
+        error=>console.error('Error',error)
+      )
   }
 
 
