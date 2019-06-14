@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { LoginService } from '../login.service';
+import { Router } from '@angular/router';
 import { FormControl, FormGroup, Validators,FormBuilder, AbstractControl } from '@angular/forms';
 @Component({
   selector: 'app-login',
@@ -10,7 +11,11 @@ export class LoginComponent implements OnInit {
 
   logForm:FormGroup;
 
-  constructor(private _loginService: LoginService,private fb:FormBuilder) { }
+  constructor(
+      private _loginService: LoginService,
+      private fb:FormBuilder,
+      private _router:Router
+      ) { }
 
   ngOnInit() {
 
@@ -32,8 +37,11 @@ export class LoginComponent implements OnInit {
     .subscribe(
       data=>{
         console.log('Success!',data);
-        localStorage.setItem('token',data.token);
-        localStorage.setItem('expiry',data.expires);
+        if(data.status!=404) {
+          localStorage.setItem('token',data.token);
+          localStorage.setItem('expiry',data.expires);
+          this._router.navigate(['/profile']);
+        }
       },
       error=>console.error('Error',error),
 
