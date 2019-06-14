@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators,FormBuilder, AbstractControl } from '@angular/forms';
 import { EnrollmentService } from '../enrollment.service';
-import { format } from 'path';
+import { VERROR } from '../../shared/errors';
+import {  securityQuestion, bloodGroup,states,disclaimer,passwordHint} from '../../shared/registrationConstant';
+
 @Component({
   selector: 'app-sign-up',
   templateUrl: './sign-up.component.html',
@@ -10,36 +12,15 @@ import { format } from 'path';
 export class SignUpComponent implements OnInit {
 
   form:FormGroup;
-  validationMessages = {
-    'email'     : {
-      'required':      'Email is required.',
-      'email':         'Email not in valid format.'
-    },
-    'username'  : {
-      'required':      'First Name is required.',
-      'pattern' :      'Only alphabet ',
-    },
-    'password'  : {
-      'required':      'Password is required.',
-      'password':      'Enter the valid format',
-      'minlength':     'length should be > 8',
-    },
-    'cpassword' : {
-      'required':      'This field is required.',
-      'password':      'Password  not match'
-    },
-    'sanswer'   : {
-      'required':      'This field is required.',
-    },
-    'pname'     : {
-      'required':      'Name is required.',
-      'pattern' :      'Only alphabet ',
-    },
-    'dob'       : {
-      'required':      'DOB is required ',
-      'bday'    :      'Outside the limit'
-    }
-  }
+
+  public  validationMessages=VERROR;
+
+  public  securityQuestion =  securityQuestion;
+  public  bloodGroup =  bloodGroup;
+  public  states = states;
+  public  disclaimer = disclaimer;
+  public  passwordHint = passwordHint;
+
   constructor(private _enrollmentService: EnrollmentService,private fb:FormBuilder) { 
 
   }
@@ -68,15 +49,6 @@ export class SignUpComponent implements OnInit {
       
     });
   }
-
-  securityQuestion = ['Childhood Hero Name','Favourite Book','First School','Favourite place'];
-  bloodGroup=['O+','AB+','A+','B+','Other'];
-  states=['Orissa','Jharkhand','UttarPradesh','Telangana','Other'];
-  disclaimer ="We respect the privacy of an individual and hence we dont share any kind of data to the third party application, \
-    in any form. Though the data provied by you can be used to improve the user experience.Apart from this ensure to use the real\
-    name, in case of fake name being used the account can be permanently blocked. The field marked with the * marks are mandate to be filled.";
-  passwordHint=['uppercase letter','lowercase letter','digit','special character'];
-
 
 passwordValidator(control: AbstractControl): { [key: string]: boolean } | null {
 
