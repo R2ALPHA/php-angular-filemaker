@@ -1,4 +1,4 @@
-<form name="form" [formGroup]="form" autocomplete="on"  (ngSubmit)=" form.valid && onSubmit()" enctype="multipart/form-data">
+<form name="form" [formGroup]="form" autocomplete="on"  (ngSubmit)=" form.valid && onSubmit();form.reset()" enctype="multipart/form-data">
   <div class="container center_div">
     <div class="row">
       <div class="col-lg-6">

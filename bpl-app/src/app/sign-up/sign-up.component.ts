@@ -80,7 +80,6 @@ ageValidator(control: AbstractControl): { [key: string]: boolean } | null {
     this.processSubmission();
     alert("Form Successfully Submitted");
     console.log(JSON.stringify(this.form.value));
-    this.resetForm();
   }
 
 
@@ -92,28 +91,5 @@ ageValidator(control: AbstractControl): { [key: string]: boolean } | null {
       error=>console.error('Error',error),
     )
 
-  }
-
-  resetForm()
-  {
-
-    this.form.reset({
-      email     :'',
-      username  :'',
-      password  :'',
-      cpassword :'',
-      squestion :'',
-      sanswer   :'',
-      pname     :'',
-      aname     :'',
-      dob       :'',
-      mobile    :'',
-      altno     :'',
-      locality  :'',
-      city      :'',
-      profile   :'',
-      fcftk     :'',
-      cftk      :''
-    });
   }
 }
