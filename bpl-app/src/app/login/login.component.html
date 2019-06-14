@@ -1,4 +1,4 @@
-
+<form name="logForm" [formGroup]="logForm" (ngSubmit)=" logForm.valid && onSubmit()"  autocomplete="on">
 <div class="container">
 <p>
     what are you waiting for -->Login and interact with  players like you..
@@ -16,10 +16,10 @@
     <div class="col-sm-8">
       <label for="email-id">
         <input  id="email-id" class="form-control" type="email" name="text[email]" placeholder="Enter your email"
-          formControlName="email" [ngClass]="{'is-invalid':form.get('email').touched && form.get('email').invalid}">
-        <div *ngIf="form.get('email').touched && form.get('email').invalid" class="invalid-feedback">
-          <div *ngIf="form.get('email').errors.required">{{validationMessages.email.required}}</div>
-          <div *ngIf="form.get('email').errors.email">{{validationMessages.email.email}}</div>
+          formControlName="email" [ngClass]="{'is-invalid':logForm.get('email').touched && logForm.get('email').invalid}">
+        <div *ngIf="logForm.get('email').touched && logForm.get('email').invalid" class="invalid-feedback">
+          <div *ngIf="logForm.get('email').errors.required">{{validationMessages.email.required}}</div>
+          <div *ngIf="logForm.get('email').errors.email">{{validationMessages.email.email}}</div>
         </div>
       </label>
     </div>
@@ -31,16 +31,16 @@
     </div>
     <div class="col-sm-8">
       <label for="pwd">
-        <input  id="pwd" class="form-control" type="password" name="text[pwd]" placeholder="********" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
-        formControlName="password" [ngClass]="{'is-invalid':form.get('password').touched && form.get('password').invalid}">
-        <div *ngIf="form.get('password').touched && form.get('password').invalid" class="invalid-feedback">
-          <div *ngIf="form.get('password').errors.required">{{validationMessages.password.required}}</div>
-          <div *ngIf="form.get('password').errors.minlength">{{validationMessages.password.minlength}}</div>
+        <input  id="pwd" class="form-control" type="password" name="text[pwd]" placeholder="********"
+        formControlName="password" [ngClass]="{'is-invalid':logForm.get('password').touched && logForm.get('password').invalid}">
+        <div *ngIf="logForm.get('password').touched && logForm.get('password').invalid" class="invalid-feedback">
+          <div *ngIf="logForm.get('password').errors.required">{{validationMessages.password.required}}</div>
+          <div *ngIf="logForm.get('password').errors.minlength">{{validationMessages.password.minlength}}</div>
         </div>
       </label>
     </div>
   </div>
-  <!-- <button type="reset"  name="reset" id="resetBtn" class="btn btn-primary">Reset </button> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -->
-  <button type="submit" name="submit" id="submitBtn" class="btn btn-primary position">Submit </button> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <button type="submit" name="submit" [disabled]="logForm.invalid" id="submitBtn" class="btn btn-primary position">LOG IN</button> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 </fieldset>
 </div>
+</form>

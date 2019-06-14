@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { MatDialog, MatDialogRef } from '@angular/material';
+import { LoginService } from '../login.service';
+import { FormControl, FormGroup, Validators,FormBuilder, AbstractControl } from '@angular/forms';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -7,14 +8,33 @@ import { MatDialog, MatDialogRef } from '@angular/material';
 })
 export class LoginComponent implements OnInit {
 
-  user={remember:false};
+  logForm:FormGroup;
+  
 
-  constructor() { }
+
+  constructor(private _loginService: LoginService,private fb:FormBuilder) { }
 
   ngOnInit() {
-    console.log("User: ", this.user);
+
+    this.logForm = this.fb.group({
+      email     : ['',[Validators.required,Validators.email]],
+      password  : ['',[Validators.required]],
+
+    });
+
+
   }
   onSubmit() {
-    console.log("User: ", this.user);
+    this.processSubmission();
+    alert("Successfully login");
   }
+
+  processSubmission() {
+    this._loginService.login(this.logForm.value)
+    .subscribe(
+      data=>console.log('Success!',data),
+      error=>console.error('Error',error),
+    )
+  }
+
 }
