@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { LoginService } from '../login.service';
+import { ProfileService } from '../profile.service';
 import { Router } from '@angular/router';
 import { FormControl, FormGroup, Validators,FormBuilder, AbstractControl } from '@angular/forms';
 @Component({
@@ -14,6 +15,7 @@ export class LoginComponent implements OnInit {
   constructor(
       private _loginService: LoginService,
       private fb:FormBuilder,
+      private _profileService:ProfileService,
       private _router:Router
       ) { }
 
@@ -39,8 +41,11 @@ export class LoginComponent implements OnInit {
         if(data.status!=404) {
           localStorage.setItem('token',data.token);
           localStorage.setItem('expiry',data.expires);
-          this._router.navigate(['/profile']);
+          this._profileService.profileData=data;
           this._loginService.isLoggedIn=true;
+          this._router.navigate(['/profile']);
+
+          
         }
         else{
           alert("Wrong Credentials");

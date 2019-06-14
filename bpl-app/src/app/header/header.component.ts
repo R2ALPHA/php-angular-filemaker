@@ -13,17 +13,8 @@ export class HeaderComponent implements OnInit {
   constructor( private _loginService: LoginService) { }
 
   private token=localStorage.getItem('token');
-  private hidden;
 
   ngOnInit() {
-  }
-
-  isLogin() {
-
-    if(this.token!==null)
-      return false;
-    else
-      return true;
   }
 
   logOut() {

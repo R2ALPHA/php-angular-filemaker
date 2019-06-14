@@ -1,3 +1,16 @@
-<p>
-  profile works!
-</p>
+<div class="container">
+
+    <table>
+        <thead>
+        <th># Policy ID</th>
+        <th>Policy name</th>
+        </thead>
+        <tbody>
+        <tr *ngFor="let police of policy">
+        <td>{{police|json}}</td>
+        </tr>
+        </tbody>
+        </table>
+
+
+  </div>
