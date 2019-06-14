@@ -1,4 +1,4 @@
-<form name="form" [formGroup]="form" autocomplete="on"  (ngSubmit)="form.valid && onSubmit()" enctype="multipart/form-data">
+<form name="form" [formGroup]="form" autocomplete="on"  (ngSubmit)=" form.valid && onSubmit()" enctype="multipart/form-data">
   <div class="container center_div">
     <div class="row">
       <div class="col-lg-6">
@@ -14,7 +14,7 @@
             </div>
             <div class="col-sm-8">
               <label for="email-id">
-                <input  id="email-id" class="form-control" type="email" name="text[email]" placeholder="Enter your email"
+                <input  id="email-id" class="form-control" type="email"  placeholder="Enter your email"
                   formControlName="email" [ngClass]="{'is-invalid':form.get('email').touched && form.get('email').invalid}">
                 <div *ngIf="form.get('email').touched && form.get('email').invalid" class="invalid-feedback">
                   <div *ngIf="form.get('email').errors.required">{{validationMessages.email.required}}</div>
@@ -67,7 +67,6 @@
                 formControlName="cpassword" [ngClass]="{'is-invalid':form.get('cpassword').touched && form.get('cpassword').invalid}">
                 <div *ngIf="form.get('cpassword').touched && form.get('cpassword').invalid" class="invalid-feedback">
                   <div *ngIf="form.get('cpassword').errors.required">{{validationMessages.cpassword.required}}</div>
-                  <!-- <div>{{validationMessages.cpassword.password}}</div> -->
                 </div>
               </label>
             </div>
@@ -142,8 +141,8 @@
                 <input type="text" name="text[fname]" id="fname" class="form-control" placeholder="Enter the players's Name"
                 formControlName="pname" [ngClass]="{'is-invalid':form.get('pname').touched && form.get('pname').invalid}"> 
                 <div *ngIf="form.get('pname').touched && form.get('pname').invalid" class="invalid-feedback">
-                  <div *ngIf="form.get('pname').errors.required">{{validationMessages.pname.required}}</div>
-                  <div *ngIf="form.get('pname').errors.pattern"> {{validationMessages.pname.pattern}}</div>
+                  <div *ngIf="form.get('pname').errors.required">{{validationMessages.name.required}}</div>
+                  <div *ngIf="form.get('pname').errors.pattern"> {{validationMessages.name.pattern}}</div>
                 </div>
               </label>
             </div>
@@ -155,8 +154,7 @@
             </div>
             <div class="col-sm-8">
               <label for="aname">
-                <input type="text" name="text[aliasname]" class="form-control" placeholder="Enter the alias name" id="aname"
-                formControlName="sanswer" [ngClass]="{'is-invalid':form.get('sanswer').touched && form.get('sanswer').invalid}"> 
+                <input type="text" name="text[aliasname]" formaControlName="aname" class="form-control" placeholder="Enter the alias name" id="aname">
               </label>
             </div>
           </div>
@@ -166,7 +164,7 @@
               <span>Blood Group </span>
             </div>
             <div class="col-sm-3">
-              <select name="text[blood]"  id="bgroup" class="blood">
+              <select name="text[blood]"  id="bgroup" class="blood" formaControlName="blood">
                 <option *ngFor="let blood of bloodGroup" [value]="pow">{{blood}}</option>
               </select>
             </div>
@@ -272,7 +270,7 @@
               <span>State</span>
             </div>
             <div class="col-sm-8">
-              <select name="text[state]" class="blood" id="state">
+              <select name="text[state]" class="blood" id="state" formControlName="state" >
                 <option *ngFor="let state of states" value="state">{{state}}</option>
               </select>
             </div>
@@ -327,13 +325,16 @@
     </div>
   </div>
   <hr> 
+
+  {{ form.value | json }}
   
   <div class="container">
     <div id="buttonId" class="row">
       <div class="form-group col-sm-6 offset-sm-2">
-        <button [disabled]="form.invalid" type="submit" name="submit" id="submitBtn" class="btn btn-primary">Submit </button> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <button  type="submit" [disabled]="form.invalid"  name="submit" id="submitBtn" class="btn btn-primary">Submit </button> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <button type="reset" name="reset" id="resetBtn" class="btn btn-info">Reset</button> 
       </div>
     </div>
   </div>
 </form>
+<!--  -->

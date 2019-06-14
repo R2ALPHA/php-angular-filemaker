@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators, AbstractControl } from '@angular/forms';
+import { FormControl, FormGroup, Validators,FormBuilder, AbstractControl } from '@angular/forms';
 import { User } from '../user';
 import { EnrollmentService } from '../enrollment.service';
+import { format } from 'path';
 @Component({
   selector: 'app-sign-up',
   templateUrl: './sign-up.component.html',
@@ -9,21 +10,11 @@ import { EnrollmentService } from '../enrollment.service';
 })
 export class SignUpComponent implements OnInit {
 
-
   form:FormGroup;
 
-  userModal  = new User("abc@gmail.com","anana","dffdfd","dfdfdf","asfsdfs","sdfsdfsdaf","sdfasdfad");
-
-  formErrors={
-    'email'     :'',
-    'username'  :'',
-    'password'  :'',
-    'cpassword' :'',
-    'sanswer'   :'',
-    'pname'     :'',
-    'dob'       :''       
-  };
-
+  userModal:User;
+  email;username;password;squestion;dob;name;gender;alias;
+  blood;mob;alt;locality;city;state;sanswer;
 
   validationMessages = {
     'email'     : {
@@ -55,29 +46,31 @@ export class SignUpComponent implements OnInit {
       'bday'    :      'Outside the limit'
     }
   }
-  constructor(private _enrollmentService: EnrollmentService) { }
+  constructor(private _enrollmentService: EnrollmentService,private fb:FormBuilder) { 
 
+  }
   ngOnInit() {
-    this.form = new FormGroup({
-      email     : new FormControl('',[Validators.required,Validators.email]),
-      username  : new FormControl('',[Validators.required,Validators.pattern('[a-zA-Z ]*')]),
-      password  : new FormControl('',[Validators.required,Validators.minLength(8),Validators.pattern('[a-zA-Z0-9]*')],),
-      cpassword : new FormControl('',[Validators.required]),
-      squestion : new FormControl(''),
-      sanswer   : new FormControl('',Validators.required),
-      pname     : new FormControl('',[Validators.required,Validators.pattern('[a-zA-Z ]*')]),
-      aname     : new FormControl(''),
-      blood     : new FormControl(''),
-      dob       : new FormControl('',[Validators.required,this.ageValidator]),
-      gender    : new FormControl(''),
-      mobile    : new FormControl(''),
-      altno     : new FormControl(''),
-      locality  : new FormControl(''),
-      city      : new FormControl(''),
-      state     : new FormControl(''),
-      profile   : new FormControl(''),
-      fcftk     : new FormControl(''),
-      cftk      : new FormControl(''),
+
+    this.form = this.fb.group ({
+      email     : ['',[Validators.required,Validators.email]],
+      username  : ['',[Validators.required,Validators.pattern('[a-zA-Z ]*')]],
+      password  : ['',[Validators.required,Validators.minLength(8),Validators.pattern('[a-zA-Z0-9]*')]],
+      cpassword : ['',[Validators.required]],
+      squestion : [''],
+      sanswer   : ['',Validators.required],
+      pname     : ['',[Validators.required,Validators.pattern('[a-zA-Z ]*')]],
+      aname     : [''],
+      blood     : [''],
+      dob       : ['',[Validators.required,this.ageValidator]],
+      gender    : [''],
+      mobile    : [''],
+      altno     : [''],
+      locality  : [''],
+      city      : [''],
+      state     : [''],
+      profile   : [''],
+      fcftk     : [''],
+      cftk      : [''],
       
     });
   }
@@ -89,29 +82,6 @@ export class SignUpComponent implements OnInit {
     in any form. Though the data provied by you can be used to improve the user experience.Apart from this ensure to use the real\
     name, in case of fake name being used the account can be permanently blocked. The field marked with the * marks are mandate to be filled.";
   passwordHint=['uppercase letter','lowercase letter','digit','special character'];
-
-
-
-  //two separation versio of the value changed one passing the data and other not.
-  onValueChanged(data?: any){
-    if(!this.form){return ;}
-    const form=this.form;
-    for(const field in this.formErrors ){
-      if(this.formErrors.hasOwnProperty(field)){
-      //clear previous messages if any 
-      this.formErrors[field]='';
-      const control=form.get(field);
-      if(control && control.dirty && !control.valid){
-        const messages=this.validationMessages[field];
-        for(const key in control.errors){
-          if(control.errors.hasOwnProperty(key)){
-            this.formErrors[field]+=messages[key]+'';
-          }
-        }
-      }
-    }
-    }
-  }
 
 
 passwordValidator(control: AbstractControl): { [key: string]: boolean } | null {
@@ -134,15 +104,51 @@ ageValidator(control: AbstractControl): { [key: string]: boolean } | null {
 
   if((currYr-bdayYr)<18|| (currYr-bdayYr)>30)
       return {'bday':true}
-
-  // alert(currYr-bdayYr);
+      
   return null;
 }
 
 
   onSubmit() {
+
+    this.processSubmission();
     alert("Form Successfully Submitted");
     console.log(JSON.stringify(this.form.value));
+  }
+
+
+  processSubmission()
+  {
+
+    this.email=this.form.get('email').value;
+    this.username=this.form.get('username').value;
+    this.password=this.form.get('password').value;
+    this.squestion=this.form.get('squestion').value;
+    this.dob=this.form.get('dob').value;
+    this.name=this.form.get('pname').value;
+    this.gender=this.form.get('gender').value;
+    this.alias=this.form.get('aname').value;
+    this.blood=this.form.get('blood').value;
+    this.mob=this.form.get('mobile').value;
+    this.alt=this.form.get('altno').value;
+    this.locality=this.form.get('locality').value;
+    this.city=this.form.get('city').value;
+    this.state=this.form.get('state').value;
+    this.sanswer=this.form.get('sanswer').value;
+    this.userModal  = new User(this.email,this.username,this.password,this.squestion,this.dob,this.name,this.gender,this.alias,
+    this.blood,this.mob,this.alt,this.locality,this.city,this.state,this.sanswer);
+
+    this._enrollmentService.enroll(this.userModal)
+    .subscribe(
+      data=>console.log('Success!',data),
+      error=>console.error('Error',error)
+    )
+
+  }
+
+  resetForm()
+  {
+
     this.form.reset({
       email     :'',
       username  :'',
@@ -157,35 +163,9 @@ ageValidator(control: AbstractControl): { [key: string]: boolean } | null {
       altno     :'',
       locality  :'',
       city      :'',
-      state     :'',
       profile   :'',
       fcftk     :'',
       cftk      :''
     })
-    this._enrollmentService.enroll(this.userModal)
-      .subscribe(
-        data=>console.log('Success!',data),
-        error=>console.error('Error',error)
-      )
   }
-
-
-  MustMatch(controlName: string, matchingControlName: string) {
-    return (formGroup: FormGroup) => {
-        const control = formGroup.controls[controlName];
-        const matchingControl = formGroup.controls[matchingControlName];
-
-        if (matchingControl.errors && !matchingControl.errors.mustMatch) {
-            // return if another validator has already found an error on the matchingControl
-            return;
-        }
-
-        // set error on matchingControl if validation fails
-        if (control.value !== matchingControl.value) {
-            matchingControl.setErrors({ mustMatch: true });
-        } else {
-            matchingControl.setErrors(null);
-        }
-    }
-}
 }
