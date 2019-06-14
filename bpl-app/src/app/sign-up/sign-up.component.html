@@ -77,7 +77,7 @@
               <span>Security Question </span><span title="required" class="requiredField">*</span>
             </div>
             <div class="col-sm-8">
-              <select id="security-question"  name="text[squestion]" class="blood">
+              <select id="security-question"  formControlName="squestion"   name="text[squestion]" class="blood">
                 <option *ngFor="let question of securityQuestion" [value]="question">{{question}}</option>
               </select>
             </div>
@@ -154,7 +154,7 @@
             </div>
             <div class="col-sm-8">
               <label for="aname">
-                <input type="text" name="text[aliasname]" formaControlName="aname" class="form-control" placeholder="Enter the alias name" id="aname">
+                <input type="text" name="text[aliasname]" formControlName="aname" class="form-control" placeholder="Enter the alias name" id="aname">
               </label>
             </div>
           </div>
@@ -271,7 +271,7 @@
             </div>
             <div class="col-sm-8">
               <select name="text[state]" class="blood" id="state" formControlName="state" >
-                <option *ngFor="let state of states" value="state">{{state}}</option>
+                <option *ngFor="let state of states">{{state}}</option>
               </select>
             </div>
           </div>	

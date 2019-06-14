@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators,FormBuilder, AbstractControl } from '@angular/forms';
-import { User } from '../user';
 import { EnrollmentService } from '../enrollment.service';
 import { format } from 'path';
 @Component({
@@ -11,11 +10,6 @@ import { format } from 'path';
 export class SignUpComponent implements OnInit {
 
   form:FormGroup;
-
-  userModal:User;
-  email;username;password;squestion;dob;name;gender;alias;
-  blood;mob;alt;locality;city;state;sanswer;
-
   validationMessages = {
     'email'     : {
       'required':      'Email is required.',
@@ -56,7 +50,7 @@ export class SignUpComponent implements OnInit {
       username  : ['',[Validators.required,Validators.pattern('[a-zA-Z ]*')]],
       password  : ['',[Validators.required,Validators.minLength(8),Validators.pattern('[a-zA-Z0-9]*')]],
       cpassword : ['',[Validators.required]],
-      squestion : [''],
+      squestion : ['Childhood Hero Name'],
       sanswer   : ['',Validators.required],
       pname     : ['',[Validators.required,Validators.pattern('[a-zA-Z ]*')]],
       aname     : [''],
@@ -67,7 +61,7 @@ export class SignUpComponent implements OnInit {
       altno     : [''],
       locality  : [''],
       city      : [''],
-      state     : [''],
+      state     : ['Jharkhand'],
       profile   : [''],
       fcftk     : [''],
       cftk      : [''],
@@ -114,34 +108,16 @@ ageValidator(control: AbstractControl): { [key: string]: boolean } | null {
     this.processSubmission();
     alert("Form Successfully Submitted");
     console.log(JSON.stringify(this.form.value));
+    this.resetForm();
   }
 
 
   processSubmission()
   {
-
-    this.email=this.form.get('email').value;
-    this.username=this.form.get('username').value;
-    this.password=this.form.get('password').value;
-    this.squestion=this.form.get('squestion').value;
-    this.dob=this.form.get('dob').value;
-    this.name=this.form.get('pname').value;
-    this.gender=this.form.get('gender').value;
-    this.alias=this.form.get('aname').value;
-    this.blood=this.form.get('blood').value;
-    this.mob=this.form.get('mobile').value;
-    this.alt=this.form.get('altno').value;
-    this.locality=this.form.get('locality').value;
-    this.city=this.form.get('city').value;
-    this.state=this.form.get('state').value;
-    this.sanswer=this.form.get('sanswer').value;
-    this.userModal  = new User(this.email,this.username,this.password,this.squestion,this.dob,this.name,this.gender,this.alias,
-    this.blood,this.mob,this.alt,this.locality,this.city,this.state,this.sanswer);
-
-    this._enrollmentService.enroll(this.userModal)
+    this._enrollmentService.enroll(this.form.value)
     .subscribe(
       data=>console.log('Success!',data),
-      error=>console.error('Error',error)
+      error=>console.error('Error',error),
     )
 
   }
@@ -166,6 +142,6 @@ ageValidator(control: AbstractControl): { [key: string]: boolean } | null {
       profile   :'',
       fcftk     :'',
       cftk      :''
-    })
+    });
   }
 }
