@@ -7,8 +7,11 @@ import { LoginComponent } from './login/login.component';
 })
 export class LoginService {
 
+  isLoggedIn:boolean;
   private  _url='http://localhost:8080/v1/member';
-  constructor(private _http: HttpClient) { }
+  constructor(private _http: HttpClient) {
+    this.isLoggedIn=false;
+   }
 
   login(user){
     return this._http.post<any>(this._url,user);

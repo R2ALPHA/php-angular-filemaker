@@ -29,7 +29,6 @@ export class LoginComponent implements OnInit {
   }
   onSubmit() {
     this.processSubmission();
-    alert("Successfully login");
   }
 
   processSubmission() {
@@ -41,6 +40,10 @@ export class LoginComponent implements OnInit {
           localStorage.setItem('token',data.token);
           localStorage.setItem('expiry',data.expires);
           this._router.navigate(['/profile']);
+          this._loginService.isLoggedIn=true;
+        }
+        else{
+          alert("Wrong Credentials");
         }
       },
       error=>console.error('Error',error),

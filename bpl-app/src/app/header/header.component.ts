@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog, MatDialogRef } from '@angular/material';
 import { LoginComponent } from '../login/login.component'
+import { LoginService } from '../login.service';
 
 @Component({
   selector: 'app-header',
@@ -9,12 +10,26 @@ import { LoginComponent } from '../login/login.component'
 })
 export class HeaderComponent implements OnInit {
 
-  constructor() { }
+  constructor( private _loginService: LoginService) { }
+
+  private token=localStorage.getItem('token');
+  private hidden;
 
   ngOnInit() {
   }
 
-  openLoginForm(){
-   // this.dialog.open(LoginComponent,{width:'500px ',height:'450px'});
+  isLogin() {
+
+    if(this.token!==null)
+      return false;
+    else
+      return true;
   }
+
+  logOut() {
+    localStorage.setItem("token",null);
+    localStorage.setItem("expiry",null);
+    this._loginService.isLoggedIn=false;
+  }
+
 }
