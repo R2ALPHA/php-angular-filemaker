@@ -14,8 +14,10 @@ import { FooterComponent } from './footer/footer.component';
 import { LoginComponent } from './login/login.component';
 import { AppRoutingModule } from './app-routing/app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
+import { StorageServiceModule} from 'angular-webstorage-service';
 
 import 'hammerjs';
+import { ProfileComponent } from './profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,8 @@ import 'hammerjs';
     SignUpComponent,
     HeaderComponent,
     FooterComponent,
-    LoginComponent
+    LoginComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
@@ -35,7 +38,8 @@ import 'hammerjs';
     AppRoutingModule,
     ReactiveFormsModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    StorageServiceModule
   ],
   entryComponents: [
     LoginComponent

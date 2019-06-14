@@ -9,8 +9,6 @@ import { FormControl, FormGroup, Validators,FormBuilder, AbstractControl } from 
 export class LoginComponent implements OnInit {
 
   logForm:FormGroup;
-  
-
 
   constructor(private _loginService: LoginService,private fb:FormBuilder) { }
 
@@ -32,8 +30,13 @@ export class LoginComponent implements OnInit {
   processSubmission() {
     this._loginService.login(this.logForm.value)
     .subscribe(
-      data=>console.log('Success!',data),
+      data=>{
+        console.log('Success!',data);
+        localStorage.setItem('token',data.token);
+        localStorage.setItem('expiry',data.expires);
+      },
       error=>console.error('Error',error),
+
     )
   }
 
