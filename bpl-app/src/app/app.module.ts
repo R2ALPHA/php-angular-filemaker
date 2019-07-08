@@ -20,7 +20,8 @@ import 'hammerjs';
 import { ProfileComponent } from './profile/profile.component';
 import { MainNavComponent } from './main-nav/main-nav.component';
 import { LayoutModule } from '@angular/cdk/layout';
-import { MatButtonModule, MatSidenavModule, MatIconModule, MatListModule } from '@angular/material';
+import { MatButtonModule, MatSidenavModule, MatIconModule, MatListModule ,MatCardModule, MatInputModule} from '@angular/material';
+import { MatFormFieldModule} from '@angular/material/form-field';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,10 @@ import { MatButtonModule, MatSidenavModule, MatIconModule, MatListModule } from 
     MatButtonModule,
     MatSidenavModule,
     MatIconModule,
-    MatListModule
+    MatListModule,
+    MatFormFieldModule,
+    MatCardModule,
+    MatInputModule,
   ],
   entryComponents: [
     LoginComponent

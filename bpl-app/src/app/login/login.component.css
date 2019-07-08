@@ -1,4 +1,8 @@
 
+/* 
+form {
+    background-color:#AFB6B1;
+} */
     .blood {
         color:blue;
     }
@@ -37,4 +41,42 @@
     .position {
         padding-left:1%;
         margin-left:20%;
+    }
+    .form-group {
+        width:100%;
+    }
+    #email-id {
+        width:100%;
+        height:40px;
+    }
+    .face-icon {
+        width:100%;
+        height:40px;
+    }
+
+    .field-format{
+        width:100%;
+        height:40px;
+    }
+
+    .required-field{
+        font-size: 20px;
+        font-weight:bold;
+        color:red;
+    }
+
+    .field-title {
+        font-size:20px;
+        font-weight:bold;
+        color:black;
+    }
+    .login-block {
+        border-style: solid;
+        border-color: #585858;
+        border-width:10px;
+        border-radius: 64px;
+        width:669.31653543px;
+        height:350.66456693px;
+        margin-left:200.33543307px;
+        margin-top:124.00629921px;
     }
