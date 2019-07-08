@@ -1,0 +1,54 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav
+    #drawer
+    class="sidenav"
+    fixedInViewport="false"
+    [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+    [mode]="(isHandset$ | async) ? 'over' : 'side'"
+    [opened]="!(isHandset$ | async)!.matches">
+    <mat-toolbar color="primary">Menu</mat-toolbar>
+    <mat-nav-list>
+      <a mat-list-item href="#">Profile</a>
+      <a mat-list-item href="#">All Players</a>
+      <a mat-list-item href="#">All Tasks</a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar color="primary">
+      <button
+        type="button"
+        aria-label="Toggle sidenav"
+        mat-icon-button
+        (click)="drawer.toggle()"
+        *ngIf="isHandset$ | async">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+      <pre class="title">BPL - Connecting Players
+          User Profile</pre>
+      <span class="spacer"></span>
+      <div class="navigation">
+        <div class="individual-navigation">
+          <a href="#">
+            <i class="material-icons">
+              person
+            </i>
+            <span class="icon-text">Profile</span>
+          </a>
+          </div>
+        <a href="#"><i class="material-icons">
+          people
+          </i>All Players </a>
+        <a href="#"><i class="material-icons">
+          assignment
+          </i>All Tasks </a>
+        <a href="#"><i class="material-icons">
+            exit_to_app
+        </i>Log Out </a>
+      </div>
+    </mat-toolbar>
+    <!-- Add Content Here -->
+    <ng-content></ng-content>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+<!-- [ngClas]="hidden:{isHandset | async}!.matches" -->
+<!--  -->

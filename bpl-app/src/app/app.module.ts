@@ -18,6 +18,9 @@ import { StorageServiceModule} from 'angular-webstorage-service';
 
 import 'hammerjs';
 import { ProfileComponent } from './profile/profile.component';
+import { MainNavComponent } from './main-nav/main-nav.component';
+import { LayoutModule } from '@angular/cdk/layout';
+import { MatButtonModule, MatSidenavModule, MatIconModule, MatListModule } from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -26,7 +29,8 @@ import { ProfileComponent } from './profile/profile.component';
     HeaderComponent,
     FooterComponent,
     LoginComponent,
-    ProfileComponent
+    ProfileComponent,
+    MainNavComponent
   ],
   imports: [
     BrowserModule,
@@ -39,7 +43,12 @@ import { ProfileComponent } from './profile/profile.component';
     ReactiveFormsModule,
     FormsModule,
     HttpClientModule,
-    StorageServiceModule
+    StorageServiceModule,
+    LayoutModule,
+    MatButtonModule,
+    MatSidenavModule,
+    MatIconModule,
+    MatListModule
   ],
   entryComponents: [
     LoginComponent
