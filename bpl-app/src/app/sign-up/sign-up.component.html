@@ -14,11 +14,11 @@
             </div>
             <div class="col-sm-8">
               <label for="email-id">
-                <input  id="email-id" class="form-control" type="email"  placeholder="Enter your email"
-                  formControlName="email" [ngClass]="{'is-invalid':form.get('email').touched && form.get('email').invalid}">
-                <div *ngIf="form.get('email').touched && form.get('email').invalid" class="invalid-feedback">
-                  <div *ngIf="form.get('email').errors.required">{{validationMessages.email.required}}</div>
-                  <div *ngIf="form.get('email').errors.email">{{validationMessages.email.email}}</div>
+                <input  id="email-id" class="form-control" type="email"  placeholder="Enter your email" name="_pk_email_id"
+                  formControlName="_pk_email_id" [ngClass]="{'is-invalid':form.get('_pk_email_id').touched && form.get('_pk_email_id').invalid}">
+                <div  *ngIf="form.get('_pk_email_id').touched && form.get('_pk_email_id').invalid" class="invalid-feedback">
+                  <div   class="error-hint" *ngIf="form.get('_pk_email_id').errors.required">{{validationMessages.email.required}}</div>
+                  <div   class="error-hint" *ngIf="form.get('_pk_email_id').errors.email">{{validationMessages.email.email}}</div>
                 </div>
               </label>
             </div>
@@ -30,11 +30,11 @@
             </div>
             <div class="col-sm-8">
               <label for="user-name">
-                <input  id="user-name" class="form-control" type="text" name="text[uname]" placeholder="Enter your userName"
-                formControlName="username" [ngClass]="{'is-invalid':form.get('username').touched && form.get('username').invalid}">
-                <div *ngIf="form.get('username').touched && form.get('username').invalid" class="invalid-feedback">
-                    <div *ngIf="form.get('username').errors.required">{{validationMessages.username.required}}</div>
-                    <div *ngIf="form.get('username').errors.pattern"> {{validationMessages.username.pattern}}</div>
+                <input  id="user-name" class="form-control" type="text" name="text[uname]" placeholder="Enter your userName" name="user_name"
+                formControlName="user_name" [ngClass]="{'is-invalid':form.get('user_name').touched && form.get('user_name').invalid}">
+                <div *ngIf="form.get('user_name').touched && form.get('user_name').invalid" class="invalid-feedback">
+                    <div  class="error-hint" *ngIf="form.get('user_name').errors.required">{{validationMessages.username.required}}</div>
+                    <div  class="error-hint" *ngIf="form.get('user_name').errors.pattern"> {{validationMessages.username.pattern}}</div>
                   </div>
               </label>
             </div>
@@ -46,11 +46,11 @@
             </div>
             <div class="col-sm-8">
               <label for="pwd">
-                <input  id="pwd" class="form-control" type="password" name="text[pwd]" placeholder="********" 
+                <input  id="pwd" class="form-control" type="password"  placeholder="********"  name="password"
                 formControlName="password" [ngClass]="{'is-invalid':form.get('password').touched && form.get('password').invalid}">
                 <div *ngIf="form.get('password').touched && form.get('password').invalid" class="invalid-feedback">
-                  <div *ngIf="form.get('password').errors.required">{{validationMessages.password.required}}</div>
-                  <div *ngIf="form.get('password').errors.pattern">{{validationMessages.password.password}}</div>
+                  <div  class="error-hint"  *ngIf="form.get('password').errors.required">{{validationMessages.password.required}}</div>
+                  <div  class="error-hint"  *ngIf="form.get('password').errors.pattern">{{validationMessages.password.password}}</div>
                   <ng-template #other_reason>other content here...</ng-template>
                 </div>
               </label>
@@ -62,7 +62,7 @@
               <span>Security Question </span><span title="required" class="requiredField">*</span>
             </div>
             <div class="col-sm-8">
-              <select id="security-question"  formControlName="squestion"   name="text[squestion]" class="blood">
+              <select id="security-question"  formControlName="security_question"   name="security_question" class="blood">
                 <option *ngFor="let question of securityQuestion" [value]="question">{{question}}</option>
               </select>
             </div>
@@ -74,11 +74,11 @@
             </div>
             <div class="col-sm-8">
               <label for="security" >
-                <input type="text" name="text[security]" id="security" class="form-control" placeholder="Enter the Security Answer" 
-                formControlName="sanswer" [ngClass]="{'is-invalid':form.get('sanswer').touched && form.get('sanswer').invalid}">
-                <div class="invalid-feedback">
-                  <div>{{validationMessages.sanswer.required}}</div>
-                </div>
+                <input type="text" name="text[security]" id="security" class="form-control" placeholder="Enter the Security Answer" name="security_answer"
+                formControlName="security_answer" [ngClass]="{'is-invalid':form.get('security_answer').touched && form.get('security_answer').invalid}">
+                <!-- <div class="invalid-feedback">
+                  <div  class="error-hint">{{validationMessages.security_answer.required}}</div>
+                </div> -->
               </label>
             </div>
           </div>
@@ -123,11 +123,11 @@
             </div>
             <div class="col-sm-8">
               <label for="fname" >
-                <input type="text" name="text[fname]" id="fname" class="form-control" placeholder="Enter the players's Name"
-                formControlName="pname" [ngClass]="{'is-invalid':form.get('pname').touched && form.get('pname').invalid}"> 
-                <div *ngIf="form.get('pname').touched && form.get('pname').invalid" class="invalid-feedback">
-                  <div *ngIf="form.get('pname').errors.required">{{validationMessages.name.required}}</div>
-                  <div *ngIf="form.get('pname').errors.pattern"> {{validationMessages.name.pattern}}</div>
+                <input type="text"  id="fname" class="form-control" placeholder="Enter the players's Name" name="player_name"
+                formControlName="player_name" [ngClass]="{'is-invalid':form.get('player_name').touched && form.get('player_name').invalid}"> 
+                <div *ngIf="form.get('player_name').touched && form.get('player_name').invalid" class="invalid-feedback">
+                  <div *ngIf="form.get('player_name').errors.required">{{validationMessages.name.required}}</div>
+                  <div *ngIf="form.get('player_name').errors.pattern"> {{validationMessages.name.pattern}}</div>
                 </div>
               </label>
             </div>
@@ -138,19 +138,19 @@
               <span>Blood Group </span>
             </div>
             <div class="col-sm-3 blood">
-              <select name="text[blood]"  id="bgroup" class="blood" formaControlName="blood">
+              <select  id="bgroup" class="blood" formaControlName="blood_group" name="blood_group" placeholder="Select Your Blood Group">
                 <option *ngFor="let blood of bloodGroup" [value]="pow">{{blood}}</option>
               </select>
             </div>
           </div>
 
-          <div class="form-group row"> 
+          <!-- <div class="form-group row"> 
             <div class="col-sm-4 col-form-label">
-              <span>Date of Birth </span><span title="required" class="requiredField">*</span>
+              <span>Date of Birth </span><span title="required" class="requiredField" name="dob">*</span>
             </div>
             <div class="col-sm-8">
               <label for="birth-date">
-                <input type="date" name="text[birth-date]"  id="birth-date" class="form-control"
+                <input type="date" name="dob"  id="birth-date" class="form-control"
                 formControlName="dob" [ngClass]="{'is-invalid':form.get('dob').touched && form.get('dob').invalid}"> 
                 <div *ngIf="form.get('dob').touched && form.get('dob').invalid" class="invalid-feedback">
                   <div *ngIf="form.get('dob').errors.required">{{validationMessages.dob.required}}</div>
@@ -158,21 +158,21 @@
                 </div>
               </label>
             </div>
-          </div>
+          </div> -->
 
           <div class="form-group row">
             <div class="col-sm-4 col-form-label">
               <span>Gender </span><span title="required" class="requiredField">*</span>
             </div>
-            <div  class="col-sm-8" id="gender">
+            <div  class="col-sm-8" id="gender" name="gender" formControlName="gender">
               <label for="male">
-                <input type="radio" id="male" name="text[gender]"value="M" checked>&nbsp;M &nbsp;
+                <input type="radio" id="male" name="gender" formControlName="gender" value="M" checked>&nbsp;Male
               </label>
               <label for="female">
-                <input type="radio"  id="female" name="text[gender]" value="F">&nbsp;F&nbsp;
+                <input type="radio"  id="female" name="gender"  formControlName="gender" value="F">&nbsp;Female
               </label>
               <label for="other">  
-                <input type="radio" id="other" name="text[gender]" value="O">&nbsp;O&nbsp;
+                <input type="radio" id="other" name="gender"formControlName="gender"  value="O">&nbsp;Other
               </label>
             </div>
           </div>
@@ -183,8 +183,8 @@
             </div>
             <div class="col-sm-8" >
               <label for="mobileno">
-                <input type="tel" name="text[mobile]" id="mobileno" placeholder="Enter the Mobile number" class="form-control"
-                formControlName="mobile" [ngClass]="{'is-invalid':form.get('mobile').touched && form.get('mobile').invalid}">
+                <input type="tel" name = "mobile_no." id="mobileno" placeholder="Enter the Mobile number" class="form-control"
+                formControlName="mobile_no">
               </label>
             </div>
           </div>
@@ -195,8 +195,8 @@
             </div>
             <div class="col-sm-8">
               <label for="altno">
-                <input type="tel" name="text[altmobile]" id="altno" placeholder="Enter the Alternate number" class="form-control"
-                formControlName="altno" [ngClass]="{'is-invalid':form.get('altno').touched && form.get('altno').invalid}"> 
+                <input type="tel" name="alt_mob_no" id="altno" placeholder="Enter the Alternate number" class="form-control"
+                formControlName="alt_mobile_no"> 
               </label>
             </div>
           </div>
@@ -221,7 +221,7 @@
             </div>
             <div class="col-sm-8">
               <label for="address">
-                <input type="text" name="text[locality]" id="address" placeholder="Enter the locality" class="form-control"
+                <input type="text" name="locality" id="address" placeholder="Enter the locality" class="form-control"
                 formControlName="locality" [ngClass]="{'is-invalid':form.get('locality').touched && form.get('locality').invalid}" >
               </label>
             </div>
@@ -233,7 +233,7 @@
             </div>
             <div class="col-sm-8">
               <label for="city">
-                <input type="text" name="text[city]" id="city" placeholder="Enter the city" class="form-control"
+                <input type="text" name="city" id="city" placeholder="Enter the city" class="form-control"
                 formControlName="city" [ngClass]="{'is-invalid':form.get('city').touched && form.get('city').invalid}">
               </label>
             </div>
@@ -244,7 +244,7 @@
               <span>State</span>
             </div>
             <div class="col-sm-8">
-              <select name="text[state]" class="blood" id="state" formControlName="state" >
+              <select name="state" class="blood" id="state" formControlName="state" >
                 <option *ngFor="let state of states">{{state}}</option>
               </select>
             </div>

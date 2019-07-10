@@ -31,26 +31,22 @@ export class SignUpComponent implements OnInit {
     document.body.classList.add('bg-img');
 
     this.form = this.fb.group ({
-      email     : ['',[Validators.required,Validators.email]],
-      username  : ['',[Validators.required,Validators.pattern('[a-zA-Z ]*')]],
-      password  : ['',[Validators.required,Validators.minLength(8),Validators.pattern('[a-zA-Z0-9]*')]],
-      cpassword : ['',[Validators.required]],
-      squestion : ['Childhood Hero Name'],
-      sanswer   : ['',Validators.required],
-      pname     : ['',[Validators.required,Validators.pattern('[a-zA-Z ]*')]],
-      aname     : [''],
-      blood     : [''],
-      dob       : ['',[Validators.required,this.validator.ageValidator]],
-      gender    : [''],
-      mobile    : [''],
-      altno     : [''],
-      locality  : [''],
-      city      : [''],
-      state     : ['Jharkhand'],
-      profile   : [''],
-      fcftk     : [''],
-      cftk      : [''],
-      
+
+      _pk_email_id       : ['',[Validators.required,Validators.email]],
+      user_name          : ['',[Validators.required,Validators.pattern('[a-zA-Z ]*')]],
+      password           : ['',[Validators.required,Validators.minLength(8),Validators.pattern('[a-zA-Z0-9]*')]],
+      security_question  : ['Childhood Hero Name'],
+      security_answer    : ['',Validators.required],
+      player_name        : ['',[Validators.required,Validators.pattern('[a-zA-Z ]*')]],
+      blood_group        : [''],
+      // dob                : ['',[Validators.required,this.validator.ageValidator]], 
+      gender             : [''],
+      mobile_no          : [''],
+      alt_mobile_no         : [''],
+      locality           : [''],
+      city               : [''],
+      state              : ['Jharkhand'],
+
     });
   }
 
