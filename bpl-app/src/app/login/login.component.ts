@@ -24,8 +24,8 @@ export class LoginComponent implements OnInit {
     document.body.classList.add('bg-img');
 
     this.logForm = this.fb.group({
-      email     : ['',[Validators.required,Validators.email]],
-      password  : ['',[Validators.required]],
+      user_name       : ['',[Validators.required]],
+      password        : ['',[Validators.required]],
 
     });
 
@@ -47,7 +47,6 @@ export class LoginComponent implements OnInit {
           this._loginService.isLoggedIn=true;
           this._router.navigate(['/profile']);
 
-          
         }
         else{
           alert("Wrong Credentials");

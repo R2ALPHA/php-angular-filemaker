@@ -9,8 +9,6 @@ import { ProfileService } from '../profile.service';
 })
 export class ProfileComponent implements OnInit {
 
-
-  
   public profileData;
   public policy;
   
@@ -20,6 +18,7 @@ export class ProfileComponent implements OnInit {
   ) { }
 
   private emailID=this._loginService.emailId;
+  
   ngOnInit() {
    this.policy=this._profileService.profileData.record
    alert( this._profileService.profileData.record);

@@ -7,7 +7,7 @@ import { HttpClient, HttpResponse,HttpHeaders } from '@angular/common/http';
 export class ProfileService {
 
   public profileData;
-  private _url;
+  private _url ;
   private token=localStorage.getItem('token');
   constructor(private _http: HttpClient) { }
 
@@ -17,6 +17,9 @@ export class ProfileService {
   };
 
   display(email) {
-    alert(this.profileData.record);
+
+    this._url='http://localhost:8080/v1/user/'+email;
+    return this._http.get<any>(this._url,this.httpOptions);
+    // alert(this.profileData.record);
   }
 }

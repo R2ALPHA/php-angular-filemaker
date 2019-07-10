@@ -10,13 +10,13 @@
 
         <div class="col-md-8">
           <label for="email-id " class="field-format">
-            <input id="email-id" type="email" name="text[email]" class="form-control" placeholder="Enter User Name here"
-              formControlName="email"
-              [ngClass]="{'is-invalid':logForm.get('email').touched && logForm.get('email').invalid}">
+            <input id="email-id" type="text" name="text[email]" class="form-control" placeholder="Enter User Name here"
+              formControlName="user_name"
+              [ngClass]="{'is-invalid':logForm.get('user_name').touched && logForm.get('user_name').invalid}">
             <mat-icon matSuffix class="face-icon">sentiment_very_satisfied</mat-icon>
-            <div *ngIf="logForm.get('email').touched && logForm.get('email').invalid" class="invalid-feedback">
-              <div *ngIf="logForm.get('email').errors.required">{{validationMessages.email.required}}</div>
-              <div *ngIf="logForm.get('email').errors.email">{{validationMessages.email.email}}</div>
+            <div *ngIf="logForm.get('user_name').touched && logForm.get('user_name').invalid" class="invalid-feedback">
+              <div *ngIf="logForm.get('user_name').errors.required">{{validationMessages.user_name.required}}</div>
+              <!-- <div *ngIf="logForm.get('user_name').errors.email">{{validationMessages._pk_email_id.email}}</div> -->
             </div>
           </label>
         </div>

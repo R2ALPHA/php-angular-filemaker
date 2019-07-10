@@ -10,7 +10,7 @@ export class LoginService {
 
   isLoggedIn:boolean;
   emailId:String;
-  private  _url='http://localhost:8080/v1/member';
+  private  _url='http://localhost:8080/v1/member/auth/login';
   constructor(private _http: HttpClient) {
     this.isLoggedIn=false;
    }
