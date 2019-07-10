@@ -5,7 +5,7 @@
     
     .text-wrapping {
         background-color:orange;
-        color:black;
+        color:white;
         text-align:center;
         font-family:monospace;
         margin-right:50px;
@@ -29,6 +29,33 @@
     
     .fieldset1 {
         padding:5%;
-        border: 4px groove;
+        border: 20px groove;
     }
     
+    span {
+        color:white;
+    }
+
+    .col-sm-4 {
+          background: url(https://www.google.com/url?sa=i&source=imgres&cd=&cad=rja&uact=8&ved=2ahUKEwjPss_h7qfjAhWNA3IKHdZiCYcQjRx6BAgBEAU&url=https%3A%2F%2Fwww.baamboostudio.com%2Fweebly-tips-making-the-text-on-background-or-header-images-stand-out%2F&psig=AOvVaw2ad5iogUDaC0U7OiujS1fB&ust=1562762672836778);
+    } 
+
+    div {
+        color:white;
+        font-weight:bold;
+        font-size: 18px;
+    }
+
+    label, .blood ,#file, #fpic ,#cpic{
+        margin-left:20%;
+    }
+
+    .col-form-label {
+        font-size:20px;
+        font-weight:bold;
+        color:white;
+    }
+
+    .btn-social-icon {
+        font-size:60px;
+    }

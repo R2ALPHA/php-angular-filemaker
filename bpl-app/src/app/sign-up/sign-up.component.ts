@@ -28,6 +28,8 @@ export class SignUpComponent implements OnInit {
   }
   ngOnInit() {
 
+    document.body.classList.add('bg-img');
+
     this.form = this.fb.group ({
       email     : ['',[Validators.required,Validators.email]],
       username  : ['',[Validators.required,Validators.pattern('[a-zA-Z ]*')]],

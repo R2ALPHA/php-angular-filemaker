@@ -21,6 +21,7 @@ export class LoginComponent implements OnInit {
       ) { }
 
   ngOnInit() {
+    document.body.classList.add('bg-img');
 
     this.logForm = this.fb.group({
       email     : ['',[Validators.required,Validators.email]],

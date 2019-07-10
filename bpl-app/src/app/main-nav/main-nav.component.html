@@ -23,10 +23,15 @@
         *ngIf="isHandset$ | async">
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
-      <pre class="title">BPL - Connecting Players
-          User Profile</pre>
+      <!-- <div class="row">
+        <div class="col-sm-6 col-lg-12">
+          <div class="title">Login</div>
+        </div>
+      </div> -->
       <span class="spacer"></span>
-      <div class="navigation">
+
+      <!-- TODO Will handle on session only -->
+      <!-- <div class="navigation" *ngIf="!(isHandset$ | async)">
         <div class="individual-navigation">
           <a href="#">
             <i class="material-icons">
@@ -34,7 +39,7 @@
             </i>
             <span class="icon-text">Profile</span>
           </a>
-          </div>
+        </div>
         <a href="#"><i class="material-icons">
           people
           </i>All Players </a>
@@ -44,7 +49,7 @@
         <a routerLink="login"><i class="material-icons">
             exit_to_app
         </i>Log Out </a>
-      </div>
+      </div> -->
     </mat-toolbar>
     <!-- Add Content Here -->
     <ng-content></ng-content>

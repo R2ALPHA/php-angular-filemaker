@@ -1,48 +1,72 @@
-<form name="logForm" [formGroup]="logForm" (ngSubmit)=" logForm.valid && onSubmit()"  autocomplete="on">
-<div class="container">
-<fieldset class="login-block">
-  <h3>
-    <span class="text-wrapping">LOGIN CREDENTIALS</span>
-  </h3>
-  <hr>
+<form name="logForm" [formGroup]="logForm" (ngSubmit)=" logForm.valid && onSubmit()" autocomplete="on">
+<!-- 
+  <div class="container">
+    <div clas="row">
+      <div class="col-sm-6 col-offset-2">
+        <h2 class="title">Login</h2>
+      </div>
+    </div>
+  </div> -->
 
-  <div class="form-group row">
-    <div class="col-sm-4 col-form-label">
-      <span class="field-title">Email id </span><span title="required" class="required-field">*</span>
-    </div>
-    <div class="col-sm-8">
-      <label for="email-id " class="field-format">
-        <!-- <mat-form-field appearance="outline"> -->
-        <!-- <mat-label>Email id</mat-label> -->
-        <input  matInput id="email-id" type="email" name="text[email]" class="form-control" 
-          formControlName="email" [ngClass]="{'is-invalid':logForm.get('email').touched && logForm.get('email').invalid}">
-        <mat-icon matSuffix class="face-icon">sentiment_very_satisfied</mat-icon>
-        <!-- <mat-hint>Hint</mat-hint> -->
-        <div *ngIf="logForm.get('email').touched && logForm.get('email').invalid" class="invalid-feedback">
-          <div *ngIf="logForm.get('email').errors.required">{{validationMessages.email.required}}</div>
-          <div *ngIf="logForm.get('email').errors.email">{{validationMessages.email.email}}</div>
+  <div class="container">
+    <fieldset class="login-block">
+      <hr>
+      <div class="form-group row">
+
+        <div class="col-md-4 col-form-label">
+          <span class="field-title">Email id </span><span title="required" class="required-field">*</span>
         </div>
-      <!-- </mat-form-field> -->
-      </label>
-    </div>
-  </div>
-  
-  <div class="form-group row">
-    <div class="col-sm-4 col-form-label">
-      <span class="field-title" >Password </span><span title="required" class="required-field">*</span>
-    </div>
-    <div class="col-sm-8">
-      <label for="pwd" class="field-format">
-        <input  id="pwd" class="form-control" type="password" name="text[pwd]" placeholder="********"
-        formControlName="password" [ngClass]="{'is-invalid':logForm.get('password').touched && logForm.get('password').invalid}">
-        <div *ngIf="logForm.get('password').touched && logForm.get('password').invalid" class="invalid-feedback">
-          <div *ngIf="logForm.get('password').errors.required">{{validationMessages.password.required}}</div>
-          <div *ngIf="logForm.get('password').errors.minlength">{{validationMessages.password.minlength}}</div>
+
+        <div class="col-md-8">
+          <label for="email-id " class="field-format">
+            <input id="email-id" type="email" name="text[email]" class="form-control" placeholder="Enter User Name here"
+              formControlName="email"
+              [ngClass]="{'is-invalid':logForm.get('email').touched && logForm.get('email').invalid}">
+            <mat-icon matSuffix class="face-icon">sentiment_very_satisfied</mat-icon>
+            <div *ngIf="logForm.get('email').touched && logForm.get('email').invalid" class="invalid-feedback">
+              <div *ngIf="logForm.get('email').errors.required">{{validationMessages.email.required}}</div>
+              <div *ngIf="logForm.get('email').errors.email">{{validationMessages.email.email}}</div>
+            </div>
+          </label>
         </div>
-      </label>
-    </div>
+
+      </div>
+
+      <div class="form-group row">
+
+        <div class="col-md-4 col-form-label">
+          <span class="field-title">Password </span><span title="required" class="required-field">*</span>
+        </div>
+
+        <div class="col-md-8">
+          <label for="pwd" class="field-format">
+            <input id="pwd" class="form-control" type="password" name="text[pwd]" placeholder="Enter Password Here"
+              formControlName="password"
+              [ngClass]="{'is-invalid':logForm.get('password').touched && logForm.get('password').invalid}">
+            <div *ngIf="logForm.get('password').touched && logForm.get('password').invalid" class="invalid-feedback">
+              <div *ngIf="logForm.get('password').errors.required">{{validationMessages.password.required}}</div>
+              <div *ngIf="logForm.get('password').errors.minlength">{{validationMessages.password.minlength}}</div>
+            </div>
+          </label>
+        </div>
+
+      </div>
+
+      <div class="container">
+        <div class="row ">
+          <div class="col-md-4">Submit-></div>
+          <div class="col-md-8 ">
+            <button type="submit" name="submit" [disabled]="logForm.invalid" id="submitBtn" class="btn btn-primary">LOG
+              IN</button>
+          </div>
+        </div>
+      </div>
+      <div class="container">
+        <pre class="info-text"> <span class="info" >still Not a Memmber Yet .. 
+          </span><a routerLink= "../signup"> Click Here to register</a>
+        </pre>
+      </div>
+
+    </fieldset>
   </div>
-  <button type="submit" name="submit" [disabled]="logForm.invalid" id="submitBtn" class="btn btn-primary position">LOG IN</button> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-</fieldset>
-</div>
 </form>

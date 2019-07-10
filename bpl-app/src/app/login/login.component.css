@@ -1,18 +1,13 @@
-
-/* 
-form {
-    background-color:#AFB6B1;
-} */
-    .blood {
-        color:blue;
-    }
-    
     .text-wrapping {
-        background-color:orange;
-        color:black;
-        text-align:center;
+
+        color:white;
         font-family:monospace;
-        margin-right:50px;
+        margin-top:40%;
+        margin-left:17%;
+        padding-left:10%;
+        padding-right:40%;
+        border-radius:20px;
+        text-align:center;
     }
 
     hr {
@@ -31,21 +26,12 @@ form {
          margin-top:10%;
     }
     
-    .fieldset1 {
-        padding:2% 5% 5% 15%;
-        border: 4px groove;
-        margin-right:18%;
-        margin-top:5%;
+    #email-id {
+        width:100%;
+        height:40px;
     }
 
-    .position {
-        padding-left:1%;
-        margin-left:20%;
-    }
-    .form-group {
-        width:100%;
-    }
-    #email-id {
+    #pwd {
         width:100%;
         height:40px;
     }
@@ -68,15 +54,75 @@ form {
     .field-title {
         font-size:20px;
         font-weight:bold;
-        color:black;
+        color:white;
+        padding-left:10%;
+        padding-top:15%;
+        margin-top:10%;
     }
     .login-block {
         border-style: solid;
         border-color: #585858;
+        background-color: #F6FAD3;
+        background: url(https://images.unsplash.com/photo-1536246862516-8644a8f3ccdc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1049&q=80);
         border-width:10px;
         border-radius: 64px;
-        width:669.31653543px;
-        height:350.66456693px;
-        margin-left:200.33543307px;
-        margin-top:124.00629921px;
+        margin-top:10%;
+        margin-bottom:5%;
     }
+
+    .field-format {
+       padding-left:10%;
+       padding-right:10%;
+       padding-top:5%;
+    }
+
+    .form-group {
+        padding-left:10%;
+        padding-right:10%;
+        padding-top:5%;
+    }
+
+    .btn {
+        margin-top:10%;
+        margin-left:13%;
+        width:40%;
+    }
+    .info {
+        margin-top:30%;
+        padding-top:30%;
+        color:white;
+    }
+
+    .info-text{
+        margin-top:5%;
+        margin-left:33%;
+        font-size:100%;
+    }
+
+    .title {
+        margin-left:20%;
+        margin-right:20%;
+        color:white;
+        font-weight:bold;
+        font-size:300%;
+        justify-content: center;
+    }
+
+    @media(min-width: 760px) {
+
+        .login-block {
+            border-style: solid;
+            border-color: #585858;
+            background-color: #F6FAD3;
+            background: url(https://images.unsplash.com/photo-1536246862516-8644a8f3ccdc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1049&q=80);
+            border-width:10px;
+            border-radius: 64px;
+            margin-top:10%;
+            margin-bottom:5%;
+            margin-left:20%;
+            margin-right:30%;
+            justify-content: center;
+            width:60%;
+        }
+      
+      }
