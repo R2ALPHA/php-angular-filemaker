@@ -18,8 +18,25 @@ export class ProfileService {
 
   display(email) {
 
-    this._url='http://localhost:8080/v1/user/'+email;
-    return this._http.get<any>(this._url,this.httpOptions);
-    // alert(this.profileData.record);
-  }
+    this._url='http://localhost:8080/v1/member/'+email;
+  //   this.profileData= this._http.get<any>(this._url,this.httpOptions);
+
+  //   this._http.get(this._url)
+    
+  //   .subscribe((res:Response) => {
+  //   console.log(res.headers);
+  //   alert(res);
+  //   // you can assign the value to any variable here
+  // });
+
+  // this.profileData=
+
+   return this._http.get(this._url);
+
+//   alert(this.profileData[0][0]);
+// // alert(this.profileData[0]);
+// // alert(this.profileData[1][1]);
+// return this.profileData;
+// console.log(this.profileData);
+}
 }

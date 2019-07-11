@@ -16,7 +16,7 @@ export class LoginService {
    }
 
   login(user){
-    this.emailId=user.email;
+    this.emailId=user.user_name;
     return this._http.post<any>(this._url,user);
   }
 }

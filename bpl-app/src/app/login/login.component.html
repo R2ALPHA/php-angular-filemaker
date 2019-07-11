@@ -10,7 +10,7 @@
 
         <div class="col-md-8">
           <label for="email-id " class="field-format">
-            <input id="email-id" type="text" name="text[email]" class="form-control" placeholder="Enter User Name here"
+            <input id="email-id" type="text" name="user_name" class="form-control" placeholder="Enter User Name here"
               formControlName="user_name"
               [ngClass]="{'is-invalid':logForm.get('user_name').touched && logForm.get('user_name').invalid}">
             <mat-icon matSuffix class="face-icon">sentiment_very_satisfied</mat-icon>
@@ -31,7 +31,7 @@
 
         <div class="col-md-8">
           <label for="pwd" class="field-format">
-            <input id="pwd" class="form-control" type="password" name="text[pwd]" placeholder="Enter Password Here"
+            <input id="pwd" class="form-control" type="password" name="password" placeholder="Enter Password Here"
               formControlName="password"
               [ngClass]="{'is-invalid':logForm.get('password').touched && logForm.get('password').invalid}">
             <div *ngIf="logForm.get('password').touched && logForm.get('password').invalid" class="invalid-feedback">
