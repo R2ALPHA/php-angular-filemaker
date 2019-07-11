@@ -12,6 +12,7 @@ export class ProfileService {
   public profileData;
   private _url ;
   private token=localStorage.getItem('token');
+  
   constructor(private _http: HttpClient) { }
 
   private headers_object = new HttpHeaders().set("Authorization", "Bearer " + this.token);
@@ -21,7 +22,7 @@ export class ProfileService {
 
   display(email):Observable<IProfile[]> {
 
-    this._url='http://localhost:8080/v1/member/'+email;
+    this._url='http://localhost:8080/v1/user/'+email;
   //   this.profileData= this._http.get<any>(this._url,this.httpOptions);
 
   //   this._http.get(this._url)
@@ -33,6 +34,7 @@ export class ProfileService {
   // });
 
   // this.profileData=
+  alert(this.token);
 
    return this._http.get<IProfile[]>(this._url, this.httpOptions);
 

@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { LoginService } from '../login.service';
 import { ProfileService } from '../profile.service';
-import { MatLineSetter, MAT_BOTTOM_SHEET_DATA } from '@angular/material';
-import { JsonPipe } from '@angular/common';
 
 @Component({
   selector: 'app-profile',
@@ -11,7 +9,6 @@ import { JsonPipe } from '@angular/common';
 })
 export class ProfileComponent implements OnInit {
 
-  public profileData;
   public profile=[];
   
   constructor(
@@ -19,14 +16,11 @@ export class ProfileComponent implements OnInit {
     private _loginService: LoginService
   ) { }
 
-  private emailID=this._loginService.emailId;
-
+  private emailID = localStorage.getItem('user_name');
 
   ngOnInit() {
-
+    document.body.classList.add('bg-img');
     this._profileService.display(this.emailID)
-    .subscribe(data => {this.profile = data;
-          // alert(this.profile[0][1]);
-    });
+    .subscribe(data => this.profile = data);
   }
 }

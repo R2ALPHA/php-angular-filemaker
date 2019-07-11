@@ -43,6 +43,7 @@ export class LoginComponent implements OnInit {
         if(data.status!=404) {
           localStorage.setItem('token',data.token);
           localStorage.setItem('expiry',data.expires);
+          localStorage.setItem('user_name',this.logForm.value.user_name);
           this._profileService.profileData=data;
           this._loginService.isLoggedIn=true;
           this._router.navigate(['/profile']);
