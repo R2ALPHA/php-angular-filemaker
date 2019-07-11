@@ -20,8 +20,11 @@ import 'hammerjs';
 import { ProfileComponent } from './profile/profile.component';
 import { MainNavComponent } from './main-nav/main-nav.component';
 import { LayoutModule } from '@angular/cdk/layout';
-import { MatButtonModule, MatSidenavModule, MatIconModule, MatListModule ,MatCardModule, MatInputModule} from '@angular/material';
+import { MatButtonModule, MatSidenavModule, MatIconModule, MatListModule ,MatCardModule, MatInputModule, MatTabsModule} from '@angular/material';
 import { MatFormFieldModule} from '@angular/material/form-field';
+import { Ng2SmartTableModule }from 'ng2-smart-table';
+import { CommonTableComponent } from './common-table/common-table.component';
+// import { SmartTableComponent } from "./smart-data-table/smart-data-table.component";
 
 @NgModule({
   declarations: [
@@ -31,7 +34,8 @@ import { MatFormFieldModule} from '@angular/material/form-field';
     FooterComponent,
     LoginComponent,
     ProfileComponent,
-    MainNavComponent
+    MainNavComponent,
+    CommonTableComponent
   ],
   imports: [
     BrowserModule,
@@ -53,6 +57,8 @@ import { MatFormFieldModule} from '@angular/material/form-field';
     MatFormFieldModule,
     MatCardModule,
     MatInputModule,
+    MatTabsModule,
+    Ng2SmartTableModule,
   ],
   entryComponents: [
     LoginComponent

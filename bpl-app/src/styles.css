@@ -7,6 +7,12 @@
     background-repeat: repeat; 
 }
 
+.bg-profile
+{
+    color:white;
+    background-color: #AFB6B1;
+}
+
 html,
 body {
     height: 100%;
