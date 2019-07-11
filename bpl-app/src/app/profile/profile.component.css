@@ -13,7 +13,10 @@
   }
 
   .bg-tab{
-    background-color:white;
+    background-color:lightslategray;
+    height:100%;
+    color:white;
+    font-size:20px;
   }
 
   .label{
@@ -46,4 +49,11 @@
     text-align:center;
     display:inline-block;
     margin-top:5%;
+  }
+
+  .row {
+    margin-top:2%;
+    margin-bottom:2%;
+    margin-left:1px;
+    margin-right:1px;
   }
