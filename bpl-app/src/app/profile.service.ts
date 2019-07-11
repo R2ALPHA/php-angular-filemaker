@@ -21,8 +21,8 @@ export class ProfileService {
 
   display(email):Observable<IProfile[]> {
 
-    // this._url='http://localhost:8080/v1/user/'+email;
-    this._url='http://localhost:8080/v1/users';
+    this._url='http://localhost:8080/v1/user/'+email;
+    // this._url='http://localhost:8080/v1/users';
 
    return this._http.get<IProfile[]>(this._url, this.httpOptions);
   }

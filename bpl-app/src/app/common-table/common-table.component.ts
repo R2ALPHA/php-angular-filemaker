@@ -29,17 +29,14 @@ export class CommonTableComponent implements OnInit {
     this._http.get<IProfile[]>(this._url, this.httpOptions)
     .subscribe(data => {this.datasource = data
     });
-
-    alert(this.datasource);
   }
-
 
   settings = {
     columns :{
       id: {
         title:"id"
       },
-    email :{
+    _pk_email_id:{
       title:"Email"
     },
     user_name: {
@@ -61,6 +58,9 @@ export class CommonTableComponent implements OnInit {
       title: "Mobile No."
     },
     alt_mob_no:{
+      title:"Alternat No."
+    },
+    locality:{
       title: "locality"
     },
     city: {
@@ -68,6 +68,9 @@ export class CommonTableComponent implements OnInit {
     },
     state :{
       title: "state"
+    },
+    dob: {
+      title: "dob"
     }
   }
 }

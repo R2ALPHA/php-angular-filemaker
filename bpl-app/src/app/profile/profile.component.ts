@@ -19,7 +19,7 @@ export class ProfileComponent implements OnInit {
   private emailID = localStorage.getItem('user_name');
 
   ngOnInit() {
-    document.body.classList.add('bg-profile');
+    // document.body.classList.add('bg-profile');
     this._profileService.display(this.emailID)
     .subscribe(data => this.profile = data);
   }
