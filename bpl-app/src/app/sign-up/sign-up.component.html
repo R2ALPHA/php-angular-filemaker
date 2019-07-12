@@ -1,4 +1,4 @@
-<form name="form" [formGroup]="form" autocomplete="on"  (ngSubmit)=" form.valid && onSubmit();form.reset()" enctype="multipart/form-data">
+<form name="form" [formGroup]="form" autocomplete="off"  (ngSubmit)=" form.valid && onSubmit();form.reset()" enctype="multipart/form-data">
   <div class="container center_div">
     <div class="row">
       <div class="col-lg-6">
@@ -14,8 +14,10 @@
             </div>
             <div class="col-sm-8">
               <label for="email-id">
-                <input  id="email-id" class="form-control" type="email"  placeholder="Enter your email" name="_pk_email_id"
+
+                <input  id="email-id" class="form-control" type="email"  placeholder="Enter your email" name="_pk_email_id" 
                   formControlName="_pk_email_id" [ngClass]="{'is-invalid':form.get('_pk_email_id').touched && form.get('_pk_email_id').invalid}">
+
                 <div  *ngIf="form.get('_pk_email_id').touched && form.get('_pk_email_id').invalid" class="invalid-feedback">
                   <div   class="error-hint" *ngIf="form.get('_pk_email_id').errors.required">{{validationMessages.email.required}}</div>
                   <div   class="error-hint" *ngIf="form.get('_pk_email_id').errors.email">{{validationMessages.email.email}}</div>
@@ -30,8 +32,13 @@
             </div>
             <div class="col-sm-8">
               <label for="user-name">
+                
+                <input  id="user-name" class="form-control" type="text" name="text[uname]" placeholder="Enter your userName" name="user_name" style="display: none"
+                formControlName="user_name" [ngClass]="{'is-invalid':form.get('user_name').touched && form.get('user_name').invalid}">
+  
                 <input  id="user-name" class="form-control" type="text" name="text[uname]" placeholder="Enter your userName" name="user_name"
                 formControlName="user_name" [ngClass]="{'is-invalid':form.get('user_name').touched && form.get('user_name').invalid}">
+
                 <div *ngIf="form.get('user_name').touched && form.get('user_name').invalid" class="invalid-feedback">
                     <div  class="error-hint" *ngIf="form.get('user_name').errors.required">{{validationMessages.username.required}}</div>
                     <div  class="error-hint" *ngIf="form.get('user_name').errors.pattern"> {{validationMessages.username.pattern}}</div>
@@ -46,13 +53,16 @@
             </div>
             <div class="col-sm-8">
               <label for="pwd">
+
                 <input  id="pwd" class="form-control" type="password"  placeholder="********"  name="password"
                 formControlName="password" [ngClass]="{'is-invalid':form.get('password').touched && form.get('password').invalid}">
+
                 <div *ngIf="form.get('password').touched && form.get('password').invalid" class="invalid-feedback">
                   <div  class="error-hint"  *ngIf="form.get('password').errors.required">{{validationMessages.password.required}}</div>
                   <div  class="error-hint"  *ngIf="form.get('password').errors.pattern">{{validationMessages.password.password}}</div>
                   <ng-template #other_reason>other content here...</ng-template>
                 </div>
+
               </label>
             </div>
           </div>
@@ -269,8 +279,6 @@
     </div>
   </div>
   <hr> 
-
-  {{ form.value | json }}
   
   <div class="container">
     <div id="buttonId" class="row">
@@ -281,4 +289,3 @@
     </div>
   </div>
 </form>
-<!--  -->

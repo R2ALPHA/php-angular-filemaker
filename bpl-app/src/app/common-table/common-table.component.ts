@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { state } from '@angular/animations';
 import { HttpClient, HttpResponse,HttpHeaders } from '@angular/common/http';
 import {IProfile} from '../../shared/profile';
+import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 
 
@@ -18,7 +19,7 @@ export class CommonTableComponent implements OnInit {
 
   private token=localStorage.getItem('token');
   
-  constructor(private _http: HttpClient) { }
+  constructor(private _http: HttpClient, private _router:Router) { }
 
   private headers_object = new HttpHeaders().set("Authorization", "Bearer " + this.token);
   httpOptions = {
@@ -26,6 +27,11 @@ export class CommonTableComponent implements OnInit {
   };
 
   ngOnInit() {
+
+    if(localStorage.length <1 || localStorage.getItem('token')=="") {
+      this._router.navigate(['/login'])
+    }
+
     this._http.get<IProfile[]>(this._url, this.httpOptions)
     .subscribe(data => {this.datasource = data
     });

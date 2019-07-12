@@ -10,6 +10,8 @@ import { LoginService } from '../login.service';
 })
 export class MainNavComponent {
 
+  private _header:boolean;
+
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(
       map(result => result.matches)
@@ -18,14 +20,14 @@ export class MainNavComponent {
   constructor(private breakpointObserver: BreakpointObserver, private _loginService: LoginService) {}
 
   ngOnInit() {
+    if(!localStorage.getItem('token')) {
+      this._header=true;
+    }
   }
 
   logOut() {
     localStorage.clear();
-    // localStorage.unsetItem("token");
-    // localStorage.unsetItem("expiry");
-    // localStorage.unsetItem('user_name');
-    // localStorage.setItem("logged_in",'0');
+    this._header=false;
     this._loginService.isLoggedIn=false;
   }
   

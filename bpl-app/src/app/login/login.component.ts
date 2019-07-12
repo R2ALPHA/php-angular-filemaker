@@ -47,8 +47,9 @@ export class LoginComponent implements OnInit {
           localStorage.setItem('logged_in','1');
           this._profileService.profileData=data;
           this._loginService.isLoggedIn=true;
-          this._router.navigate(['/profile']);
-
+          // this._router.navigate(['/profile']);
+          this._router.navigateByUrl('/main-nav', {skipLocationChange: false}).then(()=>
+          this._router.navigate(["/profile"])); 
         }
         else{
           alert("Wrong Credentials");

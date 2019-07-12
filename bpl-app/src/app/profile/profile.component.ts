@@ -25,6 +25,8 @@ export class ProfileComponent implements OnInit {
     if(localStorage.length <1 || localStorage.getItem('token')=="") {
       this._router.navigate(['/login'])
     }
+    // this._router.navigate(['/main-nav']);
+ 
     this._profileService.display(this.emailID)
     .subscribe(data => 
     {

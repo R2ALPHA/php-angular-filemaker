@@ -8,7 +8,11 @@
         color:white;
         text-align:center;
         font-family:monospace;
-        margin-right:50px;
+    }
+
+    h3{
+        justify-items: center;
+        text-align: center;
     }
 
     hr {
@@ -29,7 +33,9 @@
     
     .fieldset1 {
         padding:5%;
-        border: 20px groove;
+        border: 15px groove;
+        border-radius: 20%;
+        border-color: white;
     }
     
     span {
@@ -65,3 +71,28 @@
         font-size : 70%;
         color:red;
     }
+
+    form {
+        margin-top:5%;
+
+    }
+
+    .btn-social-icon {
+        color: #9ACD32
+    }
+
+    @media(max-width: 282px) {
+
+        .fieldset1 {
+            padding:0%;
+            border: 0px groove;
+        }
+    }
+
+    @media(max-width: 795px) {
+
+        .decor{
+            display: none;
+        }
+    }
+

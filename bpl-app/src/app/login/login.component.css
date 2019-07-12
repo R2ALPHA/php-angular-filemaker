@@ -110,6 +110,9 @@
         justify-content: center;
     }
 
+    .form {
+        margin-top:40%;
+    }
     @media(min-width: 760px) {
 
         .login-block {
@@ -126,5 +129,13 @@
             justify-content: center;
             width:60%;
         }
-      
+        .container{
+        
+          padding-top:5%;
+        }
+        .btn {
+            margin-top:10%;
+            margin-left:65%;
+            width:40%;
+        }
       }

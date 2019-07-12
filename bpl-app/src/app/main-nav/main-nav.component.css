@@ -1,19 +1,13 @@
-/* @import '@angular/material/prebuilt-themes/deeppurple-amber.css'; */
-.sidenav-container {
-  height: 10%;
-}
+@import '@angular/material/prebuilt-themes/deeppurple-amber.css';
 
-.sidenav {
-  width: 10%;
-}
 
-.mat-toolbar.mat-primary {
-  position: fixed;
+.mat-toolbar {
+  /* position: fixed; */
   /* top: 80%; */
   /* height:166px; */
-  height:10%;
+  /* height:10%; */
   /* background-color:#065960; */
-  background-image: url('/assets/image/login.jpg');
+  /* background-image: url('/assets/image/login.jpg'); */
   /* background:url(https://www.google.com/imgres?imgurl=https%3A%2F%2Fwww.publicdomainpictures.net%2Fpictures%2F170000%2Fnahled%2Fbanner-header-tapete-1463483351bhS.jpg&imgrefurl=https%3A%2F%2Fwww.publicdomainpictures.net%2Fen%2Fview-image.php%3Fimage%3D168850%26picture%3Dbanner-header-wallpaper&docid=_9GJ56hTZGu7DM&tbnid=RUTxrhvgQNHu2M%3A&vet=10ahUKEwijquydtqXjAhW24nMBHfpcCpQQMwhNKAEwAQ..i&w=615&h=209&bih=757&biw=1600&q=image%20for%20wallpaper%20header&ved=0ahUKEwijquydtqXjAhW24nMBHfpcCpQQMwhNKAEwAQ&iact=mrc&uact=8); */
 }
 
@@ -25,18 +19,29 @@
   flex: 1 1 auto;
 }
 
-mat-toolbar a { 
+/* mat-toolbar a { 
   display: inline-block;
   margin: 0px;
   color:black;
   text-decoration: none;
-}
+} */
 @media(min-width: 760px) {
   .sidenav {
     display:none;
   }
 }
-.navigation {
+
+@media(max-width: 760px) {
+  
+  .sidenav-container {
+    height: 10%;
+  }
+  
+  .sidenav {
+    width: 10%;
+  }
+}
+/* .navigation {
   border-style: solid;
   border-width: 2px;
   border-radius: 4px;
@@ -54,8 +59,8 @@ mat-toolbar a {
   height:100%;
   border-color: black;
   display:inline-block;
-}
-
+} */
+/* 
 .material-icons {
   font-size: 48px;
 }
@@ -71,4 +76,30 @@ mat-toolbar a {
   font-family:Verdana, Geneva, Tahoma, sans-serif;
   color:#E6E6E6;
   margin-left: 50%;
+} */
+
+/* .container{
+  position:fixed;
+  margin-top:0px;
+  height:10%;
+  width:10%;
+} */
+
+/* .before-login{
+  position:fixed;
+  height:10%;
+} */
+
+.before-login {
+  /* position:fixed; */
+  height:10%;
+
+}
+
+.reg-button {
+
+}
+
+.before-nav-button{
+  margin-right:10%;
 }
