@@ -18,23 +18,19 @@ export class ProfileComponent implements OnInit {
     private _router: Router
   ) { }
 
-  private emailID = localStorage.getItem('user_name');
+  private user_name = localStorage.getItem('user_name');
 
   ngOnInit() {
      document.body.classList.add('bg-profile');
+     
     if(localStorage.length <1 || localStorage.getItem('token')=="") {
       this._router.navigate(['/login'])
     }
-    // this._router.navigate(['/main-nav']);
  
-    this._profileService.display(this.emailID)
+    this._profileService.getProfile(this.user_name)
     .subscribe(data => 
     {
        this.profile = data
-       this.profile[0].forEach( element => {
-         if(element == "")
-          element = "NA";
-       });
     });
   }
 }

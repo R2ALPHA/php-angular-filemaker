@@ -13,7 +13,7 @@ import { FormsModule } from '@angular/forms';
 import { FooterComponent } from './footer/footer.component';
 import { LoginComponent } from './login/login.component';
 import { AppRoutingModule } from './app-routing/app-routing.module';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule ,  HTTP_INTERCEPTORS } from '@angular/common/http';
 import { StorageServiceModule} from 'angular-webstorage-service';
 
 import 'hammerjs';
@@ -24,6 +24,8 @@ import { MatButtonModule, MatSidenavModule, MatIconModule, MatListModule ,MatCar
 import { MatFormFieldModule} from '@angular/material/form-field';
 import { Ng2SmartTableModule }from 'ng2-smart-table';
 import { CommonTableComponent } from './common-table/common-table.component';
+import { AuthService } from './auth.service';
+import { Interceptor } from 'src/shared/interceptor';
 // import { SmartTableComponent } from "./smart-data-table/smart-data-table.component";
 
 @NgModule({
@@ -59,11 +61,17 @@ import { CommonTableComponent } from './common-table/common-table.component';
     MatInputModule,
     MatTabsModule,
     Ng2SmartTableModule,
+
   ],
   entryComponents: [
     LoginComponent
   ],
-  providers: [],
+  providers: [
+    AuthService,
+    {
+      provide: HTTP_INTERCEPTORS, useClass: Interceptor, multi:true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

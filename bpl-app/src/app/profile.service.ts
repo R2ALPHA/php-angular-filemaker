@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpResponse,HttpHeaders } from '@angular/common/http';
-import {IProfile} from '../shared/profile';
+import { HttpClient } from '@angular/common/http';
+import { IProfile } from '../shared/profile';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -14,16 +14,10 @@ export class ProfileService {
   
   constructor(private _http: HttpClient) { }
 
-  private headers_object = new HttpHeaders().set("Authorization", "Bearer " + this.token);
-  httpOptions = {
-      headers: this.headers_object
-  };
-
-  display(email):Observable<IProfile[]> {
+  getProfile(email):Observable<IProfile[]> {
 
     this._url='http://localhost:8080/v1/user/'+email;
-    // this._url='http://localhost:8080/v1/users';
-
-   return this._http.get<IProfile[]>(this._url, this.httpOptions);
+   
+   return this._http.get<IProfile[]>(this._url);
   }
 }
