@@ -5,7 +5,7 @@ import { ProfileComponent } from '../profile/profile.component';
 import { CommonTableComponent } from '../common-table/common-table.component';
 import { MainNavComponent } from '../main-nav/main-nav.component';
 import { AdminLoginComponent } from '../admin-login/admin-login.component';
-import { LuserFormComponent } from '../luser-form/luser-form.component';
+import { SignupLoginComponent } from '../signup-login/signup-login.component';
 
 export const routes: Routes = [
     { path: 'signup',  component: SignUpComponent },
@@ -14,6 +14,6 @@ export const routes: Routes = [
     { path: 'table', component: CommonTableComponent },
     { path: 'main-nav', component:MainNavComponent},
     { path: 'admin', component:AdminLoginComponent},
-    { path: 'luser', component: LuserFormComponent},
+    { path: 'signup-login', component: SignupLoginComponent},
     { path: '', redirectTo: '/signup', pathMatch: 'full' }
   ];

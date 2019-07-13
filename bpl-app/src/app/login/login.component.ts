@@ -4,6 +4,9 @@ import { ProfileService } from '../profile.service';
 import { Router } from '@angular/router';
 import { FormGroup, Validators,FormBuilder} from '@angular/forms';
 
+import { MatDialog, MatDialogConfig } from "@angular/material";
+import { AdminComponent } from '../admin/admin.component';
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -17,7 +20,8 @@ export class LoginComponent implements OnInit {
       private _loginService: LoginService,
       private fb:FormBuilder,
       private _profileService:ProfileService,
-      private _router:Router
+      private _router:Router,
+      private dialog:MatDialog
       ) { }
 
   ngOnInit() {
@@ -55,4 +59,13 @@ export class LoginComponent implements OnInit {
     )
   }
 
+  adminLogin() {
+
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.disableClose=true;
+    dialogConfig.autoFocus =  true;
+    dialogConfig.width="60%";
+    this.dialog.open(AdminComponent, dialogConfig);
+  }
+  
 }

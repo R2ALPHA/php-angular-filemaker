@@ -1,0 +1,24 @@
+<form [formGroup]="adminForm"  (ngSubmit)="onSubmit()">
+
+  <div class="form-group">
+    <mat-form-field>
+      <mat-label>Admin Name</mat-label>
+      <input matInput placeholder="Admin Name"   formControlName="admin_name">
+      <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+      <mat-hint>Your Database Name</mat-hint>
+    </mat-form-field>
+  </div>
+
+  <div class="form-group">
+    <mat-form-field >
+      <mat-label>Password</mat-label>
+      <input matInput type="password" placeholder="Password" formControlName="password">
+      <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+      <mat-hint>*********</mat-hint>
+    </mat-form-field>
+  </div>
+
+  <div class="form-group">
+    <button mat-raised-button color="primary">Login</button>
+  </div>
+</form>

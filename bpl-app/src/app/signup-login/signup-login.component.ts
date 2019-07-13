@@ -5,17 +5,19 @@ import { Router } from '@angular/router';
 import { FormGroup, Validators,FormBuilder} from '@angular/forms';
 import { EnrollmentService } from '../enrollment.service';
 import { VERROR } from '../../shared/errors';
+import { MatDialog, MatDialogConfig } from "@angular/material";
+import { AdminComponent } from '../admin/admin.component';
+
 
 @Component({
-  selector: 'app-luser-form',
-  templateUrl: './luser-form.component.html',
-  styleUrls: ['./luser-form.component.scss']
+  selector: 'app-signup-login',
+  templateUrl: './signup-login.component.html',
+  styleUrls: ['./signup-login.component.scss']
 })
-export class LuserFormComponent implements OnInit {
+export class SignupLoginComponent implements OnInit {
 
   loginForm:FormGroup;
   signupForm:FormGroup;
-
 
   constructor(
 
@@ -24,7 +26,8 @@ export class LuserFormComponent implements OnInit {
     private signupFB:FormBuilder,
     private _profileService:ProfileService,
     private _router:Router,
-    private _enrollmentService: EnrollmentService
+    private _enrollmentService: EnrollmentService,
+    private dialog:MatDialog
 
   ) { }
 
@@ -43,8 +46,10 @@ export class LuserFormComponent implements OnInit {
       password           : ['',[Validators.required,Validators.minLength(8),Validators.pattern('[a-zA-Z0-9]*')]],
 
     });
-  }
 
+    this.adminLogin();
+  }
+  
   /** After Submitting the  login Form */
   onLoginSubmit() {
     this.processLoginSubmission();
@@ -108,4 +113,14 @@ export class LuserFormComponent implements OnInit {
     }
   }
 
+  /** admin login model */
+
+  adminLogin() {
+
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.disableClose=true;
+    dialogConfig.autoFocus =  true;
+    // dialogConfig.width="40%";
+    this.dialog.open(AdminComponent, dialogConfig);
+  }
 }

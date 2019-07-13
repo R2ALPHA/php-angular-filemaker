@@ -10,8 +10,6 @@ import { LoginService } from '../login.service';
 })
 export class MainNavComponent {
 
-  private _header:boolean;
-
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(
       map(result => result.matches)
@@ -21,17 +19,10 @@ export class MainNavComponent {
     
   }
 
-  ngOnInit() {
-    if(!localStorage.getItem('token')) {
-      this._header=true;
-    }
-  }
+  ngOnInit() { }
 
   logOut() {
     localStorage.clear();
-    this._header=false;
-    this._loginService.isLoggedIn=false;
   }
-  
-  }
+}
 

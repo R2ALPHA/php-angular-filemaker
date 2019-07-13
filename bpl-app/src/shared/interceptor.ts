@@ -16,7 +16,7 @@ export class Interceptor implements HttpInterceptor {
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
    
     if(localStorage.length <1 || localStorage.getItem('token')=="") {
-        this._router.navigate(['/login'])
+        this._router.navigate(['/signup-login'])
       }
   
     if (localStorage.getItem('token')!=null)
