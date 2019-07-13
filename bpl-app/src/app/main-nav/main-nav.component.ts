@@ -17,7 +17,9 @@ export class MainNavComponent {
       map(result => result.matches)
     );
     
-  constructor(private breakpointObserver: BreakpointObserver, private _loginService: LoginService) {}
+  constructor(private breakpointObserver: BreakpointObserver, private _loginService: LoginService) {
+    
+  }
 
   ngOnInit() {
     if(!localStorage.getItem('token')) {

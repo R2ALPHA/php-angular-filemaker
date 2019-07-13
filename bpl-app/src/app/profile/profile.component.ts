@@ -21,12 +21,8 @@ export class ProfileComponent implements OnInit {
   private user_name = localStorage.getItem('user_name');
 
   ngOnInit() {
-     document.body.classList.add('bg-profile');
-     
-    if(localStorage.length <1 || localStorage.getItem('token')=="") {
-      this._router.navigate(['/login'])
-    }
- 
+    document.body.classList.add('bg-profile');
+
     this._profileService.getProfile(this.user_name)
     .subscribe(data => 
     {

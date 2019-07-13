@@ -26,6 +26,8 @@ import { Ng2SmartTableModule }from 'ng2-smart-table';
 import { CommonTableComponent } from './common-table/common-table.component';
 import { AuthService } from './auth.service';
 import { Interceptor } from 'src/shared/interceptor';
+import { AdminLoginComponent } from './admin-login/admin-login.component';
+import { LuserFormComponent } from './luser-form/luser-form.component';
 // import { SmartTableComponent } from "./smart-data-table/smart-data-table.component";
 
 @NgModule({
@@ -37,7 +39,9 @@ import { Interceptor } from 'src/shared/interceptor';
     LoginComponent,
     ProfileComponent,
     MainNavComponent,
-    CommonTableComponent
+    CommonTableComponent,
+    AdminLoginComponent,
+    LuserFormComponent
   ],
   imports: [
     BrowserModule,

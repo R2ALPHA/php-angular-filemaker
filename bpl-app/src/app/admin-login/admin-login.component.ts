@@ -1,24 +1,23 @@
 import { Component, OnInit } from '@angular/core';
-import { LoginService } from '../login.service';
-import { ProfileService } from '../profile.service';
 import { Router } from '@angular/router';
 import { FormGroup, Validators,FormBuilder} from '@angular/forms';
+import { AdminLoginService } from '../admin-login.service';
+
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  selector: 'app-admin-login',
+  templateUrl: './admin-login.component.html',
+  styleUrls: ['./admin-login.component.css']
 })
-export class LoginComponent implements OnInit {
+export class AdminLoginComponent implements OnInit {
 
   logForm:FormGroup;
 
   constructor(
-      private _loginService: LoginService,
-      private fb:FormBuilder,
-      private _profileService:ProfileService,
-      private _router:Router
-      ) { }
+    private fb:FormBuilder,
+    private _router:Router,
+    private _adminService:AdminLoginService
+  ) { }
 
   ngOnInit() {
     document.body.classList.add('bg-img');
@@ -33,19 +32,15 @@ export class LoginComponent implements OnInit {
   }
 
   processSubmission() {
-    this._loginService.login(this.logForm.value)
+    this._adminService.getLoginResponse(this.logForm.value)
     .subscribe(
       data=>{
         if(data.status!=404) {                                             //make this as 200 status code
           
-          localStorage.setItem('token',data.token);
+          localStorage.setItem('file-token',data.token);
           localStorage.setItem('expiry',data.expires);
-          localStorage.setItem('user_name',this.logForm.value.user_name);
-          localStorage.setItem('logged_in','1');
-          this._profileService.profileData=data;
-          this._loginService.isLoggedIn=true;
         
-          this._router.navigate(['/profile']);
+          this._router.navigate(['/login']);
         }
         else{
           alert("Wrong Credentials");
@@ -54,5 +49,7 @@ export class LoginComponent implements OnInit {
       error=>console.error('Error',error),
     )
   }
+
+
 
 }

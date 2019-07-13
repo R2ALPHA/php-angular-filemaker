@@ -16,23 +16,12 @@ export class CommonTableComponent implements OnInit {
   public datasource=[];
 
   private _url ='http://localhost:8080/v1/users';
-
-  private token=localStorage.getItem('token');
   
   constructor(private _http: HttpClient, private _router:Router) { }
 
-  private headers_object = new HttpHeaders().set("Authorization", "Bearer " + this.token);
-  httpOptions = {
-      headers: this.headers_object
-  };
-
   ngOnInit() {
 
-    if(localStorage.length <1 || localStorage.getItem('token')=="") {
-      this._router.navigate(['/login'])
-    }
-
-    this._http.get<IProfile[]>(this._url, this.httpOptions)
+    this._http.get<IProfile[]>(this._url)
     .subscribe(data => {this.datasource = data
     });
   }
