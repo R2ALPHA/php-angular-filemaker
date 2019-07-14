@@ -32,6 +32,8 @@ export class AdminLoginComponent implements OnInit {
   }
 
   processSubmission() {
+    // this.logForm.value.admin_name = "\""+this.logForm.value.admin_name +"\"";
+    alert(this.logForm.value.user_name);
     this._adminService.getLoginResponse(this.logForm.value)
     .subscribe(
       data=>{

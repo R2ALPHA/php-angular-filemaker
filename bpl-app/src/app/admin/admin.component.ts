@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormGroup, Validators,FormBuilder} from '@angular/forms';
 import { AdminLoginService } from "../admin-login.service";
+import { MatDialog, MatDialogConfig } from "@angular/material";
 
 @Component({
   selector: 'app-admin',
@@ -17,6 +18,7 @@ export class AdminComponent implements OnInit {
     private adminFb:FormBuilder,
     private _adminService: AdminLoginService,
     private _router:Router,
+    private dialog:MatDialog
 
   ) { }
 
@@ -40,10 +42,11 @@ export class AdminComponent implements OnInit {
       data=>{
         if(data.status!=404) {                                             //make this as 200 status code
           
-          localStorage.setItem('file-token',data.token);
+          localStorage.setItem('admin-token',data.token);
           localStorage.setItem('expiry',data.expires);
         
-          this._router.navigate(['/']);
+          this._adminService.closeAdminModal();
+          // this._router.navigate(['/signup-login']);
         }
         else{
           alert("Wrong Credentials");

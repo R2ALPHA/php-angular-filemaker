@@ -4,10 +4,7 @@ import { ProfileService } from '../profile.service';
 import { Router } from '@angular/router';
 import { FormGroup, Validators,FormBuilder} from '@angular/forms';
 import { EnrollmentService } from '../enrollment.service';
-import { VERROR } from '../../shared/errors';
-import { MatDialog, MatDialogConfig } from "@angular/material";
-import { AdminComponent } from '../admin/admin.component';
-
+import { AdminLoginService } from '../admin-login.service';
 
 @Component({
   selector: 'app-signup-login',
@@ -21,13 +18,13 @@ export class SignupLoginComponent implements OnInit {
 
   constructor(
 
+    private _adminService: AdminLoginService,
     private _loginService: LoginService,
     private loginFb:FormBuilder,
     private signupFB:FormBuilder,
     private _profileService:ProfileService,
     private _router:Router,
     private _enrollmentService: EnrollmentService,
-    private dialog:MatDialog
 
   ) { }
 
@@ -47,7 +44,12 @@ export class SignupLoginComponent implements OnInit {
 
     });
 
-    this.adminLogin();
+    // as it is main page we need to check it now.
+    
+    alert(localStorage.getItem('admin-token'));
+    if(localStorage.getItem('admin-token')==null) {
+      this._adminService.adminLogin();      
+    }
   }
   
   /** After Submitting the  login Form */
@@ -90,7 +92,10 @@ export class SignupLoginComponent implements OnInit {
   processSignupSubmission() {
     this._enrollmentService.enroll(this.signupForm.value)
     .subscribe(
-      data=>console.log('Success!',data),
+      data=> {
+        console.log('Success!',data);
+        // this.loginBoxToggle();
+      },
       error=>console.error('Error',error),
     )
   }
@@ -100,7 +105,6 @@ export class SignupLoginComponent implements OnInit {
    */
   loginBoxToggle()
   {
-
     let query = document.querySelector('.box-login-content');
 
     if(query.classList.contains('is--login') ){
@@ -111,16 +115,5 @@ export class SignupLoginComponent implements OnInit {
       query.classList.remove('is--signup');
       query.classList.add('is--login');
     }
-  }
-
-  /** admin login model */
-
-  adminLogin() {
-
-    const dialogConfig = new MatDialogConfig();
-    dialogConfig.disableClose=true;
-    dialogConfig.autoFocus =  true;
-    // dialogConfig.width="40%";
-    this.dialog.open(AdminComponent, dialogConfig);
   }
 }
