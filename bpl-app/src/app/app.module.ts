@@ -30,6 +30,8 @@ import { AdminLoginComponent } from './admin-login/admin-login.component';
 import { SignupLoginComponent } from './signup-login/signup-login.component';
 import { AdminComponent } from './admin/admin.component';
 import { PrevalentTableComponent } from './prevalent-table/prevalent-table.component';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
 
 // import { SmartTableComponent } from "./smart-data-table/smart-data-table.component";
 
@@ -72,6 +74,8 @@ import { PrevalentTableComponent } from './prevalent-table/prevalent-table.compo
     Ng2SmartTableModule,
     MatDialogModule,
     MatTableModule,
+    MatPaginatorModule,
+    MatSortModule
   ],
   entryComponents: [
     AdminComponent

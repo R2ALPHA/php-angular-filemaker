@@ -1,5 +1,5 @@
 export interface IProfile {
-    id: number,
+    id: string,
     _pk_email_id:string,
     user_name:string,
     password:string,

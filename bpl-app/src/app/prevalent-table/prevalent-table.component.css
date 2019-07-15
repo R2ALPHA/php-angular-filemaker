@@ -10,4 +10,11 @@ table {
   td, th {
     width: 25%;
   }
+
+  th {
+
+    font-size: 20px;
+    font:blue;
+    font-weight: bold;
+  }
   
