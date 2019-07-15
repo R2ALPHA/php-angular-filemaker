@@ -9,14 +9,20 @@ import { LoginComponent } from './login/login.component';
 export class LoginService {
 
   isLoggedIn:boolean;
-  emailId:String;
   private  _url='http://localhost:8080/v1/member/auth/login';
   constructor(private _http: HttpClient) {
-    this.isLoggedIn=false;
    }
 
+
+   /* Setting of token should also happen there */
+   
   login(user){
-    this.emailId=user.user_name;
     return this._http.post<any>(this._url,user);
+  }
+
+  logout() {
+    localStorage.setItem('token', null);
+    localStorage.setItem('expiry',null);
+    localStorage.setItem('user_name',null);
   }
 }

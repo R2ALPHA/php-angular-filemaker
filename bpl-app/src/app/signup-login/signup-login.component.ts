@@ -46,7 +46,6 @@ export class SignupLoginComponent implements OnInit {
 
     // as it is main page we need to check it now.
     
-    alert(localStorage.getItem('admin-token'));
     if(localStorage.getItem('admin-token')==null) {
       this._adminService.adminLogin();      
     }
@@ -73,9 +72,7 @@ export class SignupLoginComponent implements OnInit {
           localStorage.setItem('token',data.token);
           localStorage.setItem('expiry',data.expires);
           localStorage.setItem('user_name',this.loginForm.value.user_name);
-          localStorage.setItem('logged_in','1');
           this._profileService.profileData=data;
-          this._loginService.isLoggedIn=true;
         
           this._router.navigate(['/profile']);
         }
@@ -115,5 +112,12 @@ export class SignupLoginComponent implements OnInit {
       query.classList.remove('is--signup');
       query.classList.add('is--login');
     }
+  }
+
+  /** TODO may need to handl rest of the things from here */
+
+  adminLogout()
+  {
+    this._adminService.adminLogout();
   }
 }

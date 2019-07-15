@@ -17,12 +17,12 @@ export class Interceptor implements HttpInterceptor {
  }
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 
-    if(localStorage.length <1 || localStorage.getItem('admin-token')=="")
+    if(localStorage.length <1 || localStorage.getItem('admin-token')==null)
     {
       this._adminService.adminLogin();
     }
    
-    if(localStorage.length <1 || localStorage.getItem('token')=="") {
+    if(localStorage.length <1 || localStorage.getItem('token')==null) {
         this._router.navigate(['/signup-login'])
       }
   

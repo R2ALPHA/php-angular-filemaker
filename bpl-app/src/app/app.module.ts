@@ -20,7 +20,7 @@ import 'hammerjs';
 import { ProfileComponent } from './profile/profile.component';
 import { MainNavComponent } from './main-nav/main-nav.component';
 import { LayoutModule } from '@angular/cdk/layout';
-import { MatButtonModule, MatSidenavModule, MatIconModule, MatListModule ,MatCardModule, MatInputModule, MatTabsModule ,MatDialogModule} from '@angular/material';
+import { MatButtonModule, MatTableModule, MatSidenavModule, MatIconModule, MatListModule ,MatCardModule, MatInputModule, MatTabsModule ,MatDialogModule} from '@angular/material';
 import { MatFormFieldModule} from '@angular/material/form-field';
 import { Ng2SmartTableModule }from 'ng2-smart-table';
 import { CommonTableComponent } from './common-table/common-table.component';
@@ -29,6 +29,8 @@ import { Interceptor } from 'src/shared/interceptor';
 import { AdminLoginComponent } from './admin-login/admin-login.component';
 import { SignupLoginComponent } from './signup-login/signup-login.component';
 import { AdminComponent } from './admin/admin.component';
+import { PrevalentTableComponent } from './prevalent-table/prevalent-table.component';
+
 // import { SmartTableComponent } from "./smart-data-table/smart-data-table.component";
 
 @NgModule({
@@ -43,7 +45,8 @@ import { AdminComponent } from './admin/admin.component';
     CommonTableComponent,
     AdminLoginComponent,
     SignupLoginComponent,
-    AdminComponent
+    AdminComponent,
+    PrevalentTableComponent
   ],
   imports: [
     BrowserModule,
@@ -67,8 +70,8 @@ import { AdminComponent } from './admin/admin.component';
     MatInputModule,
     MatTabsModule,
     Ng2SmartTableModule,
-    MatDialogModule
-
+    MatDialogModule,
+    MatTableModule,
   ],
   entryComponents: [
     AdminComponent

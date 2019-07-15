@@ -21,7 +21,7 @@ export class ProfileComponent implements OnInit {
   private user_name = localStorage.getItem('user_name');
 
   ngOnInit() {
-    document.body.classList.add('bg-profile');
+    // document.body.classList.add('bg-profile');
 
     this._profileService.getProfile(this.user_name)
     .subscribe(data => 

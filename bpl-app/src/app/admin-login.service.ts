@@ -24,7 +24,6 @@ export class AdminLoginService {
 
   adminLogin() {
 
-    alert("hello world");
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose=true;
     dialogConfig.autoFocus =  true;
@@ -38,6 +37,7 @@ export class AdminLoginService {
 
   adminLogout() {
     localStorage.setItem('admin-token',null);
+    this.adminLogin();
   }
 }
 
