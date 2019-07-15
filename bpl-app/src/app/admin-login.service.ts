@@ -19,6 +19,7 @@ export class AdminLoginService {
 
   getLoginResponse(adminData){
     
+    // alert(this._http.post<any>(this._url,adminData));
     return this._http.post<any>(this._url,adminData);
   }
 
@@ -31,12 +32,11 @@ export class AdminLoginService {
   }
   
   closeAdminModal() {
-    alert("Close login modal");
     this.dialog.closeAll();
   }
 
   adminLogout() {
-    localStorage.setItem('admin-token',null);
+   localStorage.removeItem('admin-token');
     this.adminLogin();
   }
 }
