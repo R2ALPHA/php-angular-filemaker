@@ -39,7 +39,7 @@ export class PrevalentTableComponent implements OnInit {
 
   private _url ='http://localhost:8080/v1/users';
 
-  displayedColumns: string[]=['id','_pk_email_id','user_name','blood_group','gender','mobile_no','state','dob'];
+  displayedColumns: string[]=['id','_pk_email_id','user_name','blood_group','gender','state','dob'];
   dataSource: MatTableDataSource<IProfile>;
 
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
