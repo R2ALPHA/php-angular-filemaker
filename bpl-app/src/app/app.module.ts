@@ -32,6 +32,13 @@ import { AdminComponent } from './admin/admin.component';
 import { PrevalentTableComponent } from './prevalent-table/prevalent-table.component';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
+import { ScrollDispatchModule} from '@angular/cdk/scrolling';
+// import { ScrollDispatcher } from '@angular/cdk/scrolling'; 
+import { ScrollingModule} from '@angular/cdk/scrolling';
+import { Scroll } from '@angular/router';
+import { BasicScrollComponent } from './basic-scroll/basic-scroll.component';
+import { ScrollComponent } from './scroll/scroll.component';
+
 
 // import { SmartTableComponent } from "./smart-data-table/smart-data-table.component";
 
@@ -48,7 +55,10 @@ import { MatSortModule } from '@angular/material/sort';
     AdminLoginComponent,
     SignupLoginComponent,
     AdminComponent,
-    PrevalentTableComponent
+    PrevalentTableComponent,
+    BasicScrollComponent,
+    ScrollComponent ,
+
   ],
   imports: [
     BrowserModule,
@@ -75,7 +85,9 @@ import { MatSortModule } from '@angular/material/sort';
     MatDialogModule,
     MatTableModule,
     MatPaginatorModule,
-    MatSortModule
+    MatSortModule,
+    // ScrollDispatcher
+    ScrollDispatchModule,
   ],
   entryComponents: [
     AdminComponent

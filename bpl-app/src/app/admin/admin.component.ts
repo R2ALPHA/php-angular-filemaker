@@ -46,7 +46,6 @@ export class AdminComponent implements OnInit {
           localStorage.setItem('expiry',data.expires);
         
           this._adminService.closeAdminModal();
-          // this._router.navigate(['/signup-login']);
         }
         else{
           alert("Wrong Credentials");

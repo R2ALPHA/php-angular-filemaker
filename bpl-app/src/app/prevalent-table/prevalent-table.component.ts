@@ -1,49 +1,31 @@
-import { Component, OnInit ,  ViewChild} from '@angular/core';
+import { Component, OnInit ,  ViewChild, HostListener} from '@angular/core';
 import {  MatPaginator  } from '@angular/material/paginator';
 import {  MatSort } from '@angular/material/sort';
 import {  MatTableDataSource  } from '@angular/material/table';
 import { HttpClient, HttpResponse,HttpHeaders } from '@angular/common/http';
 import { IProfile } from '../../shared/profile';
-import { PlayerData } from '../../shared/playerData';
 import { Router } from '@angular/router';
-import { securityQuestion, passwordHint } from 'src/shared/registrationConstant';
-import { getMatIconNameNotFoundError } from '@angular/material';
-import { getLocaleFirstDayOfWeek } from '@angular/common';
-import { Capability } from 'protractor';
-import { state } from '@angular/animations';
-
-// export interface UserData {
-//   id: string;
-//   name: string;
-//   progress: string;
-//   color: string;
-// }
-
-// /** Constants used to fill up our data base. */
-// const COLORS: string[] = [
-//   'maroon', 'red', 'orange', 'yellow', 'olive', 'green', 'purple', 'fuchsia', 'lime', 'teal',
-//   'aqua', 'blue', 'navy', 'black', 'gray'
-// ];
-// const NAMES: string[] = [
-//   'Maia', 'Asher', 'Olivia', 'Atticus', 'Amelia', 'Jack', 'Charlotte', 'Theodore', 'Isla', 'Oliver',
-//   'Isabella', 'Jasper', 'Cora', 'Levi', 'Violet', 'Arthur', 'Mia', 'Thomas', 'Elizabeth'
-// ];
-
 
 @Component({
   selector: 'app-prevalent-table',
   templateUrl: './prevalent-table.component.html',
-  styleUrls: ['./prevalent-table.component.css']
+  styleUrls: ['./prevalent-table.component.scss']
 })
 export class PrevalentTableComponent implements OnInit {
 
   private _url ='http://localhost:8080/v1/users';
 
+  display:boolean = true;
   displayedColumns: string[]=['id','_pk_email_id','user_name','blood_group','gender','state','dob'];
   dataSource: MatTableDataSource<IProfile>;
 
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
   @ViewChild(MatSort, {static: true}) sort: MatSort;
+  @HostListener('window:scroll', ['$event']) onScrollEvent($event){
+    console.log($event);
+    console.log("scrolling");
+    // this.getPosition();
+  } 
 
   constructor(private _http: HttpClient, private _router:Router) {
   
@@ -58,6 +40,8 @@ export class PrevalentTableComponent implements OnInit {
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
     });
+
+    this.getPosition();
   }
 
   applyFilter(filterValue: string) {
@@ -67,6 +51,32 @@ export class PrevalentTableComponent implements OnInit {
       this.dataSource.paginator.firstPage();
     }
   }
+
+//get the top offset of the header
+//get the top offset of the row
+//based on the conclusion
+//sent the display propery to display : none;
+// have an window listener property that will listen to the scroll
+
+getPosition()
+{
+//get the to offset of the table header ..
+ let  headerOffset = document.getElementById("thead");
+ let headerTop = headerOffset.offsetTop
+
+ alert(headerTop);
+ var rowoffset = document.getElementById("trow");
+ alert(rowoffset.offsetTop);
+ let rowTop =rowoffset.offsetTop
+
+
+ {
+   this.display=false;
+ }
+
+}
+
+
 }
 
 // function createNewUser(data): IProfile {

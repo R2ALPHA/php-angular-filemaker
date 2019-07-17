@@ -19,7 +19,7 @@ export class AdminLoginService {
 
   getLoginResponse(adminData){
     
-    // alert(this._http.post<any>(this._url,adminData));
+    this._http.post<any>(this._url,adminData);
     return this._http.post<any>(this._url,adminData);
   }
 

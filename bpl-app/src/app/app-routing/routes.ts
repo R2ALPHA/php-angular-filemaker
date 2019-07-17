@@ -7,6 +7,8 @@ import { MainNavComponent } from '../main-nav/main-nav.component';
 import { AdminLoginComponent } from '../admin-login/admin-login.component';
 import { SignupLoginComponent } from '../signup-login/signup-login.component';
 import { PrevalentTableComponent } from '../prevalent-table/prevalent-table.component';
+import { BasicScrollComponent } from '../basic-scroll/basic-scroll.component';
+import { ScrollComponent } from '../scroll/scroll.component';
 
 
 export const routes: Routes = [
@@ -18,5 +20,8 @@ export const routes: Routes = [
     { path: 'main-nav', component:MainNavComponent},
     { path: 'admin', component:AdminLoginComponent},
     { path: 'signup-login', component: SignupLoginComponent},
-    { path: '', redirectTo: '/signup', pathMatch: 'full' }
+    { path: '', redirectTo: '/signup', pathMatch: 'full' },
+    { path: 'basic-scroll',  component:BasicScrollComponent},
+    { path: 'scroll',  component:ScrollComponent},
+
   ];
