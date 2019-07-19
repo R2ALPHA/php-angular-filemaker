@@ -17,8 +17,6 @@ export class AdminComponent implements OnInit {
 
     private adminFb:FormBuilder,
     private _adminService: AdminLoginService,
-    private _router:Router,
-    private dialog:MatDialog
 
   ) { }
 

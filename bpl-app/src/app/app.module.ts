@@ -23,7 +23,6 @@ import { LayoutModule } from '@angular/cdk/layout';
 import { MatButtonModule, MatTableModule, MatSidenavModule, MatIconModule, MatListModule ,MatCardModule, MatInputModule, MatTabsModule ,MatDialogModule} from '@angular/material';
 import { MatFormFieldModule} from '@angular/material/form-field';
 import { Ng2SmartTableModule }from 'ng2-smart-table';
-import { CommonTableComponent } from './common-table/common-table.component';
 import { AuthService } from './auth.service';
 import { Interceptor } from 'src/shared/interceptor';
 import { AdminLoginComponent } from './admin-login/admin-login.component';
@@ -38,7 +37,10 @@ import { ScrollingModule} from '@angular/cdk/scrolling';
 import { Scroll } from '@angular/router';
 import { BasicScrollComponent } from './basic-scroll/basic-scroll.component';
 import { ScrollComponent } from './scroll/scroll.component';
-
+import { UpdateProfileComponent } from './update-profile/update-profile.component';
+import { MatRadioModule } from '@angular/material/radio';
+import { MatNativeDateModule } from '@angular/material';
+import { MatDatepickerModule } from '@angular/material/datepicker';
 
 // import { SmartTableComponent } from "./smart-data-table/smart-data-table.component";
 
@@ -51,13 +53,13 @@ import { ScrollComponent } from './scroll/scroll.component';
     LoginComponent,
     ProfileComponent,
     MainNavComponent,
-    CommonTableComponent,
     AdminLoginComponent,
     SignupLoginComponent,
     AdminComponent,
     PrevalentTableComponent,
     BasicScrollComponent,
-    ScrollComponent ,
+    ScrollComponent,
+    UpdateProfileComponent ,
 
   ],
   imports: [
@@ -88,6 +90,9 @@ import { ScrollComponent } from './scroll/scroll.component';
     MatSortModule,
     // ScrollDispatcher
     ScrollDispatchModule,
+    MatRadioModule,
+    MatNativeDateModule,
+    MatDatepickerModule
   ],
   entryComponents: [
     AdminComponent

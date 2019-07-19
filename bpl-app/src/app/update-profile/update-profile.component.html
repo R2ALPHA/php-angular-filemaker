@@ -1,0 +1,166 @@
+<form [formGroup]="updateForm" (ngSubmit)="onSubmit()">
+  <div class="row">
+
+    <div class="col-sm-6">
+      <div class="form-group">
+        <mat-form-field appearance="standard">
+          <mat-label>User Name</mat-label>
+          <input matInput id="user-name" type="text" name="text[uname]" placeholder="Enter your userName"
+            name="user_name" formControlName="user_name">
+          <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+          <mat-hint>User Name</mat-hint>
+          <mat-error>This Field is required</mat-error>
+          <!-- <mat-error *ngIf="form.get('user_name').errors.required" >{{validationMessages.username.required}}</mat-error>
+      <mat-error *ngIf="form.get('user_name').errors.pattern" >{{validationMessages.username.pattern}}</mat-error> -->
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="col-sm-6">
+      <div class="form-group">
+        <mat-form-field appearance="standard">
+          <mat-label>Password</mat-label>
+          <input matInput id="pwd" type="password" placeholder="********" name="password" formControlName="password">
+          <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+          <mat-hint>******</mat-hint>
+          <mat-error>This Field is required</mat-error>
+          <!-- <mat-error *ngIf="form.get('password').errors.required">{{validationMessages.password.required}}</mat-error>
+      <mat-error  *ngIf="form.get('password').errors.pattern">{{validationMessages.password.password}}</mat-error> -->
+        </mat-form-field>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-6">
+      <div class="form-group">
+        <mat-form-field appearance="standard">
+          <mat-label>Security Answer</mat-label>
+          <input matInput type="text" name="text[security]" id="security" placeholder="Enter the Security Answer"
+            name="security_answer" formControlName="security_answer">
+          <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+          <mat-hint>Hint</mat-hint>
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div class="col-sm-6">
+      <div class="form-group">
+        <mat-form-field appearance="standard">
+          <mat-label>Real Name</mat-label>
+          <input matInput type="text" id="fname" placeholder="Enter the players's Name" name="player_name"
+            formControlName="player_name">
+          <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+          <mat-hint>Hint</mat-hint>
+          <mat-error>This Field is required</mat-error>
+          <!-- <mat-error *ngIf="form.get('player_name').errors.required">{{validationMessages.name.required}}</mat-error>
+          <mat-error *ngIf="form.get('player_name').errors.pattern">{{validationMessages.name.pattern}}</mat-error> -->
+        </mat-form-field>
+      </div>
+    </div>
+  </div>
+
+  <!-- # gender and dob should be here to handle this things;-->
+
+  <div class="row">
+    <div class="col-sm-6">
+      <div class="form-group">
+        <mat-radio-group aria-label="Select your Gender" formControlName="gender">
+          <mat-radio-button value="1">Male</mat-radio-button>&nbsp;
+          <mat-radio-button value="2">Female</mat-radio-button>&nbsp;
+          <mat-radio-button value="2">Other</mat-radio-button>&nbsp;
+        </mat-radio-group>
+      </div>
+    </div>
+
+    <div class="col-sm-6">
+      <div class="form-group">
+        <mat-form-field>
+          <input matInput [matDatepicker]="picker" placeholder="Choose your birthday" formControlName="dob">
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+      </div>
+    </div>
+
+    <!-- <div class="col-sm-6">
+      <div class="form-group">
+        <mat-form-field>
+          <mat-label>BloodGroup</mat-label>
+          <select matNativeControl required>
+            <option *ngFor="let blood of bloodGroup" [value]="pow">{{blood}}</option>
+          </select>
+        </mat-form-field>
+      </div>
+    </div> -->
+  </div>
+
+  <div class="row">
+    <div class="col-sm-6">
+      <div class="form-group">
+        <mat-form-field appearance="standard">
+          <mat-label>Mobile No.</mat-label>
+          <input matInput type="tel" name="mobile_no." id="mobileno" placeholder="Enter the Mobile number"
+            formControlName="mobile_no">
+          <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+          <mat-hint>Hint</mat-hint>
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div class="col-sm-6">
+      <div class="form-group">
+        <mat-form-field appearance="standard">
+          <mat-label>Alt no</mat-label>
+          <input matInput type="tel" name="alt_mob_no" id="altno" placeholder="Enter the Alternate number"
+            formControlName="alt_mobile_no">
+          <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+          <mat-hint>Hint</mat-hint>
+        </mat-form-field>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-6">
+      <div class="form-group">
+        <mat-form-field appearance="standard">
+          <mat-label>Locality</mat-label>
+          <input matInput type="text" name="locality" id="address" placeholder="Enter the locality"
+            formControlName="locality">
+          <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+          <mat-hint>Hint</mat-hint>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="col-sm-6">
+      <div class="form-group">
+        <mat-form-field appearance="standard">
+          <mat-label>City</mat-label>
+          <input matInput type="text" name="city" id="city" placeholder="Enter the city" formControlName="city">
+          <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+          <mat-hint>Hint</mat-hint>
+        </mat-form-field>
+      </div>
+    </div>
+  </div>
+
+
+  <!--  This is for choosing the state and nothing else -->
+  <!-- <div class="form-group">
+    <mat-form-field appearance="standard">
+      <mat-label>Standard form field</mat-label>
+      <input matInput placeholder="Placeholder">
+      <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+      <mat-hint>Hint</mat-hint>
+    </mat-form-field>
+  </div> -->
+
+  <div class="row">
+    <div class="col-sm-6">
+      <button mat-button >Update</button>
+    </div>
+    <div clas="col-sm-6">
+      <button mat-button (click)="closeForm()">Close</button>
+    </div>
+  </div>
+</form>

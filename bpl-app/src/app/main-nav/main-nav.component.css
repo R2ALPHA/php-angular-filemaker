@@ -1,11 +1,13 @@
 @import '@angular/material/prebuilt-themes/deeppurple-amber.css';
 
 
+
+.nav-bar {
+}
 .mat-toolbar {
-  position: fixed;
   /* top: 80%; */
   /* height:166px; */
-  /* height:10%; */
+  /* height:10%; */ /* position: fixed;
   /* background-color:#065960; */
   /* background-image: url('/assets/image/login.jpg'); */
   /* background:url(https://www.google.com/imgres?imgurl=https%3A%2F%2Fwww.publicdomainpictures.net%2Fpictures%2F170000%2Fnahled%2Fbanner-header-tapete-1463483351bhS.jpg&imgrefurl=https%3A%2F%2Fwww.publicdomainpictures.net%2Fen%2Fview-image.php%3Fimage%3D168850%26picture%3Dbanner-header-wallpaper&docid=_9GJ56hTZGu7DM&tbnid=RUTxrhvgQNHu2M%3A&vet=10ahUKEwijquydtqXjAhW24nMBHfpcCpQQMwhNKAEwAQ..i&w=615&h=209&bih=757&biw=1600&q=image%20for%20wallpaper%20header&ved=0ahUKEwijquydtqXjAhW24nMBHfpcCpQQMwhNKAEwAQ&iact=mrc&uact=8); */
