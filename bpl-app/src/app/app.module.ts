@@ -5,13 +5,11 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { AppComponent } from './app.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
-import { HeaderComponent } from './header/header.component';
 import { MatSelectModule } from '@angular/material/select';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
 import { FooterComponent } from './footer/footer.component';
-import { LoginComponent } from './login/login.component';
 import { AppRoutingModule } from './app-routing/app-routing.module';
 import { HttpClientModule ,  HTTP_INTERCEPTORS } from '@angular/common/http';
 import { StorageServiceModule} from 'angular-webstorage-service';
@@ -25,7 +23,6 @@ import { MatFormFieldModule} from '@angular/material/form-field';
 import { Ng2SmartTableModule }from 'ng2-smart-table';
 import { AuthService } from './auth.service';
 import { Interceptor } from 'src/shared/interceptor';
-import { AdminLoginComponent } from './admin-login/admin-login.component';
 import { SignupLoginComponent } from './signup-login/signup-login.component';
 import { AdminComponent } from './admin/admin.component';
 import { PrevalentTableComponent } from './prevalent-table/prevalent-table.component';
@@ -41,6 +38,8 @@ import { UpdateProfileComponent } from './update-profile/update-profile.componen
 import { MatRadioModule } from '@angular/material/radio';
 import { MatNativeDateModule } from '@angular/material';
 import { MatDatepickerModule } from '@angular/material/datepicker';
+import { AssignedTaskComponent } from './assigned-task/assigned-task.component';
+import { AddActivityComponent } from './add-activity/add-activity.component';
 
 // import { SmartTableComponent } from "./smart-data-table/smart-data-table.component";
 
@@ -48,18 +47,17 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
   declarations: [
     AppComponent,
     SignUpComponent,
-    HeaderComponent,
     FooterComponent,
-    LoginComponent,
     ProfileComponent,
     MainNavComponent,
-    AdminLoginComponent,
     SignupLoginComponent,
     AdminComponent,
     PrevalentTableComponent,
     BasicScrollComponent,
     ScrollComponent,
-    UpdateProfileComponent ,
+    UpdateProfileComponent,
+    AssignedTaskComponent,
+    AddActivityComponent ,
 
   ],
   imports: [

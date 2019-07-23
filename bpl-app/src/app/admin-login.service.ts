@@ -23,21 +23,21 @@ export class AdminLoginService {
     return this._http.post<any>(this._url,adminData);
   }
 
-  adminLogin() {
+  // adminLogin() {
 
-    const dialogConfig = new MatDialogConfig();
-    dialogConfig.disableClose=true;
-    dialogConfig.autoFocus =  true;
-    this.dialog.open(AdminComponent, dialogConfig);
-  }
+  //   const dialogConfig = new MatDialogConfig();
+  //   dialogConfig.disableClose=true;
+  //   dialogConfig.autoFocus =  true;
+  //   this.dialog.open(AdminComponent, dialogConfig);
+  // }
   
-  closeAdminModal() {
-    this.dialog.closeAll();
-  }
+  // closeAdminModal() {
+  //   this.dialog.closeAll();
+  // }
 
-  adminLogout() {
-   localStorage.removeItem('admin-token');
-    this.adminLogin();
-  }
+  // adminLogout() {
+  //  localStorage.removeItem('admin-token');
+  //   this.adminLogin();
+  // }
 }
 

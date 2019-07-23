@@ -47,7 +47,7 @@ export class SignupLoginComponent implements OnInit {
     // as it is main page we need to check it now.
     
     if(localStorage.getItem('admin-token')==null) {
-      this._adminService.adminLogin();      
+      // this._adminService.adminLogin();      
     }
   }
   
@@ -118,6 +118,6 @@ export class SignupLoginComponent implements OnInit {
 
   adminLogout()
   {
-    this._adminService.adminLogout();
+    // this._adminService.adminLogout();
   }
 }

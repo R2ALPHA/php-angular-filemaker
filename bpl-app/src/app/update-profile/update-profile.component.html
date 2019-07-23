@@ -1,3 +1,4 @@
+<div class="container">
 <form [formGroup]="updateForm" (ngSubmit)="onSubmit()">
   <div class="row">
 
@@ -5,7 +6,7 @@
       <div class="form-group">
         <mat-form-field appearance="standard">
           <mat-label>User Name</mat-label>
-          <input matInput id="user-name" type="text" name="text[uname]" placeholder="Enter your userName"
+          <input matInput id="user-name" type="text" name="text[uname]" placeholder="Enter your userName" readonly
             name="user_name" formControlName="user_name">
           <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
           <mat-hint>User Name</mat-hint>
@@ -19,7 +20,7 @@
       <div class="form-group">
         <mat-form-field appearance="standard">
           <mat-label>Password</mat-label>
-          <input matInput id="pwd" type="password" placeholder="********" name="password" formControlName="password">
+          <input matInput id="pwd" type="password" placeholder="********" name="password" formControlName="password" readonly>
           <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
           <mat-hint>******</mat-hint>
           <mat-error>This Field is required</mat-error>
@@ -157,10 +158,11 @@
 
   <div class="row">
     <div class="col-sm-6">
-      <button mat-button >Update</button>
+      <button  type="submit" mat-button color="accent" >Update</button>
     </div>
     <div clas="col-sm-6">
-      <button mat-button (click)="closeForm()">Close</button>
+      <button mat-button color="accent" (click)="closeForm()">Close</button>
     </div>
   </div>
 </form>
+</div>

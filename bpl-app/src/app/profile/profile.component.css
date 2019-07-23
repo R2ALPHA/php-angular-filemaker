@@ -5,6 +5,7 @@
 
 .example-card {
     max-width: 400px;
+    margin-top:13%;
   }
   
   .example-header-image {
@@ -53,7 +54,9 @@
 
   .row {
     margin-top:2%;
-    margin-bottom:2%;
     margin-left:1px;
     margin-right:1px;
+  }
+  .row{
+    height:60vh;
   }

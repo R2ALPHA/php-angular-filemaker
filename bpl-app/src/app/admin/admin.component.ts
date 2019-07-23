@@ -29,7 +29,6 @@ export class AdminComponent implements OnInit {
 
   }
 
-  
   onSubmit() {
     this.processSubmission();
   }
@@ -38,12 +37,12 @@ export class AdminComponent implements OnInit {
     this._adminService.getLoginResponse(this.adminForm.value)
     .subscribe(
       data=>{
-        if(data.status!=404) {                                             //make this as 200 status code
+        if(data.status!=404) {               
           
           localStorage.setItem('admin-token',data.token);
           localStorage.setItem('expiry',data.expires);
         
-          this._adminService.closeAdminModal();
+          // this._adminService.closeAdminModal();
         }
         else{
           alert("Wrong Credentials");

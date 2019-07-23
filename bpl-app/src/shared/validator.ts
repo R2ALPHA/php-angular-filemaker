@@ -1,6 +1,6 @@
 import { AbstractControl } from '@angular/forms';
-export class Validator {
 
+export class Validator {
 
 passwordValidator(control: AbstractControl): { [key: string]: boolean } | null {
 
@@ -15,7 +15,6 @@ passwordValidator(control: AbstractControl): { [key: string]: boolean } | null {
   ageValidator(control: AbstractControl): { [key: string]: boolean } | null {
   
     let bday= control.value;
-    alert(bday);
     let bdayArr=bday.split('-');
     let bdayYr=parseInt(bdayArr[0]);
     let currDt= new Date();

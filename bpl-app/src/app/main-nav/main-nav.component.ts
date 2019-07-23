@@ -34,7 +34,7 @@ export class MainNavComponent {
   }
 
   adminLogout() {
-    this._adminService.adminLogout();
+    // this._adminService.adminLogout();
   }
 }
 

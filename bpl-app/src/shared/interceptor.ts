@@ -19,7 +19,7 @@ export class Interceptor implements HttpInterceptor {
 
     if(localStorage.length <1 || localStorage.getItem('admin-token')==null)
     {
-      this._adminService.adminLogin();
+      // this._adminService.adminLogin();
     }
    
     if(localStorage.length <1 || localStorage.getItem('token')==null) {

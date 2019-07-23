@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import { MatDialog, MatDialogConfig } from "@angular/material";
 
 import { UpdateProfileComponent } from '../update-profile/update-profile.component';
+import { AddActivityComponent } from '../add-activity/add-activity.component';
 
 @Component({
   selector: 'app-profile',
@@ -27,6 +28,7 @@ export class ProfileComponent implements OnInit {
     this._profileService.getProfile(this.user_name)
       .subscribe(data => {
         this.profile = data
+        this._profileService.setProfileData(this.profile);
       });
   }
 
@@ -36,7 +38,7 @@ export class ProfileComponent implements OnInit {
   }
 
   closeUpdateProfile() {
-    this.closeUpdateForm();
+    this.closeForm();
   }
 
   updateForm() {
@@ -47,9 +49,8 @@ export class ProfileComponent implements OnInit {
     this.dialog.open(UpdateProfileComponent, dialogConfig);
   }
 
-  closeUpdateForm() {
+  closeForm() {
     this.dialog.closeAll();
   }
-
 
 }
