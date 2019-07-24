@@ -48,7 +48,8 @@ import { AddActivityComponent } from './add-activity/add-activity.component';
 import { AllTasksComponent } from './all-tasks/all-tasks.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
-import {DecimalPipe} from '@angular/common';
+import { DecimalPipe } from '@angular/common';
+import { DatePipe } from '@angular/common';
 import { CalenderComponent } from './calender/calender.component'
 
 @NgModule({
@@ -117,7 +118,8 @@ import { CalenderComponent } from './calender/calender.component'
     {
       provide: HTTP_INTERCEPTORS, useClass: Interceptor, multi:true
     },
-    DecimalPipe
+    DecimalPipe,
+    DatePipe
   ],
   bootstrap: [AppComponent]
 })

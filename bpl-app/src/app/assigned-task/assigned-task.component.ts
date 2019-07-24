@@ -3,6 +3,8 @@ import { MatDialog, MatDialogConfig } from "@angular/material";
 import { AddActivityComponent } from '../add-activity/add-activity.component';
 import { TaskService } from '../task.service';
 
+import { ProfileService } from '../profile.service';
+
 import * as faker from 'faker';
 
 
@@ -19,6 +21,7 @@ export class AssignedTaskComponent implements OnInit {
 
     private dialog:MatDialog,
     private _taskService: TaskService,
+    private _profileService:ProfileService
 
   ) { 
     this.people = Array(100)

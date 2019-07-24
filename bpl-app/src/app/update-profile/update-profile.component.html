@@ -1,5 +1,5 @@
 <div class="container">
-<form [formGroup]="updateForm" (ngSubmit)="onSubmit()">
+<form [formGroup]="updateForm" (ngSubmit)="updateForm.valid && onSubmit()">
   <div class="row">
 
     <div class="col-sm-6">
@@ -158,7 +158,7 @@
 
   <div class="row">
     <div class="col-sm-6">
-      <button  type="submit" mat-button color="accent" >Update</button>
+      <button  type="submit" [disabled]="updateForm.invalid" mat-button color="accent" >Update</button>
     </div>
     <div clas="col-sm-6">
       <button mat-button color="accent" (click)="closeForm()">Close</button>

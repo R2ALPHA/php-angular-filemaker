@@ -7,7 +7,7 @@
           <mat-form-field appearance="standard">
             <mat-label>Assigned By</mat-label>
             <input matInput id="assigned_by" type="text" name="text[uname]" placeholder="" name="assigned_by"
-              formControlName="assigned_by">
+              formControlName="assigned_by" readonly>
             <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
             <mat-hint>User Name</mat-hint>
             <mat-error>This Field is required</mat-error>
@@ -54,11 +54,44 @@
       <div class="col-sm-6">
         <div class="form-group">
           <mat-form-field appearance="standard">
+            <mat-label>Start Time</mat-label>
+            <input matInput id="start_time" type="time" name="text[uname]" placeholder="" name="start_time"
+              formControlName="start_time">
+            <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+            <mat-hint>Start_time</mat-hint>
+            <mat-error>This Field is required</mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="col-sm-6">
+        <div class="form-group">
+          <mat-form-field appearance="standard">
+            <mat-label>Stop Time</mat-label>
+            <input matInput id="end_time" type="time" placeholder="Enter stop time" name="end_time"
+              formControlName="end_time">
+            <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+            <mat-error>This Field is required</mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="form-group">
+          <!-- <mat-form-field appearance="standard">
             <mat-label>Assigned To</mat-label>
             <input matInput type="text" name="assigned_to" id="assigned_to" placeholder="Enter the name"
               formControlName="assigned_to">
             <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
             <mat-hint>whom You want to assign </mat-hint>
+          </mat-form-field> -->
+          <mat-form-field>
+              <mat-label>Assigned To</mat-label>
+              <mat-select formControlName="assigned_to" multiple>
+                <mat-option *ngFor="let user of all_user" [value]="user">{{user.user_name}}</mat-option>
+              </mat-select>
           </mat-form-field>
         </div>
       </div>
