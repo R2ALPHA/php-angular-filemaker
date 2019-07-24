@@ -33,6 +33,6 @@ export class ProfileService {
 
   updateProfileData(updateFormData) {
     this._url= 'http://localhost:8080/v1/user';
-    return this._http.put<any>(this._url,updateFormData,{headers:this.headers});
+    return this._http.put<any>(this._url,updateFormData);
   }
 }

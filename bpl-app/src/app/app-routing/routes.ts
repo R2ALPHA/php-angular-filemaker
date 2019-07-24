@@ -10,7 +10,8 @@ import { UpdateProfileComponent } from '../update-profile/update-profile.compone
 import { AdminComponent } from '../admin/admin.component';
 import { AssignedTaskComponent } from '../assigned-task/assigned-task.component';
 import { AddActivityComponent } from '../add-activity/add-activity.component';
-
+import { AllTasksComponent } from '../all-tasks/all-tasks.component';
+import { CalenderComponent } from '../calender/calender.component';
 export const routes: Routes = [
 
     { path: 'signup',  component: SignUpComponent },
@@ -25,5 +26,7 @@ export const routes: Routes = [
     { path: 'admin-login',  component:AdminComponent},
     { path: 'add-task',  component:AssignedTaskComponent},
     { path: 'activity',  component:AddActivityComponent},
+    { path: 'all-task',  component:AllTasksComponent},
+    { path: 'calender',  component:CalenderComponent},
 
   ];

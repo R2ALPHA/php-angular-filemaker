@@ -14,7 +14,6 @@ export class EnrollmentService {
   ) {
   }
 
-  // for creating a new user
   enroll(userData) {
 
     return this._http.post<any>(this._url, userData);

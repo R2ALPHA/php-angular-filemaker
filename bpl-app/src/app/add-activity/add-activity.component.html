@@ -6,7 +6,7 @@
         <div class="form-group">
           <mat-form-field appearance="standard">
             <mat-label>Assigned By</mat-label>
-            <input matInput id="assigned_by" type="text" name="text[uname]" placeholder="" readonly name="assigned_by"
+            <input matInput id="assigned_by" type="text" name="text[uname]" placeholder="" name="assigned_by"
               formControlName="assigned_by">
             <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
             <mat-hint>User Name</mat-hint>
@@ -19,7 +19,7 @@
         <div class="form-group">
           <mat-form-field appearance="standard">
             <mat-label>Activity Name</mat-label>
-            <input matInput id="activity_name" type="password" placeholder="Enter Activity" name="activity_name"
+            <input matInput id="activity_name" type="text" placeholder="Enter Activity" name="activity_name"
               formControlName="activity_name">
             <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
             <mat-error>This Field is required</mat-error>
@@ -91,7 +91,7 @@
 
     <div class="row">
       <div class="col-sm-6">
-        <button type="submit" mat-button color="accent">Add Task</button>
+        <button type="submit" mat-button color="accent" (click)="processSubmission()">Add Task</button>
       </div>
       <div clas="col-sm-6">
         <button mat-button color="accent" (click)="closeForm()">Close</button>

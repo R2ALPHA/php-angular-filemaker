@@ -32,12 +32,9 @@ export class AssignedTaskComponent implements OnInit {
   }
 
   ngOnInit() {
-
-    alert("hello World");
     this._taskService.getAllTask()
     .subscribe(data => {
       this.taskDetail = data
-      alert(this.taskDetail[0].id+"is");
     });
   }
 

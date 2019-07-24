@@ -52,5 +52,4 @@ export class ProfileComponent implements OnInit {
   closeForm() {
     this.dialog.closeAll();
   }
-
 }

@@ -56,7 +56,14 @@
     margin-top:2%;
     margin-left:1px;
     margin-right:1px;
-  }
-  .row{
     height:60vh;
+  }
+  .white-text{
+    color:white;
+    font:white;
+    font-size:15px;
+  }
+
+  .calender {
+    padding-top:4%;
   }

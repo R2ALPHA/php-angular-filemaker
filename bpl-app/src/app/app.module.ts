@@ -13,8 +13,13 @@ import { FooterComponent } from './footer/footer.component';
 import { AppRoutingModule } from './app-routing/app-routing.module';
 import { HttpClientModule ,  HTTP_INTERCEPTORS } from '@angular/common/http';
 import { StorageServiceModule} from 'angular-webstorage-service';
+import { CommonModule } from '@angular/common';
+import { FlatpickrModule } from 'angularx-flatpickr';
+import { CalendarModule, DateAdapter } from 'angular-calendar';
+import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 
 import 'hammerjs';
+import 'flatpickr/dist/flatpickr.css'
 import { ProfileComponent } from './profile/profile.component';
 import { MainNavComponent } from './main-nav/main-nav.component';
 import { LayoutModule } from '@angular/cdk/layout';
@@ -29,7 +34,7 @@ import { PrevalentTableComponent } from './prevalent-table/prevalent-table.compo
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { ScrollDispatchModule} from '@angular/cdk/scrolling';
-// import { ScrollDispatcher } from '@angular/cdk/scrolling'; 
+
 import { ScrollingModule} from '@angular/cdk/scrolling';
 import { Scroll } from '@angular/router';
 import { BasicScrollComponent } from './basic-scroll/basic-scroll.component';
@@ -40,8 +45,11 @@ import { MatNativeDateModule } from '@angular/material';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { AssignedTaskComponent } from './assigned-task/assigned-task.component';
 import { AddActivityComponent } from './add-activity/add-activity.component';
-
-// import { SmartTableComponent } from "./smart-data-table/smart-data-table.component";
+import { AllTasksComponent } from './all-tasks/all-tasks.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
+import {DecimalPipe} from '@angular/common';
+import { CalenderComponent } from './calender/calender.component'
 
 @NgModule({
   declarations: [
@@ -57,8 +65,9 @@ import { AddActivityComponent } from './add-activity/add-activity.component';
     ScrollComponent,
     UpdateProfileComponent,
     AssignedTaskComponent,
-    AddActivityComponent ,
-
+    AddActivityComponent,
+    AllTasksComponent,
+    CalenderComponent ,
   ],
   imports: [
     BrowserModule,
@@ -86,11 +95,19 @@ import { AddActivityComponent } from './add-activity/add-activity.component';
     MatTableModule,
     MatPaginatorModule,
     MatSortModule,
-    // ScrollDispatcher
     ScrollDispatchModule,
     MatRadioModule,
     MatNativeDateModule,
-    MatDatepickerModule
+    MatDatepickerModule,
+    NgbModule,
+    CommonModule,
+    NgbModalModule,
+    FlatpickrModule.forRoot(),
+    CalendarModule.forRoot({
+      provide: DateAdapter,
+      useFactory: adapterFactory
+    }),
+    
   ],
   entryComponents: [
     AdminComponent
@@ -99,7 +116,8 @@ import { AddActivityComponent } from './add-activity/add-activity.component';
     AuthService,
     {
       provide: HTTP_INTERCEPTORS, useClass: Interceptor, multi:true
-    }
+    },
+    DecimalPipe
   ],
   bootstrap: [AppComponent]
 })

@@ -15,7 +15,17 @@ export class TaskService {
   //Currently it is giving the user data
   getAllTask() :Observable<ITask[]>{
     this._url = 'http://localhost:8080/v1/users';
-    alert("reached here");
+    return this._http.get<ITask[]>(this._url);
+  }
+
+  addActivity(task_detail){
+
+    this._url='http://localhost:8080/v1/activity'
+    return this._http.post<any>(this._url, task_detail);
+  }
+
+  getAllActivity():Observable<ITask[]> {
+    this._url ='http://localhost:8080/v1/activities'
     return this._http.get<ITask[]>(this._url);
   }
 }

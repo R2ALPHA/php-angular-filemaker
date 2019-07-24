@@ -51,7 +51,8 @@ export class UpdateProfileComponent implements OnInit {
       security_answer    : [this.profileData[0].security_question],
       player_name        : [this.profileData[0].player_name,[Validators.pattern('[a-zA-Z ]*')]],
       // blood_group        : [''],
-      dob                : [this.profileData[0].dob,[this.validator.ageValidator]], 
+      dob                : [this.profileData[0].dob], 
+      // dob                : [], 
       gender             : [this.profileData[0].gender],
       mobile_no          : [this.profileData[0].mobile_no],
       alt_mobile_no      : [this.profileData[0].alt_mobile_no],
@@ -67,11 +68,10 @@ export class UpdateProfileComponent implements OnInit {
 
   processSubmission() {
 
-    alert(this.updateForm.value.user_name);
     this._profileService.updateProfileData(this.updateForm.value)
     .subscribe(
       data=>{
-        if(data.status==200) {                                
+        if(data.status==200 || data.status==201) {                                
           alert("Profile Updated");
         }
         else{
