@@ -1,5 +1,5 @@
 <div class="container">
-  <form [formGroup]="taskForm" (ngSubmit)="onSubmit()">
+  <form [formGroup]="taskForm">
     <div class="row">
 
       <div class="col-sm-6">
@@ -113,7 +113,7 @@
 
       <div class="col-sm-6">
         <div class="form-group">
-          <mat-radio-group aria-label="Select if it is a recurring tasks" formControlName="gender">
+          <mat-radio-group aria-label="Select if it is a recurring tasks">
             <mat-radio-button value="Daily">Daily</mat-radio-button>&nbsp;
             <mat-radio-button value="Weekly">Weekly</mat-radio-button>&nbsp;
             <mat-radio-button value="Once">Once</mat-radio-button>&nbsp;

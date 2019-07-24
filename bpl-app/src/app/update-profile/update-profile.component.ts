@@ -6,6 +6,7 @@ import { VERROR } from '../../shared/errors';
 import { securityQuestion, bloodGroup,states,disclaimer,passwordHint} from '../../shared/registrationConstant';
 import { MatDialog, MatDialogConfig } from "@angular/material";
 import { ProfileService } from '../profile.service';
+import { DatePipe } from '@angular/common';
 
 import { Validator } from '../../shared/validator';
 
@@ -36,6 +37,8 @@ export class UpdateProfileComponent implements OnInit {
     private updateFb:FormBuilder,
     private dialog:MatDialog,
     private _profileService: ProfileService,
+    public datepipe: DatePipe
+
     ) { }
 
   ngOnInit() {
@@ -46,13 +49,12 @@ export class UpdateProfileComponent implements OnInit {
 
       _pk_email_id       : [this.profileData[0]._pk_email_id,[Validators.email]],
       user_name          : [this.profileData[0].user_name,[Validators.pattern('[a-zA-Z ]*')]],
-      password           : [this.profileData[0]],
+      password           : [this.profileData[0].password],
       // security_question  : ['Childhood Hero Name'],
       security_answer    : [this.profileData[0].security_question],
       player_name        : [this.profileData[0].player_name,[Validators.pattern('[a-zA-Z ]*')]],
       // blood_group        : [''],
       dob                : [this.profileData[0].dob], 
-      // dob                : [], 
       gender             : [this.profileData[0].gender],
       mobile_no          : [this.profileData[0].mobile_no],
       alt_mobile_no      : [this.profileData[0].alt_mobile_no],
@@ -68,10 +70,11 @@ export class UpdateProfileComponent implements OnInit {
 
   processSubmission() {
 
+    this.updateForm.value.dob =this.datepipe.transform(this.updateForm.value.dob, 'M/d/yy');
     this._profileService.updateProfileData(this.updateForm.value)
     .subscribe(
       data=>{
-        if(data.status==200 || data.status==201) {                                
+        if(data.status!=404) {                                
           alert("Profile Updated");
         }
         else{
