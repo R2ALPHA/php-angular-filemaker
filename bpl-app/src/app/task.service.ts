@@ -28,4 +28,9 @@ export class TaskService {
     this._url ='http://localhost:8080/v1/activities'
     return this._http.get<ITask[]>(this._url);
   }
+
+  getAllTaskOfAParticularPlayer():Observable<any>{
+    this._url='http://localhost:8080/v1/activity/'+localStorage.getItem('player_id');
+    return this._http.get<any>(this._url);
+  }
 }

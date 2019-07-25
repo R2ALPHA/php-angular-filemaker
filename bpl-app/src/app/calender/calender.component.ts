@@ -27,6 +27,10 @@ import {
   CalendarView
 } from 'angular-calendar'
 
+import { TaskService } from '../task.service';
+import { DatePipe } from '@angular/common';
+import { ITask } from 'src/shared/task';
+
 const colors: any = {
   red: {
     primary: '#ad2121',
@@ -56,11 +60,24 @@ export class CalenderComponent implements OnInit {
   CalendarView = CalendarView;
   viewDate: Date = new Date();
 
+  public taskDetails;
+
   modalData: {
     action: string;
     event: CalendarEvent;
   };
 
+  ngOnInit() {
+    this._taskService.getAllTaskOfAParticularPlayer()
+    .subscribe(data => {
+      this.taskDetails = data,
+      this.events=data,
+      this.convertDataForCalender(this.events)
+    });
+
+    // this.deleteEven()
+  }
+  
   // first wrong here
   actions: CalendarEventAction[] = [
     {
@@ -80,53 +97,46 @@ export class CalenderComponent implements OnInit {
 
   refresh: Subject<any> = new Subject();
 
-  events: CalendarEvent[] = [
-    {
-      start: subDays(startOfDay(new Date()), 1),
-      end: addDays(new Date(), 1),
-      title: 'A 3 day event',
-      color: colors.red,
-      actions: this.actions,
-      allDay: true,
-      resizable: {
-        beforeStart: true,
-        afterEnd: true
-      },
-      draggable: true
-    },
-    {
-      start: startOfDay(new Date()),
-      title: 'An event with no end date',
-      color: colors.yellow,
-      actions: this.actions
-    },
-    {
-      start: subDays(endOfMonth(new Date()), 3),
-      end: addDays(endOfMonth(new Date()), 3),
-      title: 'A long event that spans 2 months',
-      color: colors.blue,
-      allDay: true
-    },
-    {
-      start: subDays(endOfMonth(new Date()), 3),
-      end: addDays(endOfMonth(new Date()), 3),
-      title: 'A long event that spans 2 months',
-      color: colors.blue,
-      allDay: true
-    },
-    {
-      start: addHours(startOfDay(new Date()), 2),
-      end: new Date(),
-      title: 'A draggable and resizable event',
-      color: colors.yellow,
-      actions: this.actions,
-      resizable: {
-        beforeStart: true,
-        afterEnd: true
-      },
-      draggable: true
-    }
-  ];
+  events:CalendarEvent[];
+
+  // events: CalendarEvent[] = [
+  //   {
+  //     start: subDays(startOfDay(new Date()), 1),
+  //     title: 'A 3 day event',
+  //   },
+  //   {
+  //     start: startOfDay(new Date()),
+  //     title: 'An event with no end date',
+  //     color: colors.yellow,
+  //     actions: this.actions
+  //   },
+  //   {
+  //     start: subDays(endOfMonth(new Date()), 3),
+  //     end: addDays(endOfMonth(new Date()), 3),
+  //     title: 'A long event that spans 2 months',
+  //     color: colors.blue,
+  //     allDay: true
+  //   },
+  //   {
+  //     start: subDays(endOfMonth(new Date()), 3),
+  //     end: addDays(endOfMonth(new Date()), 3),
+  //     title: 'A long event that spans 2 months',
+  //     color: colors.blue,
+  //     allDay: true
+  //   },
+  //   {
+  //     start: addHours(startOfDay(new Date()), 2),
+  //     end: new Date(),
+  //     title: 'A draggable and resizable event',
+  //     color: colors.yellow,
+  //     actions: this.actions,
+  //     resizable: {
+  //       beforeStart: true,
+  //       afterEnd: true
+  //     },
+  //     draggable: true
+  //   }
+  // ];
 
   activeDayIsOpen: boolean = true
 
@@ -154,7 +164,7 @@ export class CalenderComponent implements OnInit {
         return {
           ...event,
           start: newStart,
-          end: newEnd
+          end  : newEnd
         };
       }
       return iEvent;
@@ -167,6 +177,8 @@ export class CalenderComponent implements OnInit {
     this.modal.open(this.modalContent, { size: 'lg' });
   }
 
+
+  /** Need to have own Menu for this */
   addEvent(): void {
     this.events = [
       ...this.events,
@@ -184,11 +196,14 @@ export class CalenderComponent implements OnInit {
     ];
   }
 
-  constructor(private modal: NgbModal) {}
+  constructor(
+    private modal: NgbModal,
+    private _taskService : TaskService,
+    public datepipe: DatePipe
+    ) {}
 
 
-  ngOnInit() {
-  }
+  
 
   deleteEvent(eventToDelete: CalendarEvent) {
     this.events = this.events.filter(event => event !== eventToDelete);
@@ -200,5 +215,20 @@ export class CalenderComponent implements OnInit {
 
   closeOpenMonthViewDay() {
     this.activeDayIsOpen = false;
+  }
+
+  convertDataForCalender(data) {
+
+    data.forEach(element => {
+
+      element.start_date= this.datepipe.transform(element.start_date);
+      element.stop_date= this.datepipe.transform(element.stop_date);
+     
+      element.start_date = new Date(element.start_date);
+      element.stop_date = new Date(element.stop_date); 
+      element.start=element.start_date;
+      element.end=element.stop_date;
+      element.title=element.activity_name;
+    });
   }
 }

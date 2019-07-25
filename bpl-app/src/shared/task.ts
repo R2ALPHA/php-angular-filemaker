@@ -2,6 +2,8 @@ import { Time } from '@angular/common';
 
 export class ITask {
 
+    activity_id:number;
+    player_id:number;
     assigned_by: string;
     activity_name: string;
     start_date: Date;
@@ -12,4 +14,7 @@ export class ITask {
     comment: string;
     daily: string;
     weekly: string;
+    day_start:Date;
+    day_stop:Date;
+    
 }

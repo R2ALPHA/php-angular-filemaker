@@ -2,12 +2,58 @@ text-area {
     width:60%;
     border: 2px;
     border-color: black;
-    height:10%;
+    height:20%;
     resize: none;
 }
 
 mat-form-field {
     margin-top:1%;
     width:60%;
-    height:30%;
+    height:40%;
 }
+
+.my-drop-zone { 
+    border: solid 3px lightgray;
+    border-radius: 1%;
+    height:50%;
+    width:70%;
+    justify-content:center;
+    margin-top:5%;
+    margin-left:5%;
+ }
+.nv-file-over { 
+    border: dotted 3px red;
+ } /* Default class applied to drop zones on over */
+.another-file-over-class { 
+    border: dotted 3px green;
+ }
+
+html, body { 
+    height: 100%; 
+}
+
+.image-text {
+    padding-top:20%;
+    justify-content: center;
+    text-align: center;
+}
+
+.file-uploader {
+    margin-top:5%;
+    margin-left:5%;
+}
+
+.scroll::-webkit-scrollbar {
+    width: 1em;
+  }
+
+  .scroll::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 2px rgba(0, 0, 0, 0.3);
+  }
+
+  .scroll::-webkit-scrollbar-thumb {
+    background-color: rgb(238, 169, 79);
+  }
+  .scroll{
+    margin-right:1%;
+  }

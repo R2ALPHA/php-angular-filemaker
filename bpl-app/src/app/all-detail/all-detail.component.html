@@ -1,24 +1,115 @@
 <div class="container">
-  <div class="row">
-    <div class="col-md-12">
-      <mat-tab-group>
-        <mat-tab label="Broadcast Message">
-          <form [formGroup]="statusForm" (ngSubmit)="statusForm.valid && onSubmit()">
-            <mat-form-field appearance="outline">
-              <mat-label>Broadcast Messages to the Team</mat-label>
-              <textarea matInput></textarea>
-            </mat-form-field>
-            <button mat-button color="accent">Add</button>
-          </form>
-        </mat-tab>
-        <mat-tab label="Add Photo">
+    <div class="row">
+        <div class="col-md-12">
+            <mat-tab-group>
+                <mat-tab label="Broadcast Message">
+                    <form [formGroup]="statusForm" (ngSubmit)="statusForm.valid && onSubmit()">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Broadcast Messages to the Team</mat-label>
+                            <textarea matInput></textarea>
+                        </mat-form-field>
+                        <button mat-button color="accent">Add</button>
+                    </form>
+                </mat-tab>
+                <mat-tab label="Add Photo">
+                    <div class="row">
 
-        </mat-tab>
-        <mat-tab label="Ask Question">
+                        <div class="col-md-3">
 
-        </mat-tab>
-      </mat-tab-group>
+                            <div ng2FileDrop [ngClass]="{'nv-file-over': hasBaseDropZoneOver}"
+                                (fileOver)="fileOverBase($event)" [uploader]="uploader" class="well my-drop-zone">
+                                <span class="image-text">Drag Your Image Here</span>
+                            </div>
 
+                            <input class="file-uploader" type="file" ng2FileSelect [uploader]="uploader"
+                                multiple /><br />
+                        </div>
+
+                        <div class="col-md-7" style="margin-bottom: 40px">
+
+                            <table class="table scroll" style="overflow-x: none; height: 1vh;">
+                                <thead>
+                                    <tr>
+                                        <th></th>
+                                        <th></th>
+                                        <th></th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let item of uploader.queue">
+                                        <td><strong>{{ item?.file?.name }}</strong></td>
+                                        <td *ngIf="uploader.isHTML5" nowrap>
+                                            {{ item?.file?.size/1024/1024 | number:'.2' }} MB</td>
+                                        <td *ngIf="uploader.isHTML5">
+                                            <div class="progress" style="margin-bottom: 0;">
+                                                <div class="progress-bar" role="progressbar"
+                                                    [ngStyle]="{ 'width': item.progress + '%' }"></div>
+                                            </div>
+                                        </td>
+                                        <td class="text-center">
+                                            <span *ngIf="item.isSuccess"><i class="glyphicon glyphicon-ok"></i></span>
+                                            <span *ngIf="item.isCancel"><i
+                                                    class="glyphicon glyphicon-ban-circle"></i></span>
+                                            <span *ngIf="item.isError"><i class="glyphicon glyphicon-remove"></i></span>
+                                        </td>
+                                        <td nowrap>
+                                            <button mat-button color="accent" (click)="item.upload()"
+                                                [disabled]="item.isReady || item.isUploading || item.isSuccess">
+                                                <span class="glyphicon glyphicon-upload"></span> Upload
+                                            </button>
+                                            <button mat-button color="accent" (click)="item.cancel()"
+                                                [disabled]="!item.isUploading">
+                                                <span class="glyphicon glyphicon-ban-circle"></span> Cancel
+                                            </button>
+                                            <button mat-button color="accent" (click)="item.remove()">
+                                                <span class="glyphicon glyphicon-trash"></span> Remove
+                                            </button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <div>
+                                <div>
+                                    <div class="progress" style="">
+                                        <div class="progress-bar" role="progressbar"
+                                            [ngStyle]="{ 'width': uploader.progress + '%' }"></div>
+                                    </div>
+                                </div>
+                                <button mat-button color="accent" (click)="uploader.uploadAll()"
+                                    [disabled]="!uploader.getNotUploadedItems().length">
+                                    Upload all
+                                </button>
+                                <button mat-button color="accent" (click)="uploader.cancelAll()"
+                                    [disabled]="!uploader.isUploading">
+                                    Cancel all
+                                </button>
+                                <button mat-button color="accent" (click)="uploader.clearQueue()"
+                                    [disabled]="!uploader.queue.length">
+                                    Remove all
+                                </button>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </mat-tab>
+                <mat-tab label="Ask Question">
+                    <form [formGroup]="questionForm" (ngSubmit)="questionForm.valid">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Title</mat-label>
+                            <input matInput placeholder="What is the pupose of this group?">
+                        </mat-form-field>
+                        <mat-form-field appearance="outline">
+                            <mat-label>Detail of the questions</mat-label>
+                            <textarea matInput></textarea>
+                        </mat-form-field>
+                        <button mat-button color="accent">Ask Question</button>
+                    </form>
+                </mat-tab>
+            </mat-tab-group>
+            <app-feed></app-feed>
+        </div>
     </div>
-  </div>
 </div>

@@ -51,7 +51,9 @@ import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
 import { DecimalPipe } from '@angular/common';
 import { DatePipe } from '@angular/common';
 import { CalenderComponent } from './calender/calender.component';
-import { AllDetailComponent } from './all-detail/all-detail.component'
+import { AllDetailComponent } from './all-detail/all-detail.component';
+import { FileUploadModule } from "ng2-file-upload";
+import { FeedComponent } from './feed/feed.component';
 
 @NgModule({
   declarations: [
@@ -70,7 +72,8 @@ import { AllDetailComponent } from './all-detail/all-detail.component'
     AddActivityComponent,
     AllTasksComponent,
     CalenderComponent,
-    AllDetailComponent ,
+    AllDetailComponent,
+    FeedComponent ,
   ],
   imports: [
     BrowserModule,
@@ -110,7 +113,7 @@ import { AllDetailComponent } from './all-detail/all-detail.component'
       provide: DateAdapter,
       useFactory: adapterFactory
     }),
-    
+    FileUploadModule
   ],
   entryComponents: [
     AdminComponent
