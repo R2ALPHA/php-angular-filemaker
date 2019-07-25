@@ -1,0 +1,24 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <mat-tab-group>
+        <mat-tab label="Broadcast Message">
+          <form [formGroup]="statusForm" (ngSubmit)="statusForm.valid && onSubmit()">
+            <mat-form-field appearance="outline">
+              <mat-label>Broadcast Messages to the Team</mat-label>
+              <textarea matInput></textarea>
+            </mat-form-field>
+            <button mat-button color="accent">Add</button>
+          </form>
+        </mat-tab>
+        <mat-tab label="Add Photo">
+
+        </mat-tab>
+        <mat-tab label="Ask Question">
+
+        </mat-tab>
+      </mat-tab-group>
+
+    </div>
+  </div>
+</div>

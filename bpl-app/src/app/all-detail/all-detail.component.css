@@ -1,0 +1,13 @@
+text-area {
+    width:60%;
+    border: 2px;
+    border-color: black;
+    height:10%;
+    resize: none;
+}
+
+mat-form-field {
+    margin-top:1%;
+    width:60%;
+    height:30%;
+}

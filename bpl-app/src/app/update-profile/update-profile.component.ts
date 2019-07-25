@@ -44,7 +44,6 @@ export class UpdateProfileComponent implements OnInit {
   ngOnInit() {
 
     this.profileData=this._profileService.getProfileData();
-
     this.updateForm = this.updateFb.group ({
 
       _pk_email_id       : [this.profileData[0]._pk_email_id,[Validators.email]],

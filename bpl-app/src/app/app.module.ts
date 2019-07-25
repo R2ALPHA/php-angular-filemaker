@@ -50,7 +50,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
 import { DecimalPipe } from '@angular/common';
 import { DatePipe } from '@angular/common';
-import { CalenderComponent } from './calender/calender.component'
+import { CalenderComponent } from './calender/calender.component';
+import { AllDetailComponent } from './all-detail/all-detail.component'
 
 @NgModule({
   declarations: [
@@ -68,7 +69,8 @@ import { CalenderComponent } from './calender/calender.component'
     AssignedTaskComponent,
     AddActivityComponent,
     AllTasksComponent,
-    CalenderComponent ,
+    CalenderComponent,
+    AllDetailComponent ,
   ],
   imports: [
     BrowserModule,
