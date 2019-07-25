@@ -19,6 +19,7 @@ import {
 
 import { Subject } from 'rxjs';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { ConfirmDialogService } from '../confirm-dialog.service';
 
 import {
   CalendarEvent,
@@ -55,7 +56,7 @@ const colors: any = {
 })
 export class CalenderComponent implements OnInit {
   @ViewChild('modalContent', { static: true }) modalContent: TemplateRef<any>;
-  
+
   view: CalendarView = CalendarView.Month;
   CalendarView = CalendarView;
   viewDate: Date = new Date();
@@ -69,15 +70,14 @@ export class CalenderComponent implements OnInit {
 
   ngOnInit() {
     this._taskService.getAllTaskOfAParticularPlayer()
-    .subscribe(data => {
-      this.taskDetails = data,
-      this.events=data,
-      this.convertDataForCalender(this.events)
-    });
+      .subscribe(data => {
+        this.taskDetails = data,
+          this.events = data,
+          this.convertDataForCalender(this.events)
+      });
 
-    // this.deleteEven()
   }
-  
+
   // first wrong here
   actions: CalendarEventAction[] = [
     {
@@ -97,46 +97,7 @@ export class CalenderComponent implements OnInit {
 
   refresh: Subject<any> = new Subject();
 
-  events:CalendarEvent[];
-
-  // events: CalendarEvent[] = [
-  //   {
-  //     start: subDays(startOfDay(new Date()), 1),
-  //     title: 'A 3 day event',
-  //   },
-  //   {
-  //     start: startOfDay(new Date()),
-  //     title: 'An event with no end date',
-  //     color: colors.yellow,
-  //     actions: this.actions
-  //   },
-  //   {
-  //     start: subDays(endOfMonth(new Date()), 3),
-  //     end: addDays(endOfMonth(new Date()), 3),
-  //     title: 'A long event that spans 2 months',
-  //     color: colors.blue,
-  //     allDay: true
-  //   },
-  //   {
-  //     start: subDays(endOfMonth(new Date()), 3),
-  //     end: addDays(endOfMonth(new Date()), 3),
-  //     title: 'A long event that spans 2 months',
-  //     color: colors.blue,
-  //     allDay: true
-  //   },
-  //   {
-  //     start: addHours(startOfDay(new Date()), 2),
-  //     end: new Date(),
-  //     title: 'A draggable and resizable event',
-  //     color: colors.yellow,
-  //     actions: this.actions,
-  //     resizable: {
-  //       beforeStart: true,
-  //       afterEnd: true
-  //     },
-  //     draggable: true
-  //   }
-  // ];
+  events: CalendarEvent[];
 
   activeDayIsOpen: boolean = true
 
@@ -164,7 +125,7 @@ export class CalenderComponent implements OnInit {
         return {
           ...event,
           start: newStart,
-          end  : newEnd
+          end: newEnd
         };
       }
       return iEvent;
@@ -198,15 +159,28 @@ export class CalenderComponent implements OnInit {
 
   constructor(
     private modal: NgbModal,
-    private _taskService : TaskService,
-    public datepipe: DatePipe
-    ) {}
+    private _taskService: TaskService,
+    public datepipe: DatePipe,
+    private dialogService:ConfirmDialogService
+  ) { }
 
 
-  
+
 
   deleteEvent(eventToDelete: CalendarEvent) {
-    this.events = this.events.filter(event => event !== eventToDelete);
+
+    this.dialogService.openConfirmDialog('Are You Sure want to delete this record')
+    .afterClosed().subscribe(res=>{
+    if(res==true)
+    {
+      
+    this.events = this.events.filter(
+      event => event !== eventToDelete);
+      let player_id = localStorage.getItem('player_id');
+      this._taskService.deleteTask(eventToDelete.id)
+      .subscribe(data => data);
+    }
+    })
   }
 
   setView(view: CalendarView) {
@@ -221,14 +195,15 @@ export class CalenderComponent implements OnInit {
 
     data.forEach(element => {
 
-      element.start_date= this.datepipe.transform(element.start_date);
-      element.stop_date= this.datepipe.transform(element.stop_date);
-     
+      element.id = element.activity_id;
+      element.start_date = this.datepipe.transform(element.start_date);
+      element.stop_date = this.datepipe.transform(element.stop_date);
+
       element.start_date = new Date(element.start_date);
-      element.stop_date = new Date(element.stop_date); 
-      element.start=element.start_date;
-      element.end=element.stop_date;
-      element.title=element.activity_name;
+      element.stop_date = new Date(element.stop_date);
+      element.start = element.start_date;
+      element.end = element.stop_date;
+      element.title = element.activity_name;
     });
   }
 }

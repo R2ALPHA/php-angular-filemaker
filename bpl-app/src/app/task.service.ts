@@ -13,6 +13,7 @@ export class TaskService {
   constructor(private _http: HttpClient) { }
 
   //Currently it is giving the user data
+  //need to reduce the code their are lots of repetition here,.....
   getAllTask() :Observable<ITask[]>{
     this._url = 'http://localhost:8080/v1/users';
     return this._http.get<ITask[]>(this._url);
@@ -20,17 +21,28 @@ export class TaskService {
 
   addActivity(task_detail){
 
-    this._url='http://localhost:8080/v1/activity'
+    this._url='http://localhost:8080/v1/activity';
     return this._http.post<any>(this._url, task_detail);
   }
 
   getAllActivity():Observable<ITask[]> {
-    this._url ='http://localhost:8080/v1/activities'
+    this._url ='http://localhost:8080/v1/activities';
     return this._http.get<ITask[]>(this._url);
   }
 
   getAllTaskOfAParticularPlayer():Observable<any>{
     this._url='http://localhost:8080/v1/activity/'+localStorage.getItem('player_id');
     return this._http.get<any>(this._url);
+  }
+
+  deleteTask(activity_id){
+    
+    // let data = new Array();
+    // data['activity_id'] = activity_id;
+
+    // JSON.stringify(data);
+    this._url='http://localhost:8080/v1/activity';
+    return this._http.delete<any>(this._url,activity_id);
+
   }
 }
