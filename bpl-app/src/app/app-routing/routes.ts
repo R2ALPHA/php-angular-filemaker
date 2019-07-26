@@ -12,6 +12,8 @@ import { AssignedTaskComponent } from '../assigned-task/assigned-task.component'
 import { AddActivityComponent } from '../add-activity/add-activity.component';
 import { AllTasksComponent } from '../all-tasks/all-tasks.component';
 import { CalenderComponent } from '../calender/calender.component';
+import { ActivityDetailModalComponent } from '../activity-detail-modal/activity-detail-modal.component';
+
 export const routes: Routes = [
 
     { path: 'signup',  component: SignUpComponent },
@@ -28,5 +30,6 @@ export const routes: Routes = [
     { path: 'activity',  component:AddActivityComponent},
     { path: 'all-task',  component:AllTasksComponent},
     { path: 'calender',  component:CalenderComponent},
+    { path: 'task-detail',  component:ActivityDetailModalComponent},
 
   ];

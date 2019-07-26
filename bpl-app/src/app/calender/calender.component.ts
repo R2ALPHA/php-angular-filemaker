@@ -31,6 +31,8 @@ import {
 import { TaskService } from '../task.service';
 import { DatePipe } from '@angular/common';
 import { ITask } from 'src/shared/task';
+import { MatDialogConfig, MatDialog } from '@angular/material';
+import { ActivityDetailModalComponent } from '../activity-detail-modal/activity-detail-modal.component';
 
 const colors: any = {
   red: {
@@ -47,13 +49,13 @@ const colors: any = {
   }
 };
 
-
 @Component({
   selector: 'app-calender',
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './calender.component.html',
   styleUrls: ['./calender.component.css']
 })
+
 export class CalenderComponent implements OnInit {
   @ViewChild('modalContent', { static: true }) modalContent: TemplateRef<any>;
 
@@ -68,6 +70,14 @@ export class CalenderComponent implements OnInit {
     event: CalendarEvent;
   };
 
+  constructor(
+    private modal: NgbModal,
+    private _taskService: TaskService,
+    public datepipe: DatePipe,
+    private dialogService: ConfirmDialogService,
+    private dialog: MatDialog,
+  ) { }
+
   ngOnInit() {
     this._taskService.getAllTaskOfAParticularPlayer()
       .subscribe(data => {
@@ -75,7 +85,7 @@ export class CalenderComponent implements OnInit {
           this.events = data,
           this.convertDataForCalender(this.events)
       });
-
+    // this.viewTask();
   }
 
   // first wrong here
@@ -134,10 +144,11 @@ export class CalenderComponent implements OnInit {
   }
 
   handleEvent(action: string, event: CalendarEvent): void {
-    this.modalData = { event, action };
-    this.modal.open(this.modalContent, { size: 'lg' });
-  }
 
+    this.viewTask(event);
+    // this.modalData = { event, action };
+    // this.modal.open(this.modalContent, { size: 'lg' });
+  }
 
   /** Need to have own Menu for this */
   addEvent(): void {
@@ -157,30 +168,19 @@ export class CalenderComponent implements OnInit {
     ];
   }
 
-  constructor(
-    private modal: NgbModal,
-    private _taskService: TaskService,
-    public datepipe: DatePipe,
-    private dialogService:ConfirmDialogService
-  ) { }
-
-
-
 
   deleteEvent(eventToDelete: CalendarEvent) {
 
     this.dialogService.openConfirmDialog('Are You Sure want to delete this record')
-    .afterClosed().subscribe(res=>{
-    if(res==true)
-    {
-      
-    this.events = this.events.filter(
-      event => event !== eventToDelete);
-      let player_id = localStorage.getItem('player_id');
-      this._taskService.deleteTask(eventToDelete.id)
-      .subscribe(data => data);
-    }
-    })
+      .afterClosed().subscribe(res => {
+        if (res == true) {
+
+          this.events = this.events.filter(
+            event => event !== eventToDelete);
+          this._taskService.deleteTask(eventToDelete.id)
+            .subscribe(data => data);
+        }
+      })
   }
 
   setView(view: CalendarView) {
@@ -205,5 +205,24 @@ export class CalenderComponent implements OnInit {
       element.end = element.stop_date;
       element.title = element.activity_name;
     });
+  }
+
+  /** Open the data for displaying the calender data */
+  viewTask(task) {
+
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+    
+    this.dialog.open(
+      ActivityDetailModalComponent,
+      {
+        width: '500px',
+        disableClose: false,
+        data: {
+          message: task
+        },
+      }
+    );
   }
 }

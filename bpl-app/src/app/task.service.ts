@@ -37,11 +37,7 @@ export class TaskService {
 
   deleteTask(activity_id){
     
-    // let data = new Array();
-    // data['activity_id'] = activity_id;
-
-    // JSON.stringify(data);
-    this._url='http://localhost:8080/v1/activity';
+    this._url='http://localhost:8080/v1/activity/'+activity_id;
     return this._http.delete<any>(this._url,activity_id);
 
   }

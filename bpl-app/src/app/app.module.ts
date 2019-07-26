@@ -55,6 +55,7 @@ import { AllDetailComponent } from './all-detail/all-detail.component';
 import { FileUploadModule } from "ng2-file-upload";
 import { FeedComponent } from './feed/feed.component';
 import { ConfirmDialogueComponent } from './confirm-dialogue/confirm-dialogue.component';
+import { ActivityDetailModalComponent } from './activity-detail-modal/activity-detail-modal.component';
 
 @NgModule({
   declarations: [
@@ -75,7 +76,8 @@ import { ConfirmDialogueComponent } from './confirm-dialogue/confirm-dialogue.co
     CalenderComponent,
     AllDetailComponent,
     FeedComponent,
-    ConfirmDialogueComponent ,
+    ConfirmDialogueComponent,
+    ActivityDetailModalComponent ,
   ],
   imports: [
     BrowserModule,

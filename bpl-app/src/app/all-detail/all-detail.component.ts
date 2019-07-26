@@ -12,8 +12,8 @@ export class AllDetailComponent implements OnInit {
 
   ngOnInit() {
   }
-
-  public uploader:FileUploader = new FileUploader({url: URL});
+  private _url="http::";
+  public uploader:FileUploader = new FileUploader({url:this._url });
   public hasBaseDropZoneOver:boolean = false;
   public hasAnotherDropZoneOver:boolean = false;
  
@@ -23,6 +23,5 @@ export class AllDetailComponent implements OnInit {
  
   public fileOverAnother(e:any):void {
     this.hasAnotherDropZoneOver = e;
-  }s
-
+  }
 }

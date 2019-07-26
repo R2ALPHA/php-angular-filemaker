@@ -58,7 +58,7 @@ mat-card-subtitle{
 }
 
 .col-md-6 {
-  font-size:25px;
+  font-size:18px;
   justify-content: center;
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   font-style: italic;
@@ -66,5 +66,14 @@ mat-card-subtitle{
 }
 
 .left {
-  text-decoration: underline;
+  // text-decoration: underline;
+}
+
+.social-btn {
+  margin-left:10px;
+  padding-left:20px;
+}
+
+.share-btn {
+  margin-left:3%;
 }
