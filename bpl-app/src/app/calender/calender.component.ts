@@ -156,6 +156,7 @@ export class CalenderComponent implements OnInit {
   }
 
   handleEvent(action: string, event: CalendarEvent): void {
+    alert("clicked here");
     this.viewTask(event);
     // this.modalData = { event, action };
     // this.modal.open(this.modalContent, { size: 'lg' });
@@ -249,7 +250,9 @@ export class CalenderComponent implements OnInit {
     );
   }
 
-  /** This.view will always give you the time period */
+  /**  This.view will always give you the time period *
+  /** Neccessity of filtering multiple rows here  */
+
   filterTask()
   {
     switch(this.view)
@@ -258,13 +261,10 @@ export class CalenderComponent implements OnInit {
           this.filterMonthwise();
         break;
       case 'week':
-          this.filterMonthwise();
           this.filterWeekWise();
         break;
       case 'day':
-          this.filterMonthwise();
-          this.filterWeekWise();
-          this.filterMonthwise();
+          this.filterDayWise();
         break;
     }  
   }
@@ -273,17 +273,24 @@ export class CalenderComponent implements OnInit {
 
     // Always take full list of the handler 
       this.events = this.totalEvent;
-
       this.events = this.events.filter(
         event => event.start.getMonth() === this.viewDate.getMonth()
         );
   }
 
   filterWeekWise(){
-    alert(this.view);
+    // alert(this.view);
+    //find the date of sunay
+    //find the date of saturday  
+    //filter on the basis of that..
+    
   }
   filterDayWise(){
-    alert(this.view);
+
+
+    this.events = this.events.filter(
+      event => alert(event.start.getDate() === this.viewDate.getDate())
+      );
   }
 
   /** TODO -- Loading kind of functionality when the data is not loaded */
