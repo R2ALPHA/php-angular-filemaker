@@ -71,6 +71,7 @@ export class CalenderComponent implements OnInit {
   view: CalendarView = CalendarView.Month;
   CalendarView = CalendarView;
   viewDate: Date = new Date();
+  totalEvent: CalendarEvent[];
 
   public taskDetails;
 
@@ -90,7 +91,6 @@ export class CalenderComponent implements OnInit {
   ngOnInit() {
     this._taskService.getAllTaskOfAParticularPlayer()
       .subscribe(data => {
-        this.taskDetails = data,
           this.events = data,
           this.convertDataForCalender(this.events)
       });
@@ -189,8 +189,9 @@ export class CalenderComponent implements OnInit {
         if (res == true) {
 
           this.events = this.events.filter(
-            event => event !== eventToDelete);
-          this._taskService.deleteTask(eventToDelete.id)
+            event => event !== eventToDelete
+            );
+            this._taskService.deleteTask(eventToDelete.id)
             .subscribe(data => data);
         }
       })
@@ -204,8 +205,8 @@ export class CalenderComponent implements OnInit {
 
   /** It will check for the next day or previous day  */
   closeOpenMonthViewDay() {
-   alert(this.viewDate);
     this.activeDayIsOpen = false;
+    this.filterTask();
   }
 
 
@@ -224,6 +225,9 @@ export class CalenderComponent implements OnInit {
       element.end = element.stop_date;
       element.title = element.activity_name;
     });
+
+    /** Temporary Variable to assign the variable */
+    this.totalEvent = this.events;
   }
 
   /** Open the model for displaying the calender data */
@@ -267,11 +271,12 @@ export class CalenderComponent implements OnInit {
   
   filterMonthwise(){
 
-    this.events = this.events.filter(
-      event => {
-        event.start.getMonth() == this.viewDate.getMonth()
-      });
-      alert(this.events);
+    // Always take full list of the handler 
+      this.events = this.totalEvent;
+
+      this.events = this.events.filter(
+        event => event.start.getMonth() === this.viewDate.getMonth()
+        );
   }
 
   filterWeekWise(){
