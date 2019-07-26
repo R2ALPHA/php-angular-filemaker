@@ -86,17 +86,17 @@ export class CalenderComponent implements OnInit {
     public datepipe: DatePipe,
     private dialogService: ConfirmDialogService,
     private dialog: MatDialog,
-  ) { }
+  ) {
+
+    this._taskService.getAllTaskOfAParticularPlayer()
+    .subscribe(data => {
+        this.events = data,
+        this.convertDataForCalender(this.events)
+        this.filterTask();
+    });
+   }
 
   ngOnInit() {
-    this._taskService.getAllTaskOfAParticularPlayer()
-      .subscribe(data => {
-          this.events = data,
-          this.convertDataForCalender(this.events)
-      });
-    // this.viewTask();liste
-
-    /** TODO - Call the methods that will initialise the event litener */
   }
 
   // first wrong here
@@ -206,7 +206,7 @@ export class CalenderComponent implements OnInit {
   /** It will check for the next day or previous day  */
   closeOpenMonthViewDay() {
     this.activeDayIsOpen = false;
-    this.filterTask();
+    this.filterTask(); 
   }
 
 
@@ -286,4 +286,5 @@ export class CalenderComponent implements OnInit {
     alert(this.view);
   }
 
+  /** TODO -- Loading kind of functionality when the data is not loaded */
 }
