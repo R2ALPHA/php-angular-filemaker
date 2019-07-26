@@ -1,7 +1,7 @@
 <!-- <div class="container"> -->
 <div class="main-container">
     <div class="row">
-        <div class="col-md-8">
+        <div class="col-md-9">
             <div class="row text-center">
                 <div class="col-md-4">
                     <div class="btn-group">
@@ -16,11 +16,12 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-2">
                     <h3>{{ viewDate | calendarDate:(view + 'ViewTitle'):'en' }}</h3>
                 </div>
                 <div class="col-md-4">
                     <div class="btn-group">
+
                         <div class="btn btn-primary" (click)="setView(CalendarView.Month)" [class.active]="view === CalendarView.Month">
                             Month
                         </div>
@@ -52,7 +53,7 @@
         <!-- Everything you see below is just for the demo, you don't need to include it in your app -->
 
         <br /><br /><br />
-        <div class="col-md-4">
+        <div class="edit-activity col-md-3">
 
             <!--  need to change for the actions -->
             <h3>
@@ -64,7 +65,7 @@
             </h3>
 
             <br>
-            <div class="table-responsive scroll" style="overflow-x: auto; height: 60vh;">
+            <div class="table-responsive scroll" style="overflow-x: hidden; height: 60vh;">
                 <table class="table table-bordered">
                     <thead>
                         <tr>
@@ -90,16 +91,24 @@
                             <!-- <input type="text" class="form-control" [(ngModel)]="event.stop_date" (keyup)="refresh.next()" /> -->
                             <!-- <input type="color" [(ngModel)]="event.color.secondary" (change)="refresh.next()" /> -->
                             <!-- </td> -->
-                            <td>
-                                <!-- <input type="text" class="form-control" [(ngModel)]="event.start_time" (keyup)="refresh.next()" /> -->
-                                <mat-form-field class="example-full-width">
+                            <!-- <td> -->
+                            <!-- <input type="text" class="form-control" [(ngModel)]="event.start_time" (keyup)="refresh.next()" /> -->
+                            <!-- <mat-form-field class="example-full-width">
                                     <input matInput type="date" mwlFlatpickr [(ngModel)]="event.start" (ngModelChange)="refresh.next()" [altInput]="true" [convertModelValue]="true" [enableTime]="true" dateFormat="Y-m-dTH:i" altFormat="F j, Y H:i" />
+                                </mat-form-field> -->
+                            <!-- </td> -->
+                            <td>
+                                <mat-form-field class="table-date">
+                                    <input matInput type="text" value={{event.start|date}}>
                                 </mat-form-field>
                             </td>
                             <td>
                                 <!-- <input type="text" class="form-control" [(ngModel)]="event.end_time" (keyup)="refresh.next()" /> -->
-                                <mat-form-field class="example-full-width">
+                                <!-- <mat-form-field class="example-full-width">
                                     <input matInput type="date" mwlFlatpickr [(ngModel)]="event.stop_date" (ngModelChange)="refresh.next()" [altInput]="true" [convertModelValue]="true" [enableTime]="true" dateFormat="Y-m-dTH:i" altFormat="F j, Y H:i" />
+                                </mat-form-field> -->
+                                <mat-form-field class="table-date">
+                                    <input matInput type="text" value={{event.stop_date|date}}>
                                 </mat-form-field>
                             </td>
                             <!-- <td> -->
@@ -142,10 +151,3 @@
         </div>
     </div>
 </div>
-
-<li *ngFor="let task of taskDetails">
-    {{ task | json }}
-</li>
-<li *ngFor="let event of events">
-    {{ event | json }}
-</li>

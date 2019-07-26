@@ -11,23 +11,21 @@
                         <button mat-button color="accent">Add</button>
                     </form>
                 </mat-tab>
-                <mat-tab label="Add Photo">
-                    <div class="row">
+                <mat-tab class="add-photo" label="Add Photo">
+                    <div class="row add-photo">
 
-                        <div class="col-md-3">
+                        <div class="col-md-3 add-photo">
 
-                            <div ng2FileDrop [ngClass]="{'nv-file-over': hasBaseDropZoneOver}"
-                                (fileOver)="fileOverBase($event)" [uploader]="uploader" class="well my-drop-zone">
+                            <div ng2FileDrop [ngClass]="{'nv-file-over': hasBaseDropZoneOver}" (fileOver)="fileOverBase($event)" [uploader]="uploader" class="well my-drop-zone">
                                 <span class="image-text">Drag Your Image Here</span>
                             </div>
 
-                            <input class="file-uploader" type="file" ng2FileSelect [uploader]="uploader"
-                                multiple /><br />
+                            <input class="file-uploader" type="file" ng2FileSelect [uploader]="uploader" multiple /><br />
                         </div>
 
-                        <div class="col-md-7" style="margin-bottom: 40px">
+                        <div class="col-md-7" style="overflow-x: hidden; margin-bottom: 40px">
 
-                            <table class="table scroll" style="overflow-x: none; height: 1vh;">
+                            <table class="table scroll" style="overflow-x: hidden; height: 1vh;">
                                 <thead>
                                     <tr>
                                         <th></th>
@@ -43,8 +41,7 @@
                                             {{ item?.file?.size/1024/1024 | number:'.2' }} MB</td>
                                         <td *ngIf="uploader.isHTML5">
                                             <div class="progress" style="margin-bottom: 0;">
-                                                <div class="progress-bar" role="progressbar"
-                                                    [ngStyle]="{ 'width': item.progress + '%' }"></div>
+                                                <div class="progress-bar" role="progressbar" [ngStyle]="{ 'width': item.progress + '%' }"></div>
                                             </div>
                                         </td>
                                         <td class="text-center">
@@ -54,12 +51,10 @@
                                             <span *ngIf="item.isError"><i class="glyphicon glyphicon-remove"></i></span>
                                         </td>
                                         <td nowrap>
-                                            <button mat-button color="accent" (click)="item.upload()"
-                                                [disabled]="item.isReady || item.isUploading || item.isSuccess">
+                                            <button mat-button color="accent" (click)="item.upload()" [disabled]="item.isReady || item.isUploading || item.isSuccess">
                                                 <span class="glyphicon glyphicon-upload"></span> Upload
                                             </button>
-                                            <button mat-button color="accent" (click)="item.cancel()"
-                                                [disabled]="!item.isUploading">
+                                            <button mat-button color="accent" (click)="item.cancel()" [disabled]="!item.isUploading">
                                                 <span class="glyphicon glyphicon-ban-circle"></span> Cancel
                                             </button>
                                             <button mat-button color="accent" (click)="item.remove()">
@@ -72,20 +67,16 @@
                             <div>
                                 <div>
                                     <div class="progress" style="">
-                                        <div class="progress-bar" role="progressbar"
-                                            [ngStyle]="{ 'width': uploader.progress + '%' }"></div>
+                                        <div class="progress-bar" role="progressbar" [ngStyle]="{ 'width': uploader.progress + '%' }"></div>
                                     </div>
                                 </div>
-                                <button mat-button color="accent" (click)="uploader.uploadAll()"
-                                    [disabled]="!uploader.getNotUploadedItems().length">
+                                <button mat-button color="accent" (click)="uploader.uploadAll()" [disabled]="!uploader.getNotUploadedItems().length">
                                     Upload all
                                 </button>
-                                <button mat-button color="accent" (click)="uploader.cancelAll()"
-                                    [disabled]="!uploader.isUploading">
+                                <button mat-button color="accent" (click)="uploader.cancelAll()" [disabled]="!uploader.isUploading">
                                     Cancel all
                                 </button>
-                                <button mat-button color="accent" (click)="uploader.clearQueue()"
-                                    [disabled]="!uploader.queue.length">
+                                <button mat-button color="accent" (click)="uploader.clearQueue()" [disabled]="!uploader.queue.length">
                                     Remove all
                                 </button>
                             </div>

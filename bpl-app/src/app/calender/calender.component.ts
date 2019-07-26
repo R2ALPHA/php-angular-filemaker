@@ -3,7 +3,8 @@ import {
   ChangeDetectionStrategy,
   ViewChild,
   TemplateRef,
-  OnInit
+  OnInit,
+  HostListener
 } from '@angular/core';
 
 import {
@@ -57,7 +58,15 @@ const colors: any = {
 })
 
 export class CalenderComponent implements OnInit {
+
   @ViewChild('modalContent', { static: true }) modalContent: TemplateRef<any>;
+
+  /** TODO --> To handle the scrollable event here , we need to do so  */
+  @HostListener("window:scroll", [])
+    onWindowScroll() {
+      // alert("hello World");
+      // how to listen to a specific scroller here...
+  }
 
   view: CalendarView = CalendarView.Month;
   CalendarView = CalendarView;
@@ -85,7 +94,9 @@ export class CalenderComponent implements OnInit {
           this.events = data,
           this.convertDataForCalender(this.events)
       });
-    // this.viewTask();
+    // this.viewTask();liste
+
+    /** TODO - Call the methods that will initialise the event litener */
   }
 
   // first wrong here
@@ -112,6 +123,7 @@ export class CalenderComponent implements OnInit {
   activeDayIsOpen: boolean = true
 
   dayClicked({ date, events }: { date: Date; events: CalendarEvent[] }): void {
+
     if (isSameMonth(date, this.viewDate)) {
       if (
         (isSameDay(this.viewDate, date) && this.activeDayIsOpen === true) ||
@@ -144,7 +156,6 @@ export class CalenderComponent implements OnInit {
   }
 
   handleEvent(action: string, event: CalendarEvent): void {
-
     this.viewTask(event);
     // this.modalData = { event, action };
     // this.modal.open(this.modalContent, { size: 'lg' });
@@ -168,7 +179,9 @@ export class CalenderComponent implements OnInit {
     ];
   }
 
-
+  /** Delete the event for the user 
+   *  When  you will select the code then it will come
+   */
   deleteEvent(eventToDelete: CalendarEvent) {
 
     this.dialogService.openConfirmDialog('Are You Sure want to delete this record')
@@ -183,14 +196,20 @@ export class CalenderComponent implements OnInit {
       })
   }
 
+  /** It will set the view to weeks, months or days */
   setView(view: CalendarView) {
     this.view = view;
+    this.filterTask();
   }
 
+  /** It will check for the next day or previous day  */
   closeOpenMonthViewDay() {
+   alert(this.viewDate);
     this.activeDayIsOpen = false;
   }
 
+
+  /** Will Conver to get into appropriate Format */
   convertDataForCalender(data) {
 
     data.forEach(element => {
@@ -207,13 +226,13 @@ export class CalenderComponent implements OnInit {
     });
   }
 
-  /** Open the data for displaying the calender data */
+  /** Open the model for displaying the calender data */
   viewTask(task) {
 
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
-    
+
     this.dialog.open(
       ActivityDetailModalComponent,
       {
@@ -225,4 +244,41 @@ export class CalenderComponent implements OnInit {
       }
     );
   }
+
+  /** This.view will always give you the time period */
+  filterTask()
+  {
+    switch(this.view)
+    {
+      case 'month':
+          this.filterMonthwise();
+        break;
+      case 'week':
+          this.filterMonthwise();
+          this.filterWeekWise();
+        break;
+      case 'day':
+          this.filterMonthwise();
+          this.filterWeekWise();
+          this.filterMonthwise();
+        break;
+    }  
+  }
+  
+  filterMonthwise(){
+
+    this.events = this.events.filter(
+      event => {
+        event.start.getMonth() == this.viewDate.getMonth()
+      });
+      alert(this.events);
+  }
+
+  filterWeekWise(){
+    alert(this.view);
+  }
+  filterDayWise(){
+    alert(this.view);
+  }
+
 }
