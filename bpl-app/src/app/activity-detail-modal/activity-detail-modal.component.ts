@@ -1,6 +1,6 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
-import { MatDialog, MatDialogConfig, MAT_DIALOG_DATA } from "@angular/material";
+import { MatDialog, MatDialogConfig, MAT_DIALOG_DATA, MatDialogRef } from "@angular/material";
 import { ConfirmDialogService } from '../confirm-dialog.service';
 import { TaskService } from '../task.service';
 
@@ -15,18 +15,18 @@ export class ActivityDetailModalComponent implements OnInit {
   constructor(
 
     @Inject(MAT_DIALOG_DATA) public data: any,
+
     private taskFb: FormBuilder,
     private dialog: MatDialog,
     private dialogService: ConfirmDialogService,
-    private _taskService: TaskService
+    private _taskService: TaskService,
 
   ) { 
   }
 
   ngOnInit() {
 
-    
-    this.taskForm = this.taskFb.group({
+      this.taskForm = this.taskFb.group({
       assigned_by: [this.data.message.assigned_by],
       activity_name: [this.data.message.activity_name],
       start_date: [this.data.message.start_day],
@@ -48,7 +48,6 @@ export class ActivityDetailModalComponent implements OnInit {
     this.dialogService.openConfirmDialog('Are You Sure want to delete this record')
       .afterClosed().subscribe(res => {
         if (res == true) {
-          alert(this.data.message.id);
           this._taskService.deleteTask(this.data.message.id)
             .subscribe(data => data);
         }

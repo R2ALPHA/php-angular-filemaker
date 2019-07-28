@@ -75,9 +75,11 @@ export class CalenderComponent implements OnInit {
 
   public taskDetails;
 
+  /** Send the datato the modal from here */
   modalData: {
-    action: string;
-    event: CalendarEvent;
+    date: Date;
+    // eventsToShow: CalendarEvent[];
+    eventsToShow: string;
   };
 
   constructor(
@@ -99,8 +101,9 @@ export class CalenderComponent implements OnInit {
   ngOnInit() {
   }
 
-  // first wrong here
+  // Pencil and edit are not working here
   actions: CalendarEventAction[] = [
+  
     {
       label: '<i class="fa fa-fw fa-pencil"></i>',
       onClick: ({ event }: { event: CalendarEvent }): void => {
@@ -120,20 +123,48 @@ export class CalenderComponent implements OnInit {
 
   events: CalendarEvent[];
 
-  activeDayIsOpen: boolean = true
+  activeDayIsOpen: boolean = false;
+  activeDays:boolean=true;
+
+
+ /** TODO : The Actice Day Variable and its referene is causing a problem */
 
   dayClicked({ date, events }: { date: Date; events: CalendarEvent[] }): void {
 
-    if (isSameMonth(date, this.viewDate)) {
-      if (
-        (isSameDay(this.viewDate, date) && this.activeDayIsOpen === true) ||
-        events.length === 0
-      ) {
-        this.activeDayIsOpen = false;
-      } else {
-        this.activeDayIsOpen = true;
+    // if (isSameMonth(date, this.viewDate)) {
+    //   if (
+    //     (isSameDay(this.viewDate, date) && this.activeDayIsOpen === true) ||
+    //     events.length === 0
+    //   ) {
+    //     this.activeDayIsOpen = false;
+    //     alert("closed");
+    //   } else {
+    //     this.activeDayIsOpen = true;
+    //     alert("opened");
+    //   }
+    //   this.viewDate = date;
+    // }
+
+    if(isSameMonth(date,this.viewDate)) {
+      if(isSameDay(this.viewDate,date) && this.activeDays === true || events.length === 0)
+      {
+        this.activeDays=false;
+        
       }
-      this.viewDate = date;
+      else
+      {
+        //Set the property  of the tooltip here
+
+        this.activeDays=true;
+        //Convert the date to the string
+
+        // let dateString ="hello World";
+        // this.modalData = { event, action };
+        // this.modalData.eventsToShow = this.events;
+        let eventsToShow = "hello World";
+        this.modalData={date,eventsToShow};
+        this.modal.open(this.modalContent, { size: 'lg' });
+      }
     }
   }
 
@@ -156,7 +187,7 @@ export class CalenderComponent implements OnInit {
   }
 
   handleEvent(action: string, event: CalendarEvent): void {
-    alert("clicked here");
+
     this.viewTask(event);
     // this.modalData = { event, action };
     // this.modal.open(this.modalContent, { size: 'lg' });

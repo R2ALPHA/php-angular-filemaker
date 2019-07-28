@@ -53,9 +53,7 @@ export class PrevalentTableComponent implements OnInit {
   getPosition() {
 
     let headerOffset = document.getElementById("thead");
-    let headerTop = headerOffset.offsetTop
-
-    alert(headerTop);
+    let headerTop = headerOffset.offsetTop;
     var rowoffset = document.getElementById("trow");
     alert(rowoffset.offsetTop);
     let rowTop = rowoffset.offsetTop

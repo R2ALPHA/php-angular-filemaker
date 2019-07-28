@@ -56,6 +56,7 @@ import { FileUploadModule } from "ng2-file-upload";
 import { FeedComponent } from './feed/feed.component';
 import { ConfirmDialogueComponent } from './confirm-dialogue/confirm-dialogue.component';
 import { ActivityDetailModalComponent } from './activity-detail-modal/activity-detail-modal.component';
+import { MatTooltipModule } from '@angular/material/tooltip'
 
 @NgModule({
   declarations: [
@@ -117,7 +118,8 @@ import { ActivityDetailModalComponent } from './activity-detail-modal/activity-d
       provide: DateAdapter,
       useFactory: adapterFactory
     }),
-    FileUploadModule
+    FileUploadModule,
+    MatTooltipModule
   ],
   entryComponents: [
     AdminComponent,
