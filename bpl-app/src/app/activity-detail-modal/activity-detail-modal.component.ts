@@ -20,6 +20,7 @@ export class ActivityDetailModalComponent implements OnInit {
     private dialog: MatDialog,
     private dialogService: ConfirmDialogService,
     private _taskService: TaskService,
+    private _dialogRef:MatDialogRef<ActivityDetailModalComponent>
 
   ) { 
   }
@@ -38,18 +39,21 @@ export class ActivityDetailModalComponent implements OnInit {
     });
   }
 
-  /* TODO Close Method*/
-
-  closeDialog() {
+  /** Will close the dialog */
+  closeDialog():void {
     this.dialog.closeAll();
   }
 
-  deleteActivity() {
+  /** Will delete the activvity */
+  /** TODO handle succesful Deletion and unsuccessful deletion */
+  deleteActivity():void {
     this.dialogService.openConfirmDialog('Are You Sure want to delete this record')
       .afterClosed().subscribe(res => {
         if (res == true) {
           this._taskService.deleteTask(this.data.message.id)
             .subscribe(data => data);
+            this.closeDialog();
+          this._dialogRef.close(this.data.message.id);
         }
       })
   }

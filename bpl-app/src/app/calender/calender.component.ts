@@ -56,7 +56,7 @@ const colors: any = {
   selector: 'app-calender',
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './calender.component.html',
-  styleUrls: ['./calender.component.css']
+  styleUrls: ['./calender.component.scss']
 })
 
 export class CalenderComponent implements OnInit {
@@ -65,9 +65,9 @@ export class CalenderComponent implements OnInit {
 
   /** TODO --> To handle the scrollable event here , we need to do so  */
   @HostListener("window:scroll", [])
-    onWindowScroll() {
-      // alert("hello World");
-      // how to listen to a specific scroller here...
+  onWindowScroll() {
+    // alert("hello World");
+    // how to listen to a specific scroller here...
   }
 
   view: CalendarView = CalendarView.Month;
@@ -92,20 +92,16 @@ export class CalenderComponent implements OnInit {
     private dialog: MatDialog,
   ) {
 
-    this._taskService.getAllTaskOfAParticularPlayer()
-    .subscribe(data => {
-        this.events = data,
-        this.convertDataForCalender(this.events)
-        this.filterTask();
-    });
-   }
+    this.getAllTask();
+  }
 
   ngOnInit() {
+    this.getAllTask();
   }
 
   // Pencil and edit are not working here
   actions: CalendarEventAction[] = [
-  
+
     {
       label: '<i class="fa fa-fw fa-pencil"></i>',
       onClick: ({ event }: { event: CalendarEvent }): void => {
@@ -126,24 +122,22 @@ export class CalenderComponent implements OnInit {
   events: CalendarEvent[];
 
   activeDayIsOpen: boolean = false;
-  activeDays:boolean=true;
+  activeDays: boolean = true;
 
 
- /** TODO : The Actice Day Variable and its referene is causing a problem */
+  /** TODO : The Actice Day Variable and its referene is causing a problem */
 
   dayClicked({ date, events }: { date: Date; events: CalendarEvent[] }): void {
 
-    if(isSameMonth(date,this.viewDate)) {
-      if(isSameDay(this.viewDate,date) && this.activeDays === true || events.length === 0)
-      {
-        this.activeDays=false;
+    if (isSameMonth(date, this.viewDate)) {
+      if (isSameDay(this.viewDate, date) && this.activeDays === true || events.length === 0) {
+        this.activeDays = false;
         this.addTaskForm();
       }
-      else
-      {
+      else {
         //Set the property  of the tooltip here
 
-        this.activeDays=true;
+        this.activeDays = true;
         //Convert the date to the string
 
         // let dateString ="hello World";
@@ -151,7 +145,7 @@ export class CalenderComponent implements OnInit {
         // this.modalData.eventsToShow = this.events;
         let eventsToShow = this.events.filter(
           event => event.start.getDate() === date.getDate());
-        this.modalData={date,eventsToShow};
+        this.modalData = { date, eventsToShow };
         this.modal.open(this.modalContent, { size: 'lg' });
       }
     }
@@ -203,31 +197,21 @@ export class CalenderComponent implements OnInit {
   /** Delete the event for the user 
    *  When  you will select the code then it will come
    */
-  deleteEvent(eventToDelete: CalendarEvent) {
+  deleteEvent(eventToDelete) {
 
-    this.dialogService.openConfirmDialog('Are You Sure want to delete this record')
-      .afterClosed().subscribe(res => {
-        if (res == true) {
-
-          this.events = this.events.filter(
-            event => event !== eventToDelete
-            );
-            this._taskService.deleteTask(eventToDelete.id)
-            .subscribe(data => data);
-        }
-      })
+    this.getAllTask();
   }
 
   /** It will set the view to weeks, months or days */
   setView(view: CalendarView) {
-    this.view = view;
+    this.view = view
     this.filterTask();
   }
 
   /** It will check for the next day or previous day  */
   closeOpenMonthViewDay() {
     this.activeDayIsOpen = false;
-    this.filterTask(); 
+    this.filterTask();
   }
 
   /** Will Conver to get into appropriate Format */
@@ -235,12 +219,7 @@ export class CalenderComponent implements OnInit {
 
     data.forEach(element => {
 
-      //Converting the date
       element.id = element.activity_id;
-  
-      let timeinHr = element.start_time;
-      // element.start_date = this.datepipe.transform(element.start_date);
-      // element.stop_date = this.datepipe.transform(element.stop_date);
 
       element.start_date = new Date(element.start_date);
       element.stop_date = new Date(element.stop_date);
@@ -249,13 +228,13 @@ export class CalenderComponent implements OnInit {
       let etime = element.end_time.split(':');
 
       element.start_date.setHours(stime[0]);
-   
+
       element.stop_date.setHours(etime[0]);
-    
+
       element.start = element.start_date;
       element.end = element.stop_date;
       element.title = element.activity_name;
-     
+
     });
 
     /** Temporary Variable to assign the variable */
@@ -268,14 +247,14 @@ export class CalenderComponent implements OnInit {
     // this.modal.close()
 
     this.modal.dismissAll();
-    //close and open the dialog in succession a good idea..
 
+    //close and open the dialog in succession
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
     dialogConfig.closeOnNavigation = true;
 
-    this.dialog.open(
+    let dialogData = this.dialog.open(
       ActivityDetailModalComponent,
       {
         width: '500px',
@@ -285,57 +264,63 @@ export class CalenderComponent implements OnInit {
         },
       }
     );
+
+    dialogData.afterClosed().subscribe(data => {
+      if (data) {
+        this.deleteEvent(data);
+      }
+    });
   }
 
   /**  This.view will always give you the time period *
   /** Neccessity of filtering multiple rows here  */
 
-  filterTask()
-  {
-    switch(this.view)
-    {
+  filterTask() {
+    switch (this.view) {
       case 'month':
-          this.filterMonthwise();
+        this.filterMonthwise();
         break;
       case 'week':
-          this.filterWeekWise();
+        this.filterMonthwise();
+        this.filterWeekWise();
         break;
       case 'day':
-          this.filterDayWise();
+        this.filterMonthwise();
+        this.filterDayWise();
         break;
-    }  
+    }
   }
-  
+
   /** Filter the data Month  Wise  */
-  filterMonthwise(){
+  filterMonthwise() {
 
     // Always take full list of the handler 
-      this.events = this.totalEvent;
-      this.events = this.events.filter(
-        event => (event.start.getMonth() === this.viewDate.getMonth()) && (event.start.getFullYear()===this.viewDate.getFullYear())
-        );
+    this.events = this.totalEvent;
+    this.events = this.events.filter(
+      event => (event.start.getMonth() === this.viewDate.getMonth()) && (event.start.getFullYear() === this.viewDate.getFullYear())
+    );
   }
 
 
   /** Filter the data week wise */
-  filterWeekWise(){
+  filterWeekWise() {
 
     /** It Will Convert it into individual date */
     let dayofWeek = this.viewDate.getDay();;
 
     let dayOfSun = new Date();
-    let dayOfSat:Date = new Date();
+    let dayOfSat: Date = new Date();
     let endDate: Date = new Date();
 
-    dayOfSun.setDate(this.viewDate.getDate()-dayofWeek);
+    dayOfSun.setDate(this.viewDate.getDate() - dayofWeek);
     dayOfSun.setMonth(this.viewDate.getMonth());
     dayOfSun.setFullYear(this.viewDate.getFullYear());
 
-    endDate.setDate(this.viewDate.getDate()-dayofWeek);
+    endDate.setDate(this.viewDate.getDate() - dayofWeek);
     endDate.setMonth(this.viewDate.getMonth());
     endDate.setFullYear(this.viewDate.getFullYear());
 
-   
+
     /** TODO ::- Filtering on the baiss of a month is a problem */
 
     // this.events = this.events.filter(
@@ -345,16 +330,16 @@ export class CalenderComponent implements OnInit {
 
 
   /** Filter the record date wise here */
-  filterDayWise(){
+  filterDayWise() {
     this.events = this.events.filter(
       event => event.start.getDate() === this.viewDate.getDate()
-      );
+    );
   }
 
   /** TODO -- Loading kind of functionality when the data is not loaded */
 
   /**  Task Form*/
-  
+
   addTaskForm() {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = true;
@@ -366,4 +351,16 @@ export class CalenderComponent implements OnInit {
     this.dialog.closeAll();
   }
 
+
+  /** Get all task of a player */
+  getAllTask() {
+
+    this._taskService.getAllTaskOfAParticularPlayer()
+      .subscribe(data => {
+        this.events = data,
+          this.convertDataForCalender(this.events)
+        this.filterTask();
+      });
+
+  }
 }

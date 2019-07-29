@@ -57,6 +57,7 @@ import { FeedComponent } from './feed/feed.component';
 import { ConfirmDialogueComponent } from './confirm-dialogue/confirm-dialogue.component';
 import { ActivityDetailModalComponent } from './activity-detail-modal/activity-detail-modal.component';
 import { MatTooltipModule } from '@angular/material/tooltip'
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
 
 @NgModule({
   declarations: [
@@ -119,7 +120,8 @@ import { MatTooltipModule } from '@angular/material/tooltip'
       useFactory: adapterFactory
     }),
     FileUploadModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MatButtonToggleModule
   ],
   entryComponents: [
     AdminComponent,

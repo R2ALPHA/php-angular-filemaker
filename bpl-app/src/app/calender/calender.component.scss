@@ -1,3 +1,23 @@
+@import '~@angular/material/theming';
+@include mat-core();
+$app-primary: mat-palette($mat-indigo);
+$app-accent: mat-palette($mat-pink, A200, A100, A400);
+$app-theme: mat-light-theme($app-primary, $app-accent);
+@mixin mix-app-theme($app-theme) {
+    $primary: map-get($app-theme, primary);
+    $accent: map-get($app-theme, accent);
+    .mat-button-toggle {
+        background-color: mat-color($primary);
+        color: mat-color($primary, default-contrast);
+    }
+    .mat-button-toggle-checked {
+        background-color: mat-color($accent);
+        color: mat-color($accent, default-contrast);
+    }
+}
+
+// Include the mixin
+@include mix-app-theme($app-theme);
 h3 {
     margin: 0 0 10px;
 }
@@ -53,17 +73,6 @@ pre {
     overflow-x: hidden;
 }
 
-
-/* thead th,
-thead td {
-    text-align: center;
-}
-
-tbody th,
-tbody td {
-    text-align: center;
-} */
-
 .edit-activity {
     overflow-x: hidden;
 }
@@ -114,4 +123,10 @@ th {
     /* Increment the serial number counter */
     content: counter(serial-number);
     /* Display the counter */
+}
+
+#day-btn {
+    margin-left: -1px;
+    padding-left: -1px;
+    color: "primary"
 }
