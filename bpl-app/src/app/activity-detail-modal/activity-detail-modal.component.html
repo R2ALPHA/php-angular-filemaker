@@ -1,4 +1,9 @@
 <div class="container">
+    <mat-card>
+        <mat-card-header class="card-header">
+            <mat-card-title class="heading"> Task Details</mat-card-title>
+        </mat-card-header>
+    </mat-card>
     <form [formGroup]="taskForm">
         <div class="row">
 
@@ -99,11 +104,11 @@
 
         <div class="row">
             <div class="col-sm-6">
-                <button type="submit" mat-button color="accent" (click)="deleteActivity()">Delete</button>
+                <button id="delete-btn" type="submit" mat-button color="accent" (click)="deleteActivity()"><img class="img" src="../../assets/image/dustbin.png"></button>
             </div>
-
+            <span class="spacer"></span>
             <div clas="col-sm-6">
-                <button mat-button color="accent" (click)="closeDialog()">Close</button>
+                <button mat-button color="accent" (click)="closeDialog()"><img class="img" src="../../assets/image/close.png"></button>
             </div>
         </div>
     </form>

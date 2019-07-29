@@ -1,0 +1,24 @@
+#delete-btn {
+    background: url(../../assets/image/delete.jpg);
+}
+
+.img {
+    height: 50px;
+}
+
+.spacer {
+    flex: 1 1 auto;
+}
+
+.heading {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font: bold;
+    font-size: 1vw;
+    justify-content: center;
+}
+
+.card-header {
+    height: 10%;
+    max-height: 10%;
+    justify-content: center;
+}
