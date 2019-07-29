@@ -313,7 +313,7 @@ export class CalenderComponent implements OnInit {
     // Always take full list of the handler 
       this.events = this.totalEvent;
       this.events = this.events.filter(
-        event => event.start.getMonth() === this.viewDate.getMonth()
+        event => (event.start.getMonth() === this.viewDate.getMonth()) && (event.start.getFullYear()===this.viewDate.getFullYear())
         );
   }
 
@@ -325,8 +325,6 @@ export class CalenderComponent implements OnInit {
     
   }
   filterDayWise(){
-
-
     this.events = this.events.filter(
       event => event.start.getDate() === this.viewDate.getDate()
       );
