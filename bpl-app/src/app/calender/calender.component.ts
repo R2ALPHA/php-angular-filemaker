@@ -35,6 +35,7 @@ import { ITask } from 'src/shared/task';
 import { MatDialogConfig, MatDialog } from '@angular/material';
 import { ActivityDetailModalComponent } from '../activity-detail-modal/activity-detail-modal.component';
 import { AddActivityComponent } from '../add-activity/add-activity.component';
+import { elementEventFullName } from '@angular/compiler/src/view_compiler/view_compiler';
 
 const colors: any = {
   red: {
@@ -131,20 +132,6 @@ export class CalenderComponent implements OnInit {
  /** TODO : The Actice Day Variable and its referene is causing a problem */
 
   dayClicked({ date, events }: { date: Date; events: CalendarEvent[] }): void {
-
-    // if (isSameMonth(date, this.viewDate)) {
-    //   if (
-    //     (isSameDay(this.viewDate, date) && this.activeDayIsOpen === true) ||
-    //     events.length === 0
-    //   ) {
-    //     this.activeDayIsOpen = false;
-    //     alert("closed");
-    //   } else {
-    //     this.activeDayIsOpen = true;
-    //     alert("opened");
-    //   }
-    //   this.viewDate = date;
-    // }
 
     if(isSameMonth(date,this.viewDate)) {
       if(isSameDay(this.viewDate,date) && this.activeDays === true || events.length === 0)
@@ -243,21 +230,32 @@ export class CalenderComponent implements OnInit {
     this.filterTask(); 
   }
 
-
   /** Will Conver to get into appropriate Format */
   convertDataForCalender(data) {
 
     data.forEach(element => {
 
+      //Converting the date
       element.id = element.activity_id;
-      element.start_date = this.datepipe.transform(element.start_date);
-      element.stop_date = this.datepipe.transform(element.stop_date);
+  
+      let timeinHr = element.start_time;
+      // element.start_date = this.datepipe.transform(element.start_date);
+      // element.stop_date = this.datepipe.transform(element.stop_date);
 
       element.start_date = new Date(element.start_date);
       element.stop_date = new Date(element.stop_date);
+
+      let stime = element.start_time.split(':');
+      let etime = element.end_time.split(':');
+
+      element.start_date.setHours(stime[0]);
+   
+      element.stop_date.setHours(etime[0]);
+    
       element.start = element.start_date;
       element.end = element.stop_date;
       element.title = element.activity_name;
+     
     });
 
     /** Temporary Variable to assign the variable */
@@ -308,6 +306,7 @@ export class CalenderComponent implements OnInit {
     }  
   }
   
+  /** Filter the data Month  Wise  */
   filterMonthwise(){
 
     // Always take full list of the handler 
@@ -317,13 +316,35 @@ export class CalenderComponent implements OnInit {
         );
   }
 
+
+  /** Filter the data week wise */
   filterWeekWise(){
-    // alert(this.view);
-    //find the date of sunay
-    //find the date of saturday  
-    //filter on the basis of that..
-    
+
+    /** It Will Convert it into individual date */
+    let dayofWeek = this.viewDate.getDay();;
+
+    let dayOfSun = new Date();
+    let dayOfSat:Date = new Date();
+    let endDate: Date = new Date();
+
+    dayOfSun.setDate(this.viewDate.getDate()-dayofWeek);
+    dayOfSun.setMonth(this.viewDate.getMonth());
+    dayOfSun.setFullYear(this.viewDate.getFullYear());
+
+    endDate.setDate(this.viewDate.getDate()-dayofWeek);
+    endDate.setMonth(this.viewDate.getMonth());
+    endDate.setFullYear(this.viewDate.getFullYear());
+
+   
+    /** TODO ::- Filtering on the baiss of a month is a problem */
+
+    // this.events = this.events.filter(
+    //   ((event),dayOfSun) => ((event.start.getDate()>=dayOfSun) && (event.start<= endDate))
+    //   );
   }
+
+
+  /** Filter the record date wise here */
   filterDayWise(){
     this.events = this.events.filter(
       event => event.start.getDate() === this.viewDate.getDate()

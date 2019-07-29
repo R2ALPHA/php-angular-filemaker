@@ -120,7 +120,7 @@
                         Tasks:
                         <!-- <pre>{{ modalData?.eventsToShow | json }}</pre> -->
                         <ul *ngFor="let modal of modalData?.eventsToShow">
-                            <li (eventClicked)="handleEvent('Clicked', $event.event)" (eventTimesChanged)="eventTimesChanged($event)">{{modal.title}} {{modal.start_time}} <button mat-button color="accent" (click)="viewTask(modal)">Details</button></li>
+                            <li (eventClicked)="handleEvent('Clicked', $event.event)" (eventTimesChanged)="eventTimesChanged($event)"> {{modal.title}} {{modal.start |date }} <button mat-button color="accent" (click)="viewTask(modal)">Details</button></li>
                         </ul>
                     </div>
                 </div>
