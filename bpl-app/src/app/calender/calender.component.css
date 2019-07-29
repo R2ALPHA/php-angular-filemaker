@@ -32,6 +32,8 @@ pre {
 
 .scroll {
     margin-right: 1%;
+    overflow-x: hidden;
+    height: 60vh;
 }
 
 .inside-scroll {
@@ -51,7 +53,8 @@ pre {
     overflow-x: hidden;
 }
 
-thead th,
+
+/* thead th,
 thead td {
     text-align: center;
 }
@@ -59,8 +62,56 @@ thead td {
 tbody th,
 tbody td {
     text-align: center;
-}
+} */
 
 .edit-activity {
     overflow-x: hidden;
+}
+
+.activity-btn {
+    z-index: 8;
+    position: fixed;
+    display: flex;
+    align-self: flex-end;
+    bottom: 10%;
+    left: 95%;
+}
+
+table,
+th,
+td {
+    border: 1px solid grey;
+    border-collapse: collapse;
+    padding: 5px;
+    text-align: center;
+}
+
+table tr:nth-child(odd) {
+    background-color: #f1f1f1;
+    text-align: center;
+}
+
+table tr:nth-child(even) {
+    background-color: #ffffff;
+    text-align: center;
+}
+
+th {
+    background-color: white;
+}
+
+
+/* Automatic Serial Number Row */
+
+.css-serial {
+    counter-reset: serial-number;
+    position: relative;
+    /* Set the serial number counter to 0 */
+}
+
+.css-serial td:first-child:before {
+    counter-increment: serial-number;
+    /* Increment the serial number counter */
+    content: counter(serial-number);
+    /* Display the counter */
 }

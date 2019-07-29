@@ -34,6 +34,7 @@ import { DatePipe } from '@angular/common';
 import { ITask } from 'src/shared/task';
 import { MatDialogConfig, MatDialog } from '@angular/material';
 import { ActivityDetailModalComponent } from '../activity-detail-modal/activity-detail-modal.component';
+import { AddActivityComponent } from '../add-activity/add-activity.component';
 
 const colors: any = {
   red: {
@@ -78,8 +79,8 @@ export class CalenderComponent implements OnInit {
   /** Send the datato the modal from here */
   modalData: {
     date: Date;
-    // eventsToShow: CalendarEvent[];
-    eventsToShow: string;
+    eventsToShow: CalendarEvent[];
+    // eventsToShow: string;
   };
 
   constructor(
@@ -149,7 +150,7 @@ export class CalenderComponent implements OnInit {
       if(isSameDay(this.viewDate,date) && this.activeDays === true || events.length === 0)
       {
         this.activeDays=false;
-        
+        this.addTaskForm();
       }
       else
       {
@@ -161,7 +162,8 @@ export class CalenderComponent implements OnInit {
         // let dateString ="hello World";
         // this.modalData = { event, action };
         // this.modalData.eventsToShow = this.events;
-        let eventsToShow = "hello World";
+        let eventsToShow = this.events.filter(
+          event => event.start.getDate() === date.getDate());
         this.modalData={date,eventsToShow};
         this.modal.open(this.modalContent, { size: 'lg' });
       }
@@ -265,9 +267,15 @@ export class CalenderComponent implements OnInit {
   /** Open the model for displaying the calender data */
   viewTask(task) {
 
+    // this.modal.close()
+
+    this.modal.dismissAll();
+    //close and open the dialog in succession a good idea..
+
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
+    dialogConfig.closeOnNavigation = true;
 
     this.dialog.open(
       ActivityDetailModalComponent,
@@ -320,9 +328,23 @@ export class CalenderComponent implements OnInit {
 
 
     this.events = this.events.filter(
-      event => alert(event.start.getDate() === this.viewDate.getDate())
+      event => event.start.getDate() === this.viewDate.getDate()
       );
   }
 
   /** TODO -- Loading kind of functionality when the data is not loaded */
+
+  /**  Task Form*/
+  
+  addTaskForm() {
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+    this.dialog.open(AddActivityComponent, dialogConfig);
+  }
+
+  closeTaskForm() {
+    this.dialog.closeAll();
+  }
+
 }
