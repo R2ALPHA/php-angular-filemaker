@@ -84,9 +84,7 @@
           </mat-form-field> -->
                     <mat-form-field>
                         <mat-label>Assigned To</mat-label>
-                        <mat-select formControlName="assigned_to" multiple readonly>
-                            <mat-option *ngFor="let user of all_user" [value]="user">{{user.user_name}}</mat-option>
-                        </mat-select>
+                        <input matInput readonly formControlName="assigned_to" value={{data.message.assigned_to}}>
                     </mat-form-field>
                 </div>
             </div>

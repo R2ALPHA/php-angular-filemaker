@@ -27,7 +27,7 @@
                     <div class="btn-group">
 
                         <mat-button-toggle-group name="fontStyle" aria-label="Font Style">
-                            <mat-button-toggle id="mnth-btn" mat-raised-button (click)="setView(CalendarView.Month)" [class.active]="view === CalendarView.Month" value="bold">Month</mat-button-toggle>
+                            <mat-button-toggle id="mnth-btn" mat-raised-button checked (click)="setView(CalendarView.Month)" [class.active]="view === CalendarView.Month" value="bold">Month</mat-button-toggle>
                             <mat-button-toggle id="week-btn" mat-raised-button (click)="setView(CalendarView.Week)" [class.active]="view === CalendarView.Week" value="italic">Week</mat-button-toggle>
                             <mat-button-toggle id="day-btn" mat-raised-button (click)="setView(CalendarView.Day)" [class.active]="view === CalendarView.Day" value="underline">Day</mat-button-toggle>
                         </mat-button-toggle-group>
