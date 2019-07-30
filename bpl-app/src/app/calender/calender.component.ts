@@ -173,22 +173,22 @@ export class CalenderComponent implements OnInit {
   }
 
   /** Need to have own Menu for this */
-  addEvent(): void {
-    this.events = [
-      ...this.events,
-      {
-        title: 'New event',
-        start: startOfDay(new Date()),
-        end: endOfDay(new Date()),
-        color: colors.red,
-        draggable: true,
-        resizable: {
-          beforeStart: true,
-          afterEnd: true
-        }
-      }
-    ];
-  }
+  // addEvent(): void {
+  //   this.events = [
+  //     ...this.events,
+  //     {
+  //       title: 'New event',
+  //       start: startOfDay(new Date()),
+  //       end: endOfDay(new Date()),
+  //       color: colors.red,
+  //       draggable: true,
+  //       resizable: {
+  //         beforeStart: true,
+  //         afterEnd: true
+  //       }
+  //     }
+  //   ];
+  // }
 
   /** Delete the event for the user 
    *  When  you will select the code then it will come
@@ -347,14 +347,13 @@ export class CalenderComponent implements OnInit {
     this.dialog.closeAll();
   }
 
-
   /** Get all task of a player */
   getAllTask() {
 
     this._taskService.getAllTaskOfAParticularPlayer()
       .subscribe(data => {
-        this.events = data,
-          this.convertDataForCalender(this.events)
+        this.events = data;
+        this.convertDataForCalender(this.events);
         this.filterTask();
       });
     }

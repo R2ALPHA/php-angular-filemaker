@@ -12,16 +12,36 @@
     font-size: 1.3vw;
     justify-content: center;
     color: white;
-    text-decoration: underline;
+    justify-items: center;
+    margin-left: 30%;
+    margin-top: -6%
 }
 
-.card-header {
-    height: 10%;
-    max-height: 10%;
+
+/* .card-header {
+    margin-top: -17px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    height: 30px;
     justify-content: center;
     background-color: #2E77BB;
+} */
+
+
+/* .mat-label {
+    font-size: 22px;
+} */
+
+#weekly {
+    display: none;
 }
 
-.mat-label {
-    font-size: 22px;
+.task-img {
+    height: 50px;
+}
+
+.header {
+    height: 12px;
+    background-color: #2E77BB;
+    justify-content: center;
 }

@@ -1,8 +1,6 @@
 <div class="container">
     <mat-card class="header">
-        <mat-card-header class="card-header">
-            <mat-card-title class="heading">Assign Tasks</mat-card-title>
-        </mat-card-header>
+        <mat-card-title class="heading">Assign Tasks</mat-card-title>
     </mat-card>
     <form [formGroup]="taskForm">
         <div class="row">
@@ -101,13 +99,15 @@
                 <div class="form-group">
                     <mat-form-field appearance="standard">
                         <mat-label>Comment</mat-label>
-                        <input matInput type="tel" name="alt_mob_no" id="altno" placeholder="Enter the Alternate number" formControlName="comment">
+                        <input matInput type="tel" name="alt_mob_no" id="altno" placeholder="Enter the Comment" formControlName="comment">
                         <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
                         <mat-hint>Hint</mat-hint>
                     </mat-form-field>
                 </div>
             </div>
         </div>
+
+        <!-- Doubt About recurring goals here,,-->
 
         <div class="row">
 
@@ -116,24 +116,30 @@
                     <mat-radio-group aria-label="Select if it is a recurring tasks">
                         <mat-radio-button value="Daily" (click)="removeTheChildNode()">Daily</mat-radio-button>&nbsp;
                         <mat-radio-button value="Weekly" (click)="createWeeklyCheckbox()">Weekly</mat-radio-button>&nbsp;
-                        <!-- <mat-radio-button value="Once">Once</mat-radio-button>&nbsp; -->
+                        <mat-radio-button value="Once" (click)="removeTheChildNode()" checked>Once</mat-radio-button>&nbsp;
                     </mat-radio-group>
                 </div>
             </div>
             <div id="weekly" class="col-sm-6">
-
+                <!-- <mat-radio-group aria-label="Select if it is a recurring tasks" multiple> -->
+                <div>
+                    <mat-checkbox value="sunday">S</mat-checkbox>&nbsp;
+                    <mat-checkbox value="monday">M</mat-checkbox>&nbsp;
+                    <mat-checkbox value="tuesday">T</mat-checkbox>&nbsp;
+                </div>
+                <div>
+                    <mat-checkbox value="wednesday">W</mat-checkbox>&nbsp;
+                    <mat-checkbox value="thurshday">T</mat-checkbox>&nbsp;
+                    <mat-checkbox value="friday">F</mat-checkbox>&nbsp;
+                    <mat-checkbox value="saturday">S</mat-checkbox>&nbsp;
+                </div>
+                <!-- </mat-radio-group> -->
             </div>
         </div>
 
         <div class="row">
-            <!-- <div class="col-sm-6">
-                <button type="submit" mat-button color="accent" [disabled]="taskForm.invalid" (click)="processSubmission()">Add Task</button>
-            </div>
-            <div clas="col-sm-6">
-                <button mat-button color="accent" (click)="closeForm()">Close</button>
-            </div> -->
             <div class="col-sm-6">
-                <button id="delete-btn" type="submit" mat-button color="accent" (click)="deleteActivity()"><img class="img" src="../../assets/image/create.png"></button>
+                <button type="submit" mat-button color="accent" [disabled]="taskForm.invalid" (click)="processSubmission() "><img class="task-img" src="../../assets/image/addTaskICon.png"></button>
             </div>
             <span class="spacer"></span>
             <div clas="col-sm-6">

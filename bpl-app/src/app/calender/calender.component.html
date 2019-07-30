@@ -9,7 +9,7 @@
                         <!-- <div class="btn btn-primary" mwlCalendarPreviousView [view]="view" [(viewDate)]="viewDate" (viewDateChange)="closeOpenMonthViewDay()">
                             Previous
                         </div> -->
-                        <button mat-raised-button color="accent" mwlCalendarToday [(viewDate)]="viewDate">Today</button>
+                        <button mat-raised-button color="accent" mwlCalendarToday [(viewDate)]="viewDate" active>Today</button>
                         <!-- <div class="btn btn-outline-secondary" mwlCalendarToday [(viewDate)]="viewDate">
                             Today
                         </div> -->
@@ -111,7 +111,7 @@
                         Tasks:
                         <!-- <pre>{{ modalData?.eventsToShow | json }}</pre> -->
                         <ul *ngFor="let modal of modalData?.eventsToShow">
-                            <li (eventClicked)="handleEvent('Clicked', $event.event)" (eventTimesChanged)="eventTimesChanged($event)"> {{modal.title}} {{modal.start |date }} <button mat-button color="accent" (click)="viewTask(modal)">Details</button></li>
+                            <li (eventClicked)="handleEvent('Clicked', $event.event)" (eventTimesChanged)="eventTimesChanged($event)"> {{modal.activity_name}} {{modal.start |date }} <button mat-button color="accent" (click)="viewTask(modal)">Details</button></li>
                         </ul>
                     </div>
                 </div>

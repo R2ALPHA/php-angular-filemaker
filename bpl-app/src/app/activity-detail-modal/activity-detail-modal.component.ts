@@ -21,7 +21,7 @@ export class ActivityDetailModalComponent implements OnInit {
     private dialog: MatDialog,
     private dialogService: ConfirmDialogService,
     private _taskService: TaskService,
-    private _dialogRef:MatDialogRef<ActivityDetailModalComponent>
+    private _dialogRef:MatDialogRef<ActivityDetailModalComponent>,
 
   ) { 
   }
