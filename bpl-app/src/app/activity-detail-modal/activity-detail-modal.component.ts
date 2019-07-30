@@ -3,6 +3,7 @@ import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { MatDialog, MatDialogConfig, MAT_DIALOG_DATA, MatDialogRef } from "@angular/material";
 import { ConfirmDialogService } from '../confirm-dialog.service';
 import { TaskService } from '../task.service';
+import swal from 'sweetalert';
 
 @Component({
   selector: 'app-activity-detail-modal',
@@ -35,6 +36,7 @@ export class ActivityDetailModalComponent implements OnInit {
       start_time: [this.data.message.start_time],
       end_time: [this.data.message.end_time],
       activity_id: [this.data.message.activity_id],
+      assigned_to: [this.data.message.assigned_to],
       comment: [this.data.message.comment],
     });
   }
@@ -54,6 +56,7 @@ export class ActivityDetailModalComponent implements OnInit {
             .subscribe(data => data);
             this.closeDialog();
           this._dialogRef.close(this.data.message.id);
+          swal("Deleted!", "Task has been removed", "success")
         }
       })
   }

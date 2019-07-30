@@ -58,6 +58,7 @@ import { ConfirmDialogueComponent } from './confirm-dialogue/confirm-dialogue.co
 import { ActivityDetailModalComponent } from './activity-detail-modal/activity-detail-modal.component';
 import { MatTooltipModule } from '@angular/material/tooltip'
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
+import  swal from 'sweetalert';
 
 @NgModule({
   declarations: [
@@ -121,11 +122,13 @@ import { MatButtonToggleModule } from '@angular/material/button-toggle';
     }),
     FileUploadModule,
     MatTooltipModule,
-    MatButtonToggleModule
+    MatButtonToggleModule,
+
   ],
   entryComponents: [
     AdminComponent,
-    ConfirmDialogueComponent
+    ConfirmDialogueComponent,
+    
   ],
   providers: [
     AuthService,

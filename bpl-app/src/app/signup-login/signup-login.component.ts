@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { FormGroup, Validators,FormBuilder} from '@angular/forms';
 import { EnrollmentService } from '../enrollment.service';
 import { AdminLoginService } from '../admin-login.service';
+import swal from 'sweetalert';
 
 @Component({
   selector: 'app-signup-login',
@@ -79,7 +80,7 @@ export class SignupLoginComponent implements OnInit {
       },
       error=> {
         console.error('Error',error);
-        alert("Wrong Credentials");
+        swal("Oops!", "Either User Name or Password is wrong!", "error");
       }
     )
   }

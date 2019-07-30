@@ -138,11 +138,7 @@ export class CalenderComponent implements OnInit {
         //Set the property  of the tooltip here
 
         this.activeDays = true;
-        //Convert the date to the string
-
-        // let dateString ="hello World";
-        // this.modalData = { event, action };
-        // this.modalData.eventsToShow = this.events;
+ 
         let eventsToShow = this.events.filter(
           event => event.start.getDate() === date.getDate());
         this.modalData = { date, eventsToShow };
@@ -361,6 +357,5 @@ export class CalenderComponent implements OnInit {
           this.convertDataForCalender(this.events)
         this.filterTask();
       });
-
-  }
+    }
 }

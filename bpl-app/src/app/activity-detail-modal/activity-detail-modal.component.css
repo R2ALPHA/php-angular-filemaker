@@ -13,14 +13,17 @@
 .heading {
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     font: bold;
-    font-size: 1vw;
+    font-size: 1.3vw;
     justify-content: center;
+    color: white;
+    text-decoration: underline;
 }
 
 .card-header {
     height: 10%;
     max-height: 10%;
     justify-content: center;
+    background-color: #2E77BB;
 }
 
 .mat-label {
