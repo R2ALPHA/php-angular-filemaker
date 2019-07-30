@@ -5,19 +5,15 @@
             <div class="row text-center">
                 <div class="col-md-4">
                     <div class="btn-group">
-                        <button mat-raised-button color="primary" mwlCalendarPreviousView [view]="view" [(viewDate)]="viewDate" (viewDateChange)="closeOpenMonthViewDay()">Previous</button>
-                        <!-- <div class="btn btn-primary" mwlCalendarPreviousView [view]="view" [(viewDate)]="viewDate" (viewDateChange)="closeOpenMonthViewDay()">
-                            Previous
-                        </div> -->
-                        <button mat-raised-button color="accent" mwlCalendarToday [(viewDate)]="viewDate" active>Today</button>
-                        <!-- <div class="btn btn-outline-secondary" mwlCalendarToday [(viewDate)]="viewDate">
-                            Today
-                        </div> -->
-                        <button mat-raised-button color="primary" mwlCalendarNextView [view]="view" [(viewDate)]="viewDate" (viewDateChange)="closeOpenMonthViewDay()">Next</button>
+                        <mat-button-toggle-group name="fontStyle" aria-label="Font Style">
+                            <mat-button-toggle mat-raised-button color="primary" mwlCalendarPreviousView [view]="view" [(viewDate)]="viewDate" (viewDateChange)="closeOpenMonthViewDay()">Previous</mat-button-toggle>
+                            <mat-button-toggle mat-raised-button color="accent" mwlCalendarToday [(viewDate)]="viewDate" checked>Today</mat-button-toggle>
+                            <mat-button-toggle mat-raised-button color="primary" mwlCalendarNextView [view]="view" [(viewDate)]="viewDate" (viewDateChange)="closeOpenMonthViewDay()">Next</mat-button-toggle>
+                        </mat-button-toggle-group>
 
-                        <!-- <div class="btn btn-primary" mwlCalendarNextView [view]="view" [(viewDate)]="viewDate" (viewDateChange)="closeOpenMonthViewDay()">
-                            Next
-                        </div> -->
+                        <!-- <button mat-raised-button color="primary" mwlCalendarPreviousView [view]="view" [(viewDate)]="viewDate" (viewDateChange)="closeOpenMonthViewDay()">Previous</button>
+                        <button mat-raised-button color="accent" mwlCalendarToday [(viewDate)]="viewDate" active>Today</button>
+                        <button mat-raised-button color="primary" mwlCalendarNextView [view]="view" [(viewDate)]="viewDate" (viewDateChange)="closeOpenMonthViewDay()">Next</button> -->
                     </div>
                 </div>
                 <div class="col-md-4">
