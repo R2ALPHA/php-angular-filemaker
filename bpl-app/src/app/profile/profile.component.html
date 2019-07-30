@@ -1,64 +1,64 @@
 <div class="row">
-  <div class="col-md-2">
-    <mat-card class="example-card">
-      <mat-card-header>
-        <div mat-card-avatar class="example-header-image"></div>
-        <mat-card-title class="white-text">Shiba Inu</mat-card-title>
-        <mat-card-subtitle class="white-text">Dog Breed</mat-card-subtitle>
-      </mat-card-header>
-      <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
-      <mat-card-content>
-        <div>
-            <div class="col-lg-12">
-                <span class="label">User Name</span>
-            </div>
-            <div class="col-lg-12 value">
-              {{profile[0].user_name}}
-            </div>
-        </div>
+    <div class="col-md-2">
+        <mat-card class="example-card">
+            <mat-card-header>
+                <div mat-card-avatar class="example-header-image"></div>
+                <mat-card-title class="white-text">Shiba Inu</mat-card-title>
+                <mat-card-subtitle class="white-text">Dog Breed</mat-card-subtitle>
+            </mat-card-header>
+            <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
+            <mat-card-content>
+                <div>
+                    <div class="col-lg-12">
+                        <span class="label">User Name</span>
+                    </div>
+                    <div class="col-lg-12 value">
+                        {{profile[0].user_name}}
+                    </div>
+                </div>
 
-        <div>
-            <div class="col-lg-12">
-                <span class="label">Date of Birth</span>
-            </div>
-            <div class="col-lg-12 value">
-              {{profile[0].dob}}
-              <!-- 12-2-1998 -->
-            </div>
-        </div>
+                <div>
+                    <div class="col-lg-12">
+                        <span class="label">Date of Birth</span>
+                    </div>
+                    <div class="col-lg-12 value">
+                        {{profile[0].dob}}
+                        <!-- 12-2-1998 -->
+                    </div>
+                </div>
 
-        <div>
-            <div class="col-lg-12">
-                <span class="label">Gender</span>
-            </div>
-            <div class="col-lg-12 value">
-              {{profile[0].gender}}
-            </div>
-        </div>
+                <div>
+                    <div class="col-lg-12">
+                        <span class="label">Gender</span>
+                    </div>
+                    <div class="col-lg-12 value">
+                        {{profile[0].gender}}
+                    </div>
+                </div>
 
-        <p class="status">
-            We Play To Win What About You
-        </p>
-      </mat-card-content>
-      <mat-card-actions>
-        <div class="col-lg-12 primary">
-          <button mat-raised-button color="primary"  (click)="updateForm()">EDIT</button>
-        </div>
-      </mat-card-actions>
-    </mat-card>
-  </div>
-  
-  <div class="col-md-10" >
-    <mat-tab-group  >
-      <mat-tab label="Feed">
-        <app-all-detail></app-all-detail>
-      </mat-tab>
-      <mat-tab label="People"> 
-        <app-assigned-task></app-assigned-task>
-      </mat-tab>
-      <mat-tab label="Personal Calender">
-        <app-calender class="calender"></app-calender>
-      </mat-tab>
-    </mat-tab-group>
-  </div>
+                <p class="status">
+                    We Play To Win What About You
+                </p>
+            </mat-card-content>
+            <mat-card-actions>
+                <div class="col-lg-12 primary">
+                    <button mat-raised-button color="primary" (click)="updateForm()">EDIT</button>
+                </div>
+            </mat-card-actions>
+        </mat-card>
+    </div>
+
+    <div class="col-md-10">
+        <mat-tab-group>
+            <mat-tab label="Feed">
+                <app-all-detail></app-all-detail>
+            </mat-tab>
+            <mat-tab label="People">
+                <app-assigned-task></app-assigned-task>
+            </mat-tab>
+            <mat-tab label="Personal Calender">
+                <app-calender class="calender" (updateView)="otherComponentGetMethod()"></app-calender>
+            </mat-tab>
+        </mat-tab-group>
+    </div>
 </div>

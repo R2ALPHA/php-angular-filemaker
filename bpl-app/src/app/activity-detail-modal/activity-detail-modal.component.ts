@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit, Inject, EventEmitter, Output } from '@angular/core';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { MatDialog, MatDialogConfig, MAT_DIALOG_DATA, MatDialogRef } from "@angular/material";
 import { ConfirmDialogService } from '../confirm-dialog.service';
@@ -13,6 +13,8 @@ import swal from 'sweetalert';
 export class ActivityDetailModalComponent implements OnInit {
 
   private taskForm: FormGroup;
+  @Output() updateView = new EventEmitter();
+
   constructor(
 
     @Inject(MAT_DIALOG_DATA) public data: any,
@@ -49,8 +51,10 @@ export class ActivityDetailModalComponent implements OnInit {
   /** Will delete the activvity */
   /** TODO handle succesful Deletion and unsuccessful deletion */
   deleteActivity():void {
+
     this.dialogService.openConfirmDialog('Are You Sure want to delete this record')
       .afterClosed().subscribe(res => {
+        
         if (res == true) {
           this._taskService.deleteTask(this.data.message.id)
             .subscribe(data => data);

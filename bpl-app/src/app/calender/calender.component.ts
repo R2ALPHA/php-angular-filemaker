@@ -32,7 +32,7 @@ import {
 import { TaskService } from '../task.service';
 import { DatePipe } from '@angular/common';
 import { ITask } from 'src/shared/task';
-import { MatDialogConfig, MatDialog } from '@angular/material';
+import { MatDialog, MatDialogConfig, MAT_DIALOG_DATA, MatDialogRef } from "@angular/material";
 import { ActivityDetailModalComponent } from '../activity-detail-modal/activity-detail-modal.component';
 import { AddActivityComponent } from '../add-activity/add-activity.component';
 import { elementEventFullName } from '@angular/compiler/src/view_compiler/view_compiler';
@@ -66,8 +66,7 @@ export class CalenderComponent implements OnInit {
   /** TODO --> To handle the scrollable event here , we need to do so  */
   @HostListener("window:scroll", [])
   onWindowScroll() {
-    // alert("hello World");
-    // how to listen to a specific scroller here...
+    
   }
 
   view: CalendarView = CalendarView.Month;
@@ -85,6 +84,7 @@ export class CalenderComponent implements OnInit {
   };
 
   constructor(
+    
     private modal: NgbModal,
     private _taskService: TaskService,
     public datepipe: DatePipe,
@@ -168,33 +168,13 @@ export class CalenderComponent implements OnInit {
   handleEvent(action: string, event: CalendarEvent): void {
 
     this.viewTask(event);
-    // this.modalData = { event, action };
-    // this.modal.open(this.modalContent, { size: 'lg' });
   }
 
-  /** Need to have own Menu for this */
-  // addEvent(): void {
-  //   this.events = [
-  //     ...this.events,
-  //     {
-  //       title: 'New event',
-  //       start: startOfDay(new Date()),
-  //       end: endOfDay(new Date()),
-  //       color: colors.red,
-  //       draggable: true,
-  //       resizable: {
-  //         beforeStart: true,
-  //         afterEnd: true
-  //       }
-  //     }
-  //   ];
-  // }
-
   /** Delete the event for the user 
-   *  When  you will select the code then it will come
+   *  When  you will select the code then it will com
+   *  Currently deletion is not happening.
    */
   deleteEvent(eventToDelete) {
-
     this.getAllTask();
   }
 
@@ -235,12 +215,11 @@ export class CalenderComponent implements OnInit {
 
     /** Temporary Variable to assign the variable */
     this.totalEvent = this.events;
+  
   }
 
   /** Open the model for displaying the calender data */
   viewTask(task) {
-
-    // this.modal.close()
 
     this.modal.dismissAll();
 
@@ -271,16 +250,21 @@ export class CalenderComponent implements OnInit {
   /**  This.view will always give you the time period *
   /** Neccessity of filtering multiple rows here  */
 
-  filterTask() {
+  filterTask():void {
+
     switch (this.view) {
+
       case 'month':
         this.filterMonthwise();
         break;
+
       case 'week':
         this.filterMonthwise();
         this.filterWeekWise();
         break;
+
       case 'day':
+
         this.filterMonthwise();
         this.filterDayWise();
         break;
@@ -288,7 +272,7 @@ export class CalenderComponent implements OnInit {
   }
 
   /** Filter the data Month  Wise  */
-  filterMonthwise() {
+  filterMonthwise():void {
 
     // Always take full list of the handler 
     this.events = this.totalEvent;
@@ -297,9 +281,10 @@ export class CalenderComponent implements OnInit {
     );
   }
 
-
-  /** Filter the data week wise */
-  filterWeekWise() {
+  /** Filter the data week wise
+   *  TODO  -- Currently it is filtering date wise.
+   */
+  filterWeekWise():void {
 
     /** It Will Convert it into individual date */
     let dayofWeek = this.viewDate.getDay();;
@@ -326,7 +311,8 @@ export class CalenderComponent implements OnInit {
 
 
   /** Filter the record date wise here */
-  filterDayWise() {
+  filterDayWise():void {
+
     this.events = this.events.filter(
       event => event.start.getDate() === this.viewDate.getDate()
     );
@@ -335,15 +321,20 @@ export class CalenderComponent implements OnInit {
   /** TODO -- Loading kind of functionality when the data is not loaded */
 
   /**  Task Form*/
+  addTaskForm():void {
 
-  addTaskForm() {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
+    
+    /** Send the data to be populated */
     this.dialog.open(AddActivityComponent, dialogConfig);
+
+    /** If yes then will fetch the data */
+    this.getAllTask();
   }
 
-  closeTaskForm() {
+  closeTaskForm():void {
     this.dialog.closeAll();
   }
 
