@@ -4,7 +4,8 @@ import {
   ViewChild,
   TemplateRef,
   OnInit,
-  HostListener
+  HostListener,
+  OnDestroy
 } from '@angular/core';
 
 import {
@@ -36,6 +37,7 @@ import { MatDialog, MatDialogConfig, MAT_DIALOG_DATA, MatDialogRef } from "@angu
 import { ActivityDetailModalComponent } from '../activity-detail-modal/activity-detail-modal.component';
 import { AddActivityComponent } from '../add-activity/add-activity.component';
 import { elementEventFullName } from '@angular/compiler/src/view_compiler/view_compiler';
+import { ObservableService } from '../observable.service';
 
 const colors: any = {
   red: {
@@ -61,8 +63,9 @@ const colors: any = {
 
 export class CalenderComponent implements OnInit {
 
-  @ViewChild('modalContent', { static: true }) modalContent: TemplateRef<any>;
 
+  @ViewChild('modalContent', { static: true }) modalContent: TemplateRef<any>;
+ 
   /** TODO --> To handle the scrollable event here , we need to do so  */
   @HostListener("window:scroll", [])
   onWindowScroll() {
@@ -74,7 +77,8 @@ export class CalenderComponent implements OnInit {
   viewDate: Date = new Date();
   totalEvent: CalendarEvent[];
 
-  public taskDetails;
+  dataRefresher;
+  public taskDetails:any="heloo";
 
   /** Send the datato the modal from here */
   modalData: {
@@ -89,19 +93,36 @@ export class CalenderComponent implements OnInit {
     private _taskService: TaskService,
     public datepipe: DatePipe,
     private dialogService: ConfirmDialogService,
-    private dialog: MatDialog,
-  ) {
+    private dialog: MatDialog ,
+    private _observableService:ObservableService
+    ) {
 
     this.getAllTask();
+   
+    
+
+    // this._taskService.getAllActivity()
+    // .subscribe(data=>
+    //   {
+    //     this._observableService.taskDetails.next(data);
+    //   })  
+   
   }
 
   ngOnInit() {
-    this.getAllTask();
+    this.refreshData();
+  }
+
+  refreshData(){
+    this.dataRefresher =
+      setInterval(() => {
+        this.getAllTask();
+        //Passing the false flag would prevent page reset to 1 and hinder user interaction
+      }, 30000);  
   }
 
   // Pencil and edit are not working here
   actions: CalendarEventAction[] = [
-
     {
       label: '<i class="fa fa-fw fa-pencil"></i>',
       onClick: ({ event }: { event: CalendarEvent }): void => {
@@ -132,7 +153,8 @@ export class CalenderComponent implements OnInit {
     if (isSameMonth(date, this.viewDate)) {
       if (isSameDay(this.viewDate, date) && this.activeDays === true || events.length === 0) {
         this.activeDays = false;
-        this.addTaskForm();
+        this.viewDate=date;
+        this.addTaskForm(2);
       }
       else {
         //Set the property  of the tooltip here
@@ -141,8 +163,8 @@ export class CalenderComponent implements OnInit {
  
         let eventsToShow = this.events.filter(
           event => event.start.getDate() === date.getDate());
-        this.modalData = { date, eventsToShow };
-        this.modal.open(this.modalContent, { size: 'lg' });
+          this.modalData = { date, eventsToShow };
+          this.modal.open(this.modalContent, { size: 'lg' });
       }
     }
   }
@@ -175,7 +197,26 @@ export class CalenderComponent implements OnInit {
    *  Currently deletion is not happening.
    */
   deleteEvent(eventToDelete) {
-    this.getAllTask();
+
+    // this.events.splice(2);
+
+    this._observableService.taskDetails
+    .subscribe(
+      uname => {
+        alert("behavioural Subject Called here");
+        this.totalEvent = uname;
+        this.events = this.events.filter(
+          event => (event.id !== eventToDelete) 
+        );
+        // this.getAllTask();   //no need to call after calling the value
+      }); 
+
+   
+    // this.refreshData();
+
+
+    // this.events.splice(2)
+    // this.getAllTask();
   }
 
   /** It will set the view to weeks, months or days */
@@ -235,7 +276,8 @@ export class CalenderComponent implements OnInit {
         width: '500px',
         disableClose: false,
         data: {
-          message: task
+          message: task,
+          totalTask: this.totalEvent
         },
       }
     );
@@ -301,7 +343,6 @@ export class CalenderComponent implements OnInit {
     endDate.setMonth(this.viewDate.getMonth());
     endDate.setFullYear(this.viewDate.getFullYear());
 
-
     /** TODO ::- Filtering on the baiss of a month is a problem */
 
     // this.events = this.events.filter(
@@ -321,17 +362,25 @@ export class CalenderComponent implements OnInit {
   /** TODO -- Loading kind of functionality when the data is not loaded */
 
   /**  Task Form*/
-  addTaskForm():void {
+  addTaskForm(populate):void {
 
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
     
-    /** Send the data to be populated */
-    this.dialog.open(AddActivityComponent, dialogConfig);
+    let addDialog =this.dialog.open(AddActivityComponent, {
+      data: {
+        dataKey: this.viewDate,
+      }
+    });
 
+    addDialog.afterClosed().subscribe(() => {
+      this.getAllTask();
+    });
+ 
+    
     /** If yes then will fetch the data */
-    this.getAllTask();
+    // this.getAllTask();
   }
 
   closeTaskForm():void {
@@ -346,6 +395,8 @@ export class CalenderComponent implements OnInit {
         this.events = data;
         this.convertDataForCalender(this.events);
         this.filterTask();
+        // this._observableService.taskDetails.next(this.events);
+      
       });
     }
 }

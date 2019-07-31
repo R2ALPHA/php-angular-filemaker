@@ -1,10 +1,11 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation, Inject } from '@angular/core';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
-import { MatDialog, MatDialogConfig } from "@angular/material";
+import { MatDialog, MatDialogConfig, MAT_DIALOG_DATA, MatDialogRef } from "@angular/material";
 import { TaskService } from '../task.service';
 import { DatePipe } from '@angular/common';
 import { ProfileService } from '../profile.service';
 import swal from 'sweetalert';
+
 
 @Component({
   selector: 'app-add-activity',
@@ -24,12 +25,12 @@ export class AddActivityComponent implements OnInit {
 
   constructor(
 
+    @Inject(MAT_DIALOG_DATA) public data: any,
     private taskFb: FormBuilder,
     private dialog: MatDialog,
     private _taskService: TaskService,
     private _profileService: ProfileService,
-    public datepipe: DatePipe
-
+    public datepipe: DatePipe,
   ) { }
 
 
@@ -48,8 +49,8 @@ export class AddActivityComponent implements OnInit {
 
       assigned_by   : [this.username, [Validators.required]],
       activity_name : ['', [Validators.required]],
-      start_date    : ['', [Validators.required]],
-      stop_date     : ['', [Validators.required]],
+      start_date    : [this.data.dataKey, [Validators.required]],
+      stop_date     : [this.data.dataKey, [Validators.required]],
       start_time    : ['', [Validators.required]],
       end_time      : ['', [Validators.required]],
       assigned_to   : ['', [Validators.required]],
@@ -83,7 +84,7 @@ export class AddActivityComponent implements OnInit {
          }
        )
     });
-
+    
     if (this.taskAdded) {
       // alert("Task Succeessfully Added");
       swal("Created!", "Task has been added", "success");
@@ -99,6 +100,8 @@ export class AddActivityComponent implements OnInit {
       .subscribe(
         data => {
           if (data.status != 404) {
+            
+            //Push the data to tje 
             this.taskForm.reset();
             this.closeForm();
           }

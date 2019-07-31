@@ -71,8 +71,8 @@
                             <!-- <th>Assigned by</th> -->
                         </tr>
                     </thead>
-
                     <tbody>
+
                         <tr *ngFor="let event of events">
                             <td> &nbsp;
                             </td>
@@ -87,7 +87,7 @@
                 </table>
             </div>
             <div class="activity-btn">
-                <a mat-fab (click)="addTaskForm()">
+                <a mat-fab (click)="addTaskForm(1)">
                     <mat-icon>add</mat-icon>
                 </a>
             </div>

@@ -4,6 +4,7 @@ import { MatDialog, MatDialogConfig, MAT_DIALOG_DATA, MatDialogRef } from "@angu
 import { ConfirmDialogService } from '../confirm-dialog.service';
 import { TaskService } from '../task.service';
 import swal from 'sweetalert';
+import { ObservableService } from '../observable.service';
 
 @Component({
   selector: 'app-activity-detail-modal',
@@ -11,8 +12,10 @@ import swal from 'sweetalert';
   styleUrls: ['./activity-detail-modal.component.css']
 })
 export class ActivityDetailModalComponent implements OnInit {
+  [x: string]: any;
 
   private taskForm: FormGroup;
+
   @Output() updateView = new EventEmitter();
 
   constructor(
@@ -24,8 +27,10 @@ export class ActivityDetailModalComponent implements OnInit {
     private dialogService: ConfirmDialogService,
     private _taskService: TaskService,
     private _dialogRef:MatDialogRef<ActivityDetailModalComponent>,
+    private _observableService:ObservableService
 
   ) { 
+
   }
 
   ngOnInit() {
@@ -41,6 +46,14 @@ export class ActivityDetailModalComponent implements OnInit {
       assigned_to: [this.data.message.assigned_to],
       comment: [this.data.message.comment],
     });
+
+    /** It will not subscribe to the value of the observables */
+    // this._observableService.taskDetails
+    // .subscribe(
+    //   uname => {
+    //     alert("Activity data");
+    //     uname = uname;
+    //   });
   }
 
   /** Will close the dialog */
@@ -56,11 +69,30 @@ export class ActivityDetailModalComponent implements OnInit {
       .afterClosed().subscribe(res => {
         
         if (res == true) {
+
+          //delete task
           this._taskService.deleteTask(this.data.message.id)
-            .subscribe(data => data);
-            this.closeDialog();
+          .subscribe(data => data);
+
+          this.closeDialog();
+
+          //send the message after closing the modal
           this._dialogRef.close(this.data.message.id);
-          swal("Deleted!", "Task has been removed", "success")
+
+          this.data.totalTask = this.data.totalTask.filter(
+            event => (event.id !== this.data.message.id)
+          );
+
+          // this._observableService.totalTask.next(this.data.totalTask);  //This value will be passed to all componnets.
+
+          swal("Removed!", "Task has been removed", "success");
+
+          //get all the activity and subscribe to the user
+           this._taskService.getAllActivity()
+          .subscribe(data=>
+            {
+              this._observableService.taskDetails.next(data);
+            })
         }
       })
   }

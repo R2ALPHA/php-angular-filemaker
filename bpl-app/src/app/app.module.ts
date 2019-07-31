@@ -23,7 +23,7 @@ import 'flatpickr/dist/flatpickr.css'
 import { ProfileComponent } from './profile/profile.component';
 import { MainNavComponent } from './main-nav/main-nav.component';
 import { LayoutModule } from '@angular/cdk/layout';
-import { MatButtonModule, MatTableModule, MatSidenavModule, MatIconModule, MatListModule ,MatCardModule, MatInputModule, MatTabsModule ,MatDialogModule} from '@angular/material';
+import { MatButtonModule, MatTableModule, MatSidenavModule, MatIconModule, MatListModule ,MatCardModule, MatInputModule, MatTabsModule ,MatDialogModule, MatDialogRef} from '@angular/material';
 import { MatFormFieldModule} from '@angular/material/form-field';
 import { Ng2SmartTableModule }from 'ng2-smart-table';
 import { AuthService } from './auth.service';
@@ -59,7 +59,8 @@ import { ActivityDetailModalComponent } from './activity-detail-modal/activity-d
 import { MatTooltipModule } from '@angular/material/tooltip'
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatCheckboxModule } from '@angular/material/checkbox';
-import  swal from 'sweetalert';
+import { ObservableExample1Component } from './observable-example1/observable-example1.component';
+import { ObservableExample2Component } from './observable-example2/observable-example2.component';
 
 @NgModule({
   declarations: [
@@ -81,7 +82,9 @@ import  swal from 'sweetalert';
     AllDetailComponent,
     FeedComponent,
     ConfirmDialogueComponent,
-    ActivityDetailModalComponent ,
+    ActivityDetailModalComponent,
+    ObservableExample1Component,
+    ObservableExample2Component ,
   ],
   imports: [
     BrowserModule,
@@ -124,11 +127,13 @@ import  swal from 'sweetalert';
     FileUploadModule,
     MatTooltipModule,
     MatButtonToggleModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    
   ],
   entryComponents: [
     AdminComponent,
     ConfirmDialogueComponent,
+    AddActivityComponent,
     
   ],
   providers: [
@@ -137,7 +142,7 @@ import  swal from 'sweetalert';
       provide: HTTP_INTERCEPTORS, useClass: Interceptor, multi:true
     },
     DecimalPipe,
-    DatePipe
+    DatePipe,
   ],
   bootstrap: [AppComponent]
 })
