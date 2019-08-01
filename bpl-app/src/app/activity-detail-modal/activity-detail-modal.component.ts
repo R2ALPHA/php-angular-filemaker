@@ -4,6 +4,11 @@ import { MatDialog, MatDialogConfig, MAT_DIALOG_DATA, MatDialogRef } from "@angu
 import { ConfirmDialogService } from '../confirm-dialog.service';
 import { TaskService } from '../task.service';
 import swal from 'sweetalert';
+// import * as _swal from 'sweetalert';
+// import { SweetAlert } from 'sweetalert/typings/core';
+
+// const swal: SweetAlert = _swal as any;
+
 import { ObservableService } from '../observable.service';
 
 @Component({

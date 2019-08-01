@@ -7,6 +7,11 @@ import { ProfileService } from '../profile.service';
 import swal from 'sweetalert';
 
 
+// import * as _swal from 'sweetalert';
+// import { SweetAlert } from 'sweetalert/typings/core';
+
+// const swal: SweetAlert = _swal as any;
+
 @Component({
   selector: 'app-add-activity',
   templateUrl: './add-activity.component.html',
