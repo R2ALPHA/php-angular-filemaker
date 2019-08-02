@@ -160,9 +160,8 @@ td {
 cdk-virtual-scroll-viewport {
     height: 50vh;
     width: 60%;
-    margin: 0 auto;
     display: flex;
-    align-items: center;
+    align-items: left;
     flex-direction: column;
     justify-content: left;
     list-style: none;
@@ -174,7 +173,7 @@ cdk-virtual-scroll-viewport {
         box-shadow: 2px 2px 3px rgba($color: #888888, $alpha: 0.2);
     }
     &::-webkit-scrollbar {
-        width: 1em;
+        width: 0.1em;
     }
     &::-webkit-scrollbar-track {
         -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
@@ -191,8 +190,8 @@ img {
 }
 
 .example-header-image {
-    background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
-    background-size: cover;
+    // background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+    // background-size: cover;
 }
 
 .mat-card-image {}
@@ -207,11 +206,11 @@ img {
 }
 
 mat-card-title {
-    font-weight: bold;
+    font-weight: none;
 }
 
 mat-card-subtitle {
-    font-weight: bold;
+    font-weight: none;
 }
 
 .col-md-6 {
@@ -233,4 +232,15 @@ mat-card-subtitle {
 
 .share-btn {
     margin-left: 3%;
+}
+
+.scroller {
+    margin-left: 0%;
+    padding-left: 0%;
+}
+
+.social-icon {
+    height: 50px;
+    width: 15px;
+    opacity: 5;
 }

@@ -27,6 +27,10 @@ export class ProfileService {
     this.profileData = data;
   }
 
+  getProfileById(player_id) {
+    this._url = 'http://localhost:8080/v1/user/id/' + player_id;
+    return this._http.get<IProfile[]>(this._url);
+  }
   getProfileData() {
     return this.profileData;
   }

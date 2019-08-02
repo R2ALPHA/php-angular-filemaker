@@ -3,103 +3,42 @@
         <div class="col-md-12">
             <mat-tab-group>
                 <mat-tab label="Broadcast Message">
-                    <form [formGroup]="statusForm" (ngSubmit)="statusForm.valid && onSubmit()">
-                        <mat-form-field appearance="outline">
-                            <mat-label>Broadcast Messages to the Team</mat-label>
-                            <textarea matInput formControlName="message"></textarea>
-                        </mat-form-field>
-                        <button mat-button color="accent">Add</button>
-                    </form>
-                    <cdk-virtual-scroll-viewport itemSize="100">
+                    <div>
+                        <form [formGroup]="statusForm" (ngSubmit)="statusForm.valid && onSubmit()">
+                            <mat-form-field appearance="outline">
+                                <mat-label>Broadcast Messages to the Team</mat-label>
+                                <textarea matInput formControlName="message"></textarea>
+                            </mat-form-field>
+                            <button mat-button color="accent">Add</button>
+                        </form>
+                    </div>
 
-                        <li *cdkVirtualFor="let task of  totalStatus ;" class="animated slideInRight">
+                    <div class="col-md-12">
 
-                            <mat-card class="example-card">
+                        <div class="scroller">
+                            <cdk-virtual-scroll-viewport itemSize="100">
 
-                                <div class="row">
-                                    <div class="col-sm-6">
-                                        <mat-card-header>
-                                            <div mat-card-avatar class="example-header-image"></div>
-                                            <mat-card-title>{{task.user_name}}</mat-card-title>
-                                            <mat-card-subtitle>{{task.id}}</mat-card-subtitle>
-                                        </mat-card-header>
-                                    </div>
-                                </div>
-                                <mat-card-content>
+                                <li *cdkVirtualFor="let status of  totalStatus ;" class="animated slideInRight" (click)="display(status)">
 
-                                    <div class="row">
-                                        <div class="col-md-6 left">
-                                            Email ID
-                                        </div>
-                                        <div class="col-md-6">
-                                            {{task._pk_email_id}}
-                                        </div>
-                                    </div>
+                                    <mat-card>
+                                        <mat-card-header>{{status.player_id}}</mat-card-header>
+                                        <p>{{status.message}}</p>
+                                        <!-- <img src="../../assets//image/like1.jpg">
+                                    <img src="../../assets//image/wow.png"> -->
+                                        <!-- On click enable the button here.. that can be done  by here -->
+                                        <!-- <button mat-raised-button color="accent" class="social-icon">LIKE</button>
+                                    <button mat-raised-button color="accent" class="social-icon">SURPRISE</button> -->
+                                    </mat-card>
+                                </li>
 
-                                    <div class="row">
-                                        <div class="col-md-6 left">
-                                            Gender
-                                        </div>
-                                        <div class="col-md-6">
-                                            {{task.gender}}
-                                        </div>
-                                    </div>
+                            </cdk-virtual-scroll-viewport>
+                        </div>
+                    </div>
 
-                                    <div class="row">
-                                        <div class="col-md-6 left">
-                                            Date Of Birth
-                                        </div>
-                                        <div class="col-md-6">
-                                            {{task.dob}}
-                                        </div>
-                                    </div>
+                    <div class="col-md-12" *ngIf="isSelected">
 
-                                    <div class="row">
-                                        <div class="col-md-6 left">
-                                            Blood Group
-                                        </div>
-                                        <div class="col-md-6">
-                                            {{task.blood_group}}
-                                        </div>
-                                    </div>
-
-                                    <div class="row">
-                                        <div class="col-md-6 left">
-                                            State
-                                        </div>
-                                        <div class="col-md-6">
-                                            {{task.state}}
-                                        </div>
-                                    </div>
-
-                                    <div class="row">
-                                        <div class="col-md-6 left">
-                                            City
-                                        </div>
-                                        <div class="col-md-6">
-                                            {{task.city}}
-                                        </div>
-                                    </div>
-
-
-                                    <div class="row">
-                                        <div class="col-md-6 left">
-                                            Active Status
-                                        </div>
-                                        <div class="col-md-6">
-                                            {{task.active_status}}
-                                        </div>
-                                    </div>
-
-                                </mat-card-content>
-                                <mat-card-actions class="social-btn">
-                                    <button mat-button class="like-btn">LIKE</button>
-                                    <button mat-button class="share-btn">SHARE</button>
-                                </mat-card-actions>
-                            </mat-card>
-                        </li>
-
-                    </cdk-virtual-scroll-viewport>
+                        Player Data {{ selectedPlayerData | json}}
+                    </div>
                 </mat-tab>
 
                 <mat-tab label="Add Photo">

@@ -1,9 +1,10 @@
-import { Component, OnInit, EventEmitter } from '@angular/core';
+import { Component, OnInit, EventEmitter, HostListener } from '@angular/core';
 import { FileUploader } from 'ng2-file-upload';
 import { HttpHeaders, HttpClient } from "@angular/common/http";
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { StatusService } from '../status.service';
 import { Alert } from 'selenium-webdriver';
+import { ProfileService } from '../profile.service';
 
 @Component({
   selector: 'app-all-detail',
@@ -12,12 +13,21 @@ import { Alert } from 'selenium-webdriver';
 })
 export class AllDetailComponent implements OnInit {
 
+  @HostListener("window:scroll", [])
+
+  onWindowScroll() {
+
+    alert("hello world");
+  }
   private _url = 'http://localhost:8080/file';
 
-  public uploader: FileUploader;
-  public hasBaseDropZoneOver: boolean = false;
-  public hasAnotherDropZoneOver: boolean = false;
-  public response;
+  public  uploader: FileUploader;
+  public  hasBaseDropZoneOver: boolean = false;
+  public  hasAnotherDropZoneOver: boolean = false;
+  public  response;
+  public  isSelected:boolean=false;
+  public  displayProfile;
+  public selectedPlayerData;
 
   totalStatus;
 
@@ -26,7 +36,8 @@ export class AllDetailComponent implements OnInit {
   constructor(
     private _http: HttpClient,
     private statusFB: FormBuilder,
-    private _statusService: StatusService
+    private _statusService: StatusService,
+    private _profileService: ProfileService,
   ) {
 
     //for uploading the data
@@ -70,13 +81,10 @@ export class AllDetailComponent implements OnInit {
       message: ['', [Validators.required]],
     });
 
-    //fetch the status data here...
     this._statusService.getAllStatus()
     .subscribe(data => {
       this.totalStatus = data;
-      alert(this.totalStatus);
-      alert(this.totalStatus[0].message);
-      // alert(this.totalStatus)
+  
     })
   }
 
@@ -113,6 +121,25 @@ export class AllDetailComponent implements OnInit {
     .subscribe(data =>{
       alert("Successfull added");
     })
+  }
+
+  display(data) {
+
+    alert(data.message);
+    let player_id = data.player_id;
+  
+    alert(player_id);
+
+    //get the selected playerdata
+    this.isSelected = false;
+    this._profileService.getProfileById(player_id)
+    .subscribe( data =>{
+      this.selectedPlayerData = data;
+      this.isSelected = true;
+    })
+
+    //fetch the player data acccording to it...
+
   }
 }
 
