@@ -3,7 +3,7 @@ import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { MatDialog, MatDialogConfig, MAT_DIALOG_DATA, MatDialogRef } from "@angular/material";
 import { ConfirmDialogService } from '../confirm-dialog.service';
 import { TaskService } from '../task.service';
-import swal from 'sweetalert';
+// import swal from 'sweetalert';
 // import * as _swal from 'sweetalert';
 // import { SweetAlert } from 'sweetalert/typings/core';
 
@@ -90,7 +90,7 @@ export class ActivityDetailModalComponent implements OnInit {
 
           // this._observableService.totalTask.next(this.data.totalTask);  //This value will be passed to all componnets.
 
-          swal("Removed!", "Task has been removed", "success");
+          // swal("Removed!", "Task has been removed", "success");
 
           //get all the activity and subscribe to the user
            this._taskService.getAllActivity()

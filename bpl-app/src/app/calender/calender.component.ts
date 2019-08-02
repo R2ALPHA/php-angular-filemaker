@@ -76,7 +76,7 @@ export class CalenderComponent implements OnInit {
   CalendarView = CalendarView;
   viewDate: Date = new Date();
   totalEvent: CalendarEvent[];
-
+  loading:boolean = true;
   dataRefresher;
   public taskDetails:any="heloo";
 
@@ -199,17 +199,35 @@ export class CalenderComponent implements OnInit {
   deleteEvent(eventToDelete) {
 
     // this.events.splice(2);
+    this.events = this.events.filter(
+      event => (event.id >7000000) 
+    );
 
-    this._observableService.taskDetails
-    .subscribe(
-      uname => {
-        alert("behavioural Subject Called here");
-        this.totalEvent = uname;
+    
+    // this._observableService.taskDetails
+    // .subscribe(
+    //   uname => {
+    //     this.loading=false;
+    //     alert("behavioural Subject Called here");
+    //     this.totalEvent = uname;
+
+    //     console.log(this.totalEvent);
+        
+    //     this.totalEvent = this.totalEvent.filter(
+    //       eventer =>{
+    //         //  console.log(eventer);
+    //         //  console.log(eventer.id);
+    //         (eventer.id !== eventToDelete)
+    //       }
+    //     )
+  
         this.events = this.events.filter(
           event => (event.id !== eventToDelete) 
         );
-        // this.getAllTask();   //no need to call after calling the value
-      }); 
+        debugger;
+    //     this.loading=true;
+    //     // this.getAllTask();   //no need to call after calling the value
+    //   }); 
 
    
     // this.refreshData();

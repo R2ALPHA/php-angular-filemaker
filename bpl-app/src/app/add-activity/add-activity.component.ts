@@ -4,7 +4,7 @@ import { MatDialog, MatDialogConfig, MAT_DIALOG_DATA, MatDialogRef } from "@angu
 import { TaskService } from '../task.service';
 import { DatePipe } from '@angular/common';
 import { ProfileService } from '../profile.service';
-import swal from 'sweetalert';
+// import swal from 'sweetalert';
 
 
 // import * as _swal from 'sweetalert';
@@ -92,10 +92,10 @@ export class AddActivityComponent implements OnInit {
     
     if (this.taskAdded) {
       // alert("Task Succeessfully Added");
-      swal("Created!", "Task has been added", "success");
+      // swal("Created!", "Task has been added", "success");
     }
     else {
-      swal("Oops","Something Went Wrong","error");
+      // swal("Oops","Something Went Wrong","error");
       // alert("Sorry For the inconvenience");
     }
   }

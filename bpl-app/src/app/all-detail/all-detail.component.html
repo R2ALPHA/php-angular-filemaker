@@ -6,10 +6,100 @@
                     <form [formGroup]="statusForm" (ngSubmit)="statusForm.valid && onSubmit()">
                         <mat-form-field appearance="outline">
                             <mat-label>Broadcast Messages to the Team</mat-label>
-                            <textarea matInput></textarea>
+                            <textarea matInput formControlName="message"></textarea>
                         </mat-form-field>
                         <button mat-button color="accent">Add</button>
                     </form>
+                    <cdk-virtual-scroll-viewport itemSize="100">
+
+                        <li *cdkVirtualFor="let task of  totalStatus ;" class="animated slideInRight">
+
+                            <mat-card class="example-card">
+
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <mat-card-header>
+                                            <div mat-card-avatar class="example-header-image"></div>
+                                            <mat-card-title>{{task.user_name}}</mat-card-title>
+                                            <mat-card-subtitle>{{task.id}}</mat-card-subtitle>
+                                        </mat-card-header>
+                                    </div>
+                                </div>
+                                <mat-card-content>
+
+                                    <div class="row">
+                                        <div class="col-md-6 left">
+                                            Email ID
+                                        </div>
+                                        <div class="col-md-6">
+                                            {{task._pk_email_id}}
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-6 left">
+                                            Gender
+                                        </div>
+                                        <div class="col-md-6">
+                                            {{task.gender}}
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-6 left">
+                                            Date Of Birth
+                                        </div>
+                                        <div class="col-md-6">
+                                            {{task.dob}}
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-6 left">
+                                            Blood Group
+                                        </div>
+                                        <div class="col-md-6">
+                                            {{task.blood_group}}
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-6 left">
+                                            State
+                                        </div>
+                                        <div class="col-md-6">
+                                            {{task.state}}
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-6 left">
+                                            City
+                                        </div>
+                                        <div class="col-md-6">
+                                            {{task.city}}
+                                        </div>
+                                    </div>
+
+
+                                    <div class="row">
+                                        <div class="col-md-6 left">
+                                            Active Status
+                                        </div>
+                                        <div class="col-md-6">
+                                            {{task.active_status}}
+                                        </div>
+                                    </div>
+
+                                </mat-card-content>
+                                <mat-card-actions class="social-btn">
+                                    <button mat-button class="like-btn">LIKE</button>
+                                    <button mat-button class="share-btn">SHARE</button>
+                                </mat-card-actions>
+                            </mat-card>
+                        </li>
+
+                    </cdk-virtual-scroll-viewport>
                 </mat-tab>
 
                 <mat-tab label="Add Photo">
@@ -33,16 +123,17 @@
                                 <table class="table  table-responsive table-striped scroll">
                                     <thead>
                                         <tr>
+                                            <!-- (click)="uploadAll(object)" -->
                                             <th>Name</th>
                                             <th>Images</th>
                                             <th><button mat-raised-button color="primary" (click)="uploader.uploadAll()" [disabled]="!uploader.getNotUploadedItems().length">
-                                                    Upload
+                                                 Upload*
                                                 </button>
                                                 <button mat-raised-button color="primary" (click)="uploader.cancelAll()" [disabled]="!uploader.isUploading">
-                                                    Cancel 
+                                                    Cancel* 
                                                 </button>
                                                 <button mat-raised-button color="primary" (click)="uploader.clearQueue()" [disabled]="!uploader.queue.length">
-                                                    Remove
+                                                    Remove*
                                             </button></th>
                                             <th> </th>
                                         </tr>
@@ -80,22 +171,18 @@
                             </div>
                             <div class="col-md-12">
                                 <div class="col-md-6 ">
-
                                     <div class=" progress progress-bar" role="progressbar" [ngStyle]="{ 'width': uploader.progress + '%' }"></div>
-
-
                                 </div>
                                 <div class="col-md-6">
 
                                 </div>
                             </div>
-
                         </div>
                     </div>
 
                 </mat-tab>
                 <mat-tab label="Ask Question">
-                    <form [formGroup]="questionForm" (ngSubmit)="questionForm.valid">
+                    <form (ngSubmit)="questionForm.valid">
                         <mat-form-field appearance="outline">
                             <mat-label>Title</mat-label>
                             <input matInput placeholder="What is the pupose of this group?">
@@ -108,7 +195,6 @@
                     </form>
                 </mat-tab>
             </mat-tab-group>
-            <app-feed></app-feed>
         </div>
     </div>
 </div>
