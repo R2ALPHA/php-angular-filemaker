@@ -60,6 +60,7 @@ import { ObservableExample1Component } from '../demo/observable-example1/observa
 import { ObservableExample2Component } from '../demo/observable-example2/observable-example2.component';
 import { PeopleComponent } from './profile/people/people.component';
 import { AllPlayerComponent } from './table/all-player/all-player.component';
+import { NavComponent } from './nav/nav.component';
 
 @NgModule({
   declarations: [
@@ -82,7 +83,8 @@ import { AllPlayerComponent } from './table/all-player/all-player.component';
     ObservableExample1Component,
     ObservableExample2Component,
     PeopleComponent,
-    AllPlayerComponent ,
+    AllPlayerComponent,
+    NavComponent ,
   ],
   imports: [
     BrowserModule,
