@@ -39,6 +39,7 @@ import { AddActivityComponent } from '../../activity/add-activity/add-activity.c
 import { elementEventFullName } from '@angular/compiler/src/view_compiler/view_compiler';
 import { ObservableService } from '../../../shared/services/observable.service';
 
+/** For marking the future events and the past events */
 const colors: any = {
   red: {
     primary: '#ad2121',
@@ -63,24 +64,33 @@ const colors: any = {
 
 export class CalenderComponent implements OnInit {
 
-
   @ViewChild('modalContent', { static: true }) modalContent: TemplateRef<any>;
  
   /** TODO --> To handle the scrollable event here , we need to do so  */
   @HostListener("window:scroll", [])
+
+  /** On window scroll we will display the full detail of the player */
   onWindowScroll() {
     
   }
 
-  view: CalendarView = CalendarView.Month;
-  CalendarView = CalendarView;
-  viewDate: Date = new Date();
+  /** Calender Variable */
+
+  view: CalendarView = CalendarView.Month;    //by default , we will have month view enables 
+ 
+  viewDate: Date = new Date();                 
   totalEvent: CalendarEvent[];
   loading:boolean = true;
-  dataRefresher;
-  public taskDetails:any="heloo";
 
-  /** Send the datato the modal from here */
+  dataRefresher;                  //will refresh the data after a certain interval..
+
+  public taskDetails:any="heloo";
+  public CalendarView = CalendarView;
+
+  /** 
+   * Modal that will show all the task in a selected perios
+   *  Used Bootstrap Modal for this.
+  */
   modalData: {
     date: Date;
     eventsToShow: CalendarEvent[];
@@ -91,37 +101,42 @@ export class CalenderComponent implements OnInit {
     
     private modal: NgbModal,
     private _taskService: TaskService,
-    public datepipe: DatePipe,
+    public  datepipe: DatePipe,
     private dialogService: ConfirmDialogService,
     private dialog: MatDialog ,
     private _observableService:ObservableService
+
     ) {
 
+    /** Get all the activity available of a particular user */
     this.getAllTask();
    
-    
-
     // this._taskService.getAllActivity()
     // .subscribe(data=>
     //   {
     //     this._observableService.taskDetails.next(data);
     //   })  
-   
   }
 
   ngOnInit() {
+
+    /** refresh the activity for new addition of data..  */
     this.refreshData();
   }
 
-  refreshData(){
+  /**
+   *  It refreshes the data and call the refresher after a set 
+   *  interval of a time 
+  */
+  refreshData() {
+
     this.dataRefresher =
       setInterval(() => {
-        this.getAllTask();
-        //Passing the false flag would prevent page reset to 1 and hinder user interaction
+        this.getAllTask();           //Passing the false flag would prevent page reset to 1 and hinder user interaction
       }, 30000);  
   }
 
-  // Pencil and edit are not working here
+  // On clicing it will provide certain properties. like edit and delete
   actions: CalendarEventAction[] = [
     {
       label: '<i class="fa fa-fw fa-pencil"></i>',
@@ -158,9 +173,9 @@ export class CalenderComponent implements OnInit {
       }
       else {
         //Set the property  of the tooltip here
-
         this.activeDays = true;
- 
+
+        //open the modal and show the events od a particular day
         let eventsToShow = this.events.filter(
           event => event.start.getDate() === date.getDate());
           this.modalData = { date, eventsToShow };
@@ -187,23 +202,16 @@ export class CalenderComponent implements OnInit {
     this.handleEvent('Dropped or resized', event);
   }
 
+  /** When user click the calender handle the event */
+  /** Action TODO-- */
   handleEvent(action: string, event: CalendarEvent): void {
 
     this.viewTask(event);
   }
-
-  /** Delete the event for the user 
-   *  When  you will select the code then it will com
-   *  Currently deletion is not happening.
-   */
+ 
+  /** TODO :: Currently Working on this */
   deleteEvent(eventToDelete) {
 
-    // this.events.splice(2);
-    this.events = this.events.filter(
-      event => (event.id >7000000) 
-    );
-
-    
     // this._observableService.taskDetails
     // .subscribe(
     //   uname => {
@@ -229,10 +237,7 @@ export class CalenderComponent implements OnInit {
     //     // this.getAllTask();   //no need to call after calling the value
     //   }); 
 
-   
     // this.refreshData();
-
-
     // this.events.splice(2)
     // this.getAllTask();
   }
