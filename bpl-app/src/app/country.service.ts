@@ -2,7 +2,7 @@ import { Injectable,PipeTransform } from '@angular/core';
 
 import {BehaviorSubject, Observable, of, Subject} from 'rxjs';
 
-import {Country} from '../shared/country';
+import {Country} from '../shared/interfaces/country';
 import {COUNTRIES} from '../shared/countries';
 import {DecimalPipe} from '@angular/common';
 import {debounceTime, delay, switchMap, tap} from 'rxjs/operators';

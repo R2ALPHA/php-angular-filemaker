@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpHeaders, HttpClient } from "@angular/common/http";
 import { Observable } from 'rxjs';
-import { IStatus} from '../shared/status';
+import { IStatus} from '../shared/interfaces/status';
 
 @Injectable({
   providedIn: 'root'

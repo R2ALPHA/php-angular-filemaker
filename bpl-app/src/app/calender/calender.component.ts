@@ -32,7 +32,7 @@ import {
 
 import { TaskService } from '../task.service';
 import { DatePipe } from '@angular/common';
-import { ITask } from 'src/shared/task';
+import { ITask } from 'src/shared/interfaces/task';
 import { MatDialog, MatDialogConfig, MAT_DIALOG_DATA, MatDialogRef } from "@angular/material";
 import { ActivityDetailModalComponent } from '../activity-detail-modal/activity-detail-modal.component';
 import { AddActivityComponent } from '../add-activity/add-activity.component';
