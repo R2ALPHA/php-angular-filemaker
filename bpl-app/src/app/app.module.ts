@@ -56,8 +56,8 @@ import { ActivityDetailModalComponent } from './activity/activity-detail-modal/a
 import { MatTooltipModule } from '@angular/material/tooltip'
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatCheckboxModule } from '@angular/material/checkbox';
-import { ObservableExample1Component } from './observable-example1/observable-example1.component';
-import { ObservableExample2Component } from './observable-example2/observable-example2.component';
+import { ObservableExample1Component } from '../demo/observable-example1/observable-example1.component';
+import { ObservableExample2Component } from '../demo/observable-example2/observable-example2.component';
 import { PeopleComponent } from './profile/people/people.component';
 import { AllPlayerComponent } from './table/all-player/all-player.component';
 
