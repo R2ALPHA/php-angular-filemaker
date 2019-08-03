@@ -3,7 +3,7 @@ import {Component, OnInit, QueryList, ViewChildren} from '@angular/core';
 import {Observable} from 'rxjs';
 
 import { Country } from '../../shared/interfaces/country';
-import { CountryService } from '../country.service';
+import { CountryService } from '../../shared/services/country.service';
 import { NgbdSortableHeader, SortEvent } from '../../shared/sortable.directive';
 
 @Component({

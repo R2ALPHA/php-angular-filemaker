@@ -2,11 +2,11 @@ import { Injectable,PipeTransform } from '@angular/core';
 
 import {BehaviorSubject, Observable, of, Subject} from 'rxjs';
 
-import {Country} from '../shared/interfaces/country';
-import {COUNTRIES} from '../shared/countries';
+import {Country} from '../interfaces/country';
+import {COUNTRIES} from '../countries';
 import {DecimalPipe} from '@angular/common';
 import {debounceTime, delay, switchMap, tap} from 'rxjs/operators';
-import {SortDirection} from '../shared/sortable.directive';
+import {SortDirection} from '../sortable.directive';
 
 interface SearchResult {
   countries: Country[];

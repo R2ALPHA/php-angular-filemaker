@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 
 import { FormControl, FormGroup, Validators,FormBuilder, AbstractControl } from '@angular/forms';
-import { EnrollmentService } from '../enrollment.service';
+import { EnrollmentService } from '../../shared/services/enrollment.service';
 import { VERROR } from '../../shared/errors';
 import { securityQuestion, bloodGroup,states,disclaimer,passwordHint} from '../../shared/registrationConstant';
 import { MatDialog, MatDialogConfig } from "@angular/material";
-import { ProfileService } from '../profile.service';
+import { ProfileService } from '../../shared/services/profile.service';
 import { DatePipe } from '@angular/common';
 
 import { Validator } from '../../shared/validator';

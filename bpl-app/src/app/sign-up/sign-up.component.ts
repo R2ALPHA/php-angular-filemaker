@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, Validators,FormBuilder } from '@angular/forms';
-import { EnrollmentService } from '../enrollment.service';
+import { EnrollmentService } from '../../shared/services/enrollment.service';
 import { VERROR } from '../../shared/errors';
 import { securityQuestion, bloodGroup,states,disclaimer,passwordHint} from '../../shared/registrationConstant';
 import { Validator } from '../../shared/validator';

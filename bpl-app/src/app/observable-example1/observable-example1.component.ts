@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ObservableService } from '../observable.service';
+import { ObservableService } from '../../shared/services/observable.service';
 
 @Component({
   selector: 'app-observable-example1',

@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { LoginService } from '../login.service';
-import { ProfileService } from '../profile.service';
+import { LoginService } from '../../shared/services/login.service';
+import { ProfileService } from '../../shared/services/profile.service';
 import { Router } from '@angular/router';
 import { FormGroup, Validators,FormBuilder} from '@angular/forms';
-import { EnrollmentService } from '../enrollment.service';
+import { EnrollmentService } from '../../shared/services/enrollment.service';
 import { AdminLoginService } from '../admin-login.service';
 // import swal from 'sweetalert';
 

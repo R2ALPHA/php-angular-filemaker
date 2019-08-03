@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { LoginService } from '../login.service';
-import { EnrollmentService } from '../enrollment.service';
-import { ProfileService } from '../profile.service';
+import { LoginService } from '../../shared/services/login.service';
+import { EnrollmentService } from '../../shared/services/enrollment.service';
+import { ProfileService } from '../../shared/services/profile.service';
 import { Router } from '@angular/router';
 import { MatDialog, MatDialogConfig } from "@angular/material";
 
 import { UpdateProfileComponent } from '../update-profile/update-profile.component';
 import { AddActivityComponent } from '../add-activity/add-activity.component';
-import { TaskService } from '../task.service';
+import { TaskService } from '../../shared/services/task.service';
 
 @Component({
   selector: 'app-profile',

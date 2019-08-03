@@ -26,7 +26,7 @@ import { LayoutModule } from '@angular/cdk/layout';
 import { MatButtonModule, MatTableModule, MatSidenavModule, MatIconModule, MatListModule ,MatCardModule, MatInputModule, MatTabsModule ,MatDialogModule, MatDialogRef} from '@angular/material';
 import { MatFormFieldModule} from '@angular/material/form-field';
 import { Ng2SmartTableModule }from 'ng2-smart-table';
-import { AuthService } from './auth.service';
+import { AuthService } from '../shared/services/auth.service';
 import { Interceptor } from 'src/shared/interceptor';
 import { SignupLoginComponent } from './signup-login/signup-login.component';
 import { AdminComponent } from './admin/admin.component';

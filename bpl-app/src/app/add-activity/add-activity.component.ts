@@ -1,9 +1,9 @@
 import { Component, OnInit, ViewEncapsulation, Inject } from '@angular/core';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { MatDialog, MatDialogConfig, MAT_DIALOG_DATA, MatDialogRef } from "@angular/material";
-import { TaskService } from '../task.service';
+import { TaskService } from '../../shared/services/task.service';
 import { DatePipe } from '@angular/common';
-import { ProfileService } from '../profile.service';
+import { ProfileService } from '../../shared/services/profile.service';
 // import swal from 'sweetalert';
 
 
