@@ -8,7 +8,7 @@ import { MatDialog, MatDialogConfig } from "@angular/material";
 import { ProfileService } from '../../../shared/services/profile.service';
 import { DatePipe } from '@angular/common';
 
-import { Validator } from '../../../shared/constants/validator';
+import { Validator } from '../../../shared/validators/validator';
 
 @Component({
   selector: 'app-update-profile',
@@ -88,9 +88,7 @@ export class UpdateProfileComponent implements OnInit {
   }
 
   closeForm() {
-
     this.dialog.closeAll();
-
   }
 }
 

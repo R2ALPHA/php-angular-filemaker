@@ -46,7 +46,7 @@ export class SignupLoginComponent implements OnInit {
     });
 
     // as it is main page we need to check it now.
-    
+    // The logic for sign up and login will be here..
     if(localStorage.getItem('admin-token')==null) {
       // this._adminService.adminLogin();      
     }

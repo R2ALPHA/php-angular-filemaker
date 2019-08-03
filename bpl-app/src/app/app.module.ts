@@ -132,7 +132,6 @@ import { AllPlayerComponent } from './table/all-player/all-player.component';
     AdminComponent,
     ConfirmDialogueComponent,
     AddActivityComponent,
-    
   ],
   providers: [
     AuthService,

@@ -1,6 +1,6 @@
 <cdk-virtual-scroll-viewport itemSize="100">
 
-    <li *cdkVirtualFor="let task of  taskDetail;" class="animated slideInRight">
+    <li *cdkVirtualFor="let player of  playerDetails;" class="animated slideInRight">
 
         <mat-card class="example-card">
 
@@ -8,8 +8,8 @@
                 <div class="col-sm-6">
                     <mat-card-header>
                         <div mat-card-avatar class="example-header-image"></div>
-                        <mat-card-title>{{task.user_name}}</mat-card-title>
-                        <mat-card-subtitle>{{task.id}}</mat-card-subtitle>
+                        <mat-card-title>{{player.user_name}}</mat-card-title>
+                        <mat-card-subtitle>{{player.id}}</mat-card-subtitle>
                     </mat-card-header>
                 </div>
             </div>
@@ -20,7 +20,7 @@
                         Email ID
                     </div>
                     <div class="col-md-6">
-                        {{task._pk_email_id}}
+                        {{player._pk_email_id}}
                     </div>
                 </div>
 
@@ -29,7 +29,7 @@
                         Gender
                     </div>
                     <div class="col-md-6">
-                        {{task.gender}}
+                        {{player.gender}}
                     </div>
                 </div>
 
@@ -38,7 +38,7 @@
                         Date Of Birth
                     </div>
                     <div class="col-md-6">
-                        {{task.dob}}
+                        {{player.dob}}
                     </div>
                 </div>
 
@@ -47,7 +47,7 @@
                         Blood Group
                     </div>
                     <div class="col-md-6">
-                        {{task.blood_group}}
+                        {{player.blood_group}}
                     </div>
                 </div>
 
@@ -56,7 +56,7 @@
                         State
                     </div>
                     <div class="col-md-6">
-                        {{task.state}}
+                        {{player.state}}
                     </div>
                 </div>
 
@@ -65,7 +65,7 @@
                         City
                     </div>
                     <div class="col-md-6">
-                        {{task.city}}
+                        {{player.city}}
                     </div>
                 </div>
 
@@ -75,7 +75,7 @@
                         Active Status
                     </div>
                     <div class="col-md-6">
-                        {{task.active_status}}
+                        {{player.active_status}}
                     </div>
                 </div>
 
