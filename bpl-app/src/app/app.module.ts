@@ -9,7 +9,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
-import { FooterComponent } from './footer/footer.component';
+import { FooterComponent } from '../demo/footer/footer.component';
 import { AppRoutingModule } from './app-routing/app-routing.module';
 import { HttpClientModule ,  HTTP_INTERCEPTORS } from '@angular/common/http';
 import { StorageServiceModule} from 'angular-webstorage-service';
@@ -37,7 +37,7 @@ import { ScrollDispatchModule} from '@angular/cdk/scrolling';
 
 import { ScrollingModule} from '@angular/cdk/scrolling';
 import { Scroll } from '@angular/router';
-import { BasicScrollComponent } from './basic-scroll/basic-scroll.component';
+import { BasicScrollComponent } from '../demo/basic-scroll/basic-scroll.component';
 import { ScrollComponent } from './scroll/scroll.component';
 import { UpdateProfileComponent } from './update-profile/update-profile.component';
 import { MatRadioModule } from '@angular/material/radio';
