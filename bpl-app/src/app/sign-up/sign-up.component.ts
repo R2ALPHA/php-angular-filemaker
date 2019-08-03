@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, Validators,FormBuilder } from '@angular/forms';
 import { EnrollmentService } from '../../shared/services/enrollment.service';
-import { VERROR } from '../../shared/errors';
-import { securityQuestion, bloodGroup,states,disclaimer,passwordHint} from '../../shared/registrationConstant';
-import { Validator } from '../../shared/validator';
+import { VERROR } from '../../shared/constants/errors';
+import { securityQuestion, bloodGroup,states,disclaimer,passwordHint} from '../../shared/constants/registrationConstant';
+import { Validator } from '../../shared/constants/validator';
 
 @Component({
   selector: 'app-sign-up',

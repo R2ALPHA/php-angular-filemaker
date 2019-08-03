@@ -2,13 +2,13 @@ import { Component, OnInit } from '@angular/core';
 
 import { FormControl, FormGroup, Validators,FormBuilder, AbstractControl } from '@angular/forms';
 import { EnrollmentService } from '../../shared/services/enrollment.service';
-import { VERROR } from '../../shared/errors';
-import { securityQuestion, bloodGroup,states,disclaimer,passwordHint} from '../../shared/registrationConstant';
+import { VERROR } from '../../shared/constants/errors';
+import { securityQuestion, bloodGroup,states,disclaimer,passwordHint} from '../../shared/constants/registrationConstant';
 import { MatDialog, MatDialogConfig } from "@angular/material";
 import { ProfileService } from '../../shared/services/profile.service';
 import { DatePipe } from '@angular/common';
 
-import { Validator } from '../../shared/validator';
+import { Validator } from '../../shared/constants/validator';
 
 @Component({
   selector: 'app-update-profile',
