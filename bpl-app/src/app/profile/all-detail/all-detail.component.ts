@@ -2,9 +2,9 @@ import { Component, OnInit, EventEmitter, HostListener } from '@angular/core';
 import { FileUploader } from 'ng2-file-upload';
 import { HttpHeaders, HttpClient } from "@angular/common/http";
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { StatusService } from '../../shared/services/status.service';
+import { StatusService } from '../../../shared/services/status.service';
 import { Alert } from 'selenium-webdriver';
-import { ProfileService } from '../../shared/services/profile.service';
+import { ProfileService } from '../../../shared/services/profile.service';
 
 @Component({
   selector: 'app-all-detail',

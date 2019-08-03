@@ -38,8 +38,7 @@ import { ScrollDispatchModule} from '@angular/cdk/scrolling';
 import { ScrollingModule} from '@angular/cdk/scrolling';
 import { Scroll } from '@angular/router';
 import { BasicScrollComponent } from '../demo/basic-scroll/basic-scroll.component';
-import { ScrollComponent } from './scroll/scroll.component';
-import { UpdateProfileComponent } from './update-profile/update-profile.component';
+import { UpdateProfileComponent } from './profile/update-profile/update-profile.component';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatNativeDateModule } from '@angular/material';
 import { MatDatepickerModule } from '@angular/material/datepicker';
@@ -50,10 +49,10 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
 import { DecimalPipe } from '@angular/common';
 import { DatePipe } from '@angular/common';
-import { CalenderComponent } from './calender/calender.component';
-import { AllDetailComponent } from './all-detail/all-detail.component';
+import { CalenderComponent } from './profile/calender/calender.component';
+import { AllDetailComponent } from './profile/all-detail/all-detail.component';
 import { FileUploadModule } from "ng2-file-upload";
-import { FeedComponent } from './feed/feed.component';
+import { FeedComponent } from '../demo/feed/feed.component';
 import { ConfirmDialogueComponent } from './confirm-dialogue/confirm-dialogue.component';
 import { ActivityDetailModalComponent } from './activity-detail-modal/activity-detail-modal.component';
 import { MatTooltipModule } from '@angular/material/tooltip'
@@ -61,6 +60,7 @@ import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { ObservableExample1Component } from './observable-example1/observable-example1.component';
 import { ObservableExample2Component } from './observable-example2/observable-example2.component';
+import { PeopleComponent } from './profile/people/people.component';
 
 @NgModule({
   declarations: [
@@ -73,7 +73,6 @@ import { ObservableExample2Component } from './observable-example2/observable-ex
     AdminComponent,
     PrevalentTableComponent,
     BasicScrollComponent,
-    ScrollComponent,
     UpdateProfileComponent,
     AssignedTaskComponent,
     AddActivityComponent,
@@ -84,7 +83,8 @@ import { ObservableExample2Component } from './observable-example2/observable-ex
     ConfirmDialogueComponent,
     ActivityDetailModalComponent,
     ObservableExample1Component,
-    ObservableExample2Component ,
+    ObservableExample2Component,
+    PeopleComponent ,
   ],
   imports: [
     BrowserModule,

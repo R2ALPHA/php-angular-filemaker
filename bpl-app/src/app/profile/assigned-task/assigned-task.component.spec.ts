@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ScrollComponent } from './scroll.component';
+import { AssignedTaskComponent } from './assigned-task.component';
 
-describe('ScrollComponent', () => {
-  let component: ScrollComponent;
-  let fixture: ComponentFixture<ScrollComponent>;
+describe('AssignedTaskComponent', () => {
+  let component: AssignedTaskComponent;
+  let fixture: ComponentFixture<AssignedTaskComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ScrollComponent ]
+      declarations: [ AssignedTaskComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ScrollComponent);
+    fixture = TestBed.createComponent(AssignedTaskComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

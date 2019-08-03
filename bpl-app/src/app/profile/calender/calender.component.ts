@@ -21,7 +21,7 @@ import {
 
 import { Subject } from 'rxjs';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { ConfirmDialogService } from '../../shared/services/confirm-dialog.service';
+import { ConfirmDialogService } from '../../../shared/services/confirm-dialog.service';
 
 import {
   CalendarEvent,
@@ -30,14 +30,14 @@ import {
   CalendarView
 } from 'angular-calendar'
 
-import { TaskService } from '../../shared/services/task.service';
+import { TaskService } from '../../../shared/services/task.service';
 import { DatePipe } from '@angular/common';
 import { ITask } from 'src/shared/interfaces/task';
 import { MatDialog, MatDialogConfig, MAT_DIALOG_DATA, MatDialogRef } from "@angular/material";
-import { ActivityDetailModalComponent } from '../activity-detail-modal/activity-detail-modal.component';
-import { AddActivityComponent } from '../add-activity/add-activity.component';
+import { ActivityDetailModalComponent } from '../../activity-detail-modal/activity-detail-modal.component';
+import { AddActivityComponent } from '../../add-activity/add-activity.component';
 import { elementEventFullName } from '@angular/compiler/src/view_compiler/view_compiler';
-import { ObservableService } from '../../shared/services/observable.service';
+import { ObservableService } from '../../../shared/services/observable.service';
 
 const colors: any = {
   red: {
