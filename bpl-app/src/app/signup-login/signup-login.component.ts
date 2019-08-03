@@ -4,7 +4,7 @@ import { ProfileService } from '../../shared/services/profile.service';
 import { Router } from '@angular/router';
 import { FormGroup, Validators,FormBuilder} from '@angular/forms';
 import { EnrollmentService } from '../../shared/services/enrollment.service';
-import { AdminLoginService } from '../admin-login.service';
+import { AdminLoginService } from '../../shared/services/admin-login.service';
 // import swal from 'sweetalert';
 
 @Component({

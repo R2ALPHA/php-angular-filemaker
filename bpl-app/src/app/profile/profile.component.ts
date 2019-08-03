@@ -6,7 +6,7 @@ import { Router } from '@angular/router';
 import { MatDialog, MatDialogConfig } from "@angular/material";
 
 import { UpdateProfileComponent } from './update-profile/update-profile.component';
-import { AddActivityComponent } from '../add-activity/add-activity.component';
+import { AddActivityComponent } from '../activity/add-activity/add-activity.component';
 import { TaskService } from '../../shared/services/task.service';
 
 @Component({

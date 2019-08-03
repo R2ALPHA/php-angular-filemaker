@@ -1,15 +1,15 @@
 import { Component, OnInit, Inject, EventEmitter, Output } from '@angular/core';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { MatDialog, MatDialogConfig, MAT_DIALOG_DATA, MatDialogRef } from "@angular/material";
-import { ConfirmDialogService } from '../../shared/services/confirm-dialog.service';
-import { TaskService } from '../../shared/services/task.service';
+import { ConfirmDialogService } from '../../../shared/services/confirm-dialog.service';
+import { TaskService } from '../../../shared/services/task.service';
 // import swal from 'sweetalert';
 // import * as _swal from 'sweetalert';
 // import { SweetAlert } from 'sweetalert/typings/core';
 
 // const swal: SweetAlert = _swal as any;
 
-import { ObservableService } from '../../shared/services/observable.service';
+import { ObservableService } from '../../../shared/services/observable.service';
 
 @Component({
   selector: 'app-activity-detail-modal',

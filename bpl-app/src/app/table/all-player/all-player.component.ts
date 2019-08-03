@@ -3,16 +3,15 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { HttpClient } from '@angular/common/http';
-import { IProfile } from '../../shared/interfaces/profile';
+import { IProfile } from '../../../shared/interfaces/profile';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-prevalent-table',
-  templateUrl: './prevalent-table.component.html',
-  styleUrls: ['./prevalent-table.component.scss']
+  selector: 'app-all-player',
+  templateUrl: './all-player.component.html',
+  styleUrls: ['./all-player.component.scss']
 })
-export class PrevalentTableComponent implements OnInit {
-
+export class AllPlayerComponent implements OnInit {
   private _url = 'http://localhost:8080/v1/users';
 
   display: boolean = true;
@@ -62,4 +61,3 @@ export class PrevalentTableComponent implements OnInit {
     }
   }
 }
-

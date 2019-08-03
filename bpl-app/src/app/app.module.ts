@@ -10,7 +10,7 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
 import { FooterComponent } from '../demo/footer/footer.component';
-import { AppRoutingModule } from './app-routing/app-routing.module';
+import { AppRoutingModule } from './routing/app-routing.module';
 import { HttpClientModule ,  HTTP_INTERCEPTORS } from '@angular/common/http';
 import { StorageServiceModule} from 'angular-webstorage-service';
 import { CommonModule } from '@angular/common';
@@ -30,7 +30,6 @@ import { AuthService } from '../shared/services/auth.service';
 import { Interceptor } from 'src/shared/interceptor';
 import { SignupLoginComponent } from './signup-login/signup-login.component';
 import { AdminComponent } from './admin/admin.component';
-import { PrevalentTableComponent } from './prevalent-table/prevalent-table.component';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { ScrollDispatchModule} from '@angular/cdk/scrolling';
@@ -42,9 +41,8 @@ import { UpdateProfileComponent } from './profile/update-profile/update-profile.
 import { MatRadioModule } from '@angular/material/radio';
 import { MatNativeDateModule } from '@angular/material';
 import { MatDatepickerModule } from '@angular/material/datepicker';
-import { AssignedTaskComponent } from './assigned-task/assigned-task.component';
-import { AddActivityComponent } from './add-activity/add-activity.component';
-import { AllTasksComponent } from './all-tasks/all-tasks.component';
+import { AddActivityComponent } from './activity/add-activity/add-activity.component';
+import { AllTasksComponent } from './table/all-tasks/all-tasks.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
 import { DecimalPipe } from '@angular/common';
@@ -53,14 +51,15 @@ import { CalenderComponent } from './profile/calender/calender.component';
 import { AllDetailComponent } from './profile/all-detail/all-detail.component';
 import { FileUploadModule } from "ng2-file-upload";
 import { FeedComponent } from '../demo/feed/feed.component';
-import { ConfirmDialogueComponent } from './confirm-dialogue/confirm-dialogue.component';
-import { ActivityDetailModalComponent } from './activity-detail-modal/activity-detail-modal.component';
+import { ConfirmDialogueComponent } from '../shared/modals/confirm-dialogue/confirm-dialogue.component';
+import { ActivityDetailModalComponent } from './activity/activity-detail-modal/activity-detail-modal.component';
 import { MatTooltipModule } from '@angular/material/tooltip'
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { ObservableExample1Component } from './observable-example1/observable-example1.component';
 import { ObservableExample2Component } from './observable-example2/observable-example2.component';
 import { PeopleComponent } from './profile/people/people.component';
+import { AllPlayerComponent } from './table/all-player/all-player.component';
 
 @NgModule({
   declarations: [
@@ -71,10 +70,8 @@ import { PeopleComponent } from './profile/people/people.component';
     MainNavComponent,
     SignupLoginComponent,
     AdminComponent,
-    PrevalentTableComponent,
     BasicScrollComponent,
     UpdateProfileComponent,
-    AssignedTaskComponent,
     AddActivityComponent,
     AllTasksComponent,
     CalenderComponent,
@@ -84,7 +81,8 @@ import { PeopleComponent } from './profile/people/people.component';
     ActivityDetailModalComponent,
     ObservableExample1Component,
     ObservableExample2Component,
-    PeopleComponent ,
+    PeopleComponent,
+    AllPlayerComponent ,
   ],
   imports: [
     BrowserModule,

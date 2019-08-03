@@ -1,57 +1,61 @@
 table {
     width: 100%;
-  }
-  
-  .mat-form-field {
+}
+
+.mat-form-field {
     font-size: 14px;
     width: 50%;
-  }
-  
-  td, th {
+}
+
+td,
+th {
     width: 25%;
-  }
+}
 
-  th {
-
+th {
     font-size: 20px;
-    font:blue;
+    font: blue;
     font-weight: bold;
-  }
-  
-  ::-webkit-scrollbar {
+}
+
+ ::-webkit-scrollbar {
     -webkit-appearance: none;
     width: 7px;
-  }
-  ::-webkit-scrollbar-thumb {
+}
+
+ ::-webkit-scrollbar-thumb {
     border-radius: 4px;
     background-color: rgba(0, 0, 0, .5);
     -webkit-box-shadow: 0 0 1px rgba(255, 255, 255, .5);
-  }
+}
 
-  .header-table {
-    display:table;
-    position:fixed;
+.header-table {
+    display: table;
+    position: fixed;
     column-width: auto;
     // table-layout: fixed;
-  }
+}
 
-  mat-header {
+mat-header {
     // position: fixed;
     column-width: auto;
-  }
+}
 
-  .container { 
+.container {
     flex-flow: flex-direction flex-wrap; // ie: row wrap
- };
- table.fixed td { overflow: hidden; }
+}
 
- .prev-table {
-   overflow:hidden;
- 
- }
+;
+table.fixed td {
+    overflow: hidden;
+}
 
- .tcontent {
-  overflow: auto;
-  height: 600px;
-  margin-bottom:0px;
- }
+.prev-table {
+    overflow: hidden;
+}
+
+.tcontent {
+    overflow: auto;
+    height: 600px;
+    margin-bottom: 0px;
+}

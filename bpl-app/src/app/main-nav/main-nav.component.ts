@@ -3,7 +3,7 @@ import { BreakpointObserver, Breakpoints, BreakpointState } from '@angular/cdk/l
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { LoginService } from '../../shared/services/login.service';
-import { AdminLoginService } from '../admin-login.service';
+import { AdminLoginService } from '../../shared/services/admin-login.service';
 
 @Component({
   selector: 'app-main-nav',

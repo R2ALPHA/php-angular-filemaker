@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { HttpInterceptor, HttpHandler, HttpRequest, HttpEvent, HttpHeaders } from "@angular/common/http";
-import { AdminLoginService } from '../app/admin-login.service';
+import { AdminLoginService } from './services/admin-login.service';
 import { Observable } from "rxjs/Observable";
 import { Router } from '@angular/router';
 import 'rxjs/add/observable/throw'

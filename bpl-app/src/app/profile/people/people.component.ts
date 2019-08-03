@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { MatDialog, MatDialogConfig } from "@angular/material";
-import { AddActivityComponent } from '../../add-activity/add-activity.component';
+import { AddActivityComponent } from '../../activity/add-activity/add-activity.component';
 import { TaskService } from '../../../shared/services/task.service';
 
 import { ProfileService } from '../../../shared/services/profile.service';

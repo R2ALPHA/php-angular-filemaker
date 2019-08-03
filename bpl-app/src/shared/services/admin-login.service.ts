@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { MatDialog, MatDialogConfig } from "@angular/material";
-import { AdminComponent } from './admin/admin.component';
+import { AdminComponent } from '../../app/admin/admin.component';
 
 
 @Injectable({

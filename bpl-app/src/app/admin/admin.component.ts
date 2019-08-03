@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormGroup, Validators,FormBuilder} from '@angular/forms';
-import { AdminLoginService } from "../admin-login.service";
+import { AdminLoginService } from "../../shared/services/admin-login.service";
 import { MatDialog, MatDialogConfig } from "@angular/material";
 
 @Component({
