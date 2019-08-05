@@ -1,13 +1,13 @@
-import { Component, OnInit, EventEmitter, HostListener, ViewChild, TemplateRef } from '@angular/core';
+import { Component, OnInit, EventEmitter, HostListener, ViewChild, TemplateRef, Input, ElementRef } from '@angular/core';
 import { FileUploader } from 'ng2-file-upload';
-import { HttpHeaders, HttpClient } from "@angular/common/http";
+import { HttpClient } from "@angular/common/http";
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { StatusService } from '../../../shared/services/status.service';
 import { ProfileService } from '../../../shared/services/profile.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { ITask } from 'src/shared/interfaces/task';
 import { IStatus} from 'src/shared/interfaces/status';
 import { IProfile} from 'src/shared/interfaces/profile';
+import { ScrollDispatcher } from '@angular/cdk/scrolling';
 
 @Component({
   selector: 'app-all-detail',
@@ -19,12 +19,13 @@ import { IProfile} from 'src/shared/interfaces/profile';
 export class AllDetailComponent implements OnInit {
 
   @ViewChild('modalContent', { static: true }) modalContent: TemplateRef<any>;
+  // @ViewChild('firstElement', {static: true }) firstElement: ElementRef;
 
   @HostListener("window:scroll", [])
 
-  onWindowScroll() {
-    alert("hello world");
-  }
+  @HostListener('scroll', ['$event'])
+
+  // @Input() scrollItems: string;
 
   private _url = 'http://localhost:8080/file';
 
@@ -40,6 +41,8 @@ export class AllDetailComponent implements OnInit {
   public  uploader: FileUploader;                       
   public  hasBaseDropZoneOver: boolean = false;             
   public  hasAnotherDropZoneOver: boolean = false;
+  public  scrollItems;
+  public  stats:String = "";
 
   //response we will get after the file has been uploaded
   public  response:any ='';               
@@ -53,6 +56,7 @@ export class AllDetailComponent implements OnInit {
   public  totalStatus;
 
   public statusForm: FormGroup;
+  public sta;
 
   constructor(
 
@@ -61,6 +65,7 @@ export class AllDetailComponent implements OnInit {
     private _statusService: StatusService,
     private _profileService: ProfileService,
     private modal: NgbModal,
+    private scrollDispatcher: ScrollDispatcher
 
   ) {
 
@@ -94,6 +99,18 @@ export class AllDetailComponent implements OnInit {
       this.response = res,
         alert(" response " + this.response);
     });
+
+   
+    // this.scrollDispatcher.scrolled()
+    //   .subscribe( data => {
+    //     this.selectedPlayerData = this.totalStatus;
+    //     this.isSelected = true;
+    //   });
+    this.scrollDispatcher.scrolled()
+    .subscribe(x => {
+      //  alert(status);
+       alert(this.scrollItems);
+    });
   }
 
   ngOnInit() {
@@ -105,8 +122,8 @@ export class AllDetailComponent implements OnInit {
     this._statusService.getAllStatus()
     .subscribe(data => {
       this.totalStatus = data;
-  
     })
+
   }
 
   /** Once the file is dropped then it will contineoiusly

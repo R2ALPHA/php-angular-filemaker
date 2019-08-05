@@ -12,6 +12,8 @@ import { AdminLoginService } from '../../shared/services/admin-login.service';
 })
 export class MainNavComponent {
 
+  isLogIn:boolean = false;
+
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(
       map(result => result.matches)
@@ -27,14 +29,20 @@ export class MainNavComponent {
     
   }
 
-  ngOnInit() { }
-
-  logOut() {
-    this._loginService.logout();
+  ngOnInit() { 
+    this.isLogIn = this._loginService.getIsLoggedIn();
+    // alert(this.isLogIn)
   }
 
+  logOut() {
+
+    //destroy all the availabel token
+    this._loginService.logout();
+    this.isLogIn = false;
+  }
   adminLogout() {
     // this._adminService.adminLogout();
   }
+
 }
 

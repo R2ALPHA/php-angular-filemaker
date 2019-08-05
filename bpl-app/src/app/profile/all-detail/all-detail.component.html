@@ -13,33 +13,66 @@
                         </form>
                     </div>
 
-                    <div class="col-md-12">
+                    <div class="row" cdkScrollable>
+                        <div class="col-md-7" (scroll)="onScroll($event)">
 
-                        <div class="scroller">
-                            <cdk-virtual-scroll-viewport itemSize="100">
+                            <div class="scroller ">
+                                <cdk-virtual-scroll-viewport itemSize="100">
 
-                                <li *cdkVirtualFor="let status of  totalStatus ;" class="animated slideInRight" (click)="display(status)">
+                                    <li *cdkVirtualFor="let status of  totalStatus ;" class="animated slideInRight" (click)="display(status)">
 
-                                    <mat-card>
-                                        <mat-card-header>{{status.player_id}}</mat-card-header>
-                                        <p>{{status.message}}</p>
-                                        <!-- <img src="../../assets//image/like1.jpg">
-                                    <img src="../../assets//image/wow.png"> -->
-                                        <!-- On click enable the button here.. that can be done  by here -->
-                                        <!-- <button mat-raised-button color="accent" class="social-icon">LIKE</button>
-                                    <button mat-raised-button color="accent" class="social-icon">SURPRISE</button> -->
-                                    </mat-card>
-                                </li>
+                                        <input type="text" [hidden]="false" value="{{status.player_id}}">
+                                        <!-- <div [scrollItems]="status.player_id"></div> -->
+                                        <mat-card>
+                                            <mat-card-header>{{status.player_id}}</mat-card-header>
+                                            <p>{{status.message}}</p>
+                                        </mat-card>
+                                    </li>
 
-                            </cdk-virtual-scroll-viewport>
+                                </cdk-virtual-scroll-viewport>
+                            </div>
+
+                            <input type="text" [(ngModel)]="scrollItems" #ctrl="ngModel"> {{scrollItems}}
+                            <p>{{ctrl.valid}}</p>
+                        </div>
+
+                        <div class="col-md-5 loading-img" *ngIf="!isSelected">
+                            <div class="lds-spinner">
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                            </div>
+                        </div>
+                        <div class="col-md-5" *ngIf="isSelected">
+                            <mat-card class="player-card">
+                                <mat-card-header>
+                                    <div mat-card-avatar class="player-header-image"></div>
+                                    <mat-card-title>{{selectedPlayerData[0].user_name}}</mat-card-title>
+                                    <mat-card-subtitle>{{selectedPlayerData[0].id}}</mat-card-subtitle>
+                                </mat-card-header>
+                                <mat-card-content>
+                                    <div>dob &nbsp;&nbsp;&nbsp;&nbsp;:- &nbsp;&nbsp;{{selectedPlayerData[0].dob}}</div>
+                                    <div>gender&nbsp;&nbsp;&nbsp;:- &nbsp;&nbsp;{{selectedPlayerData[0].gender}} </div>
+                                    <div>locality&nbsp;&nbsp;&nbsp; :-&nbsp;&nbsp; {{selectedPlayerData[0].locality}}</div>
+                                    <div>state&nbsp;&nbsp;&nbsp; :- &nbsp;&nbsp;{{selectedPlayerData[0].state}}</div>
+                                    <div> blood group&nbsp;&nbsp; :-&nbsp;&nbsp; {{selectedPlayerData[0].blood_group}} </div>
+                                </mat-card-content>
+                                <mat-card-actions>
+                                    <button mat-button>Message</button>
+                                    <button mat-button>Add Friend</button>
+                                </mat-card-actions>
+                            </mat-card>
                         </div>
                     </div>
-
-                    <div class="col-md-12" *ngIf="isSelected">
-
-                        Player Data {{ selectedPlayerData | json}}
-                    </div>
-
                     <ng-template #modalContent let-close="close">
                         <div class="modal-header">
                             <h5 class="modal-title">Status</h5>

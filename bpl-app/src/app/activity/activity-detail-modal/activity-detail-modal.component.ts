@@ -3,9 +3,11 @@ import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { MatDialog, MatDialogConfig, MAT_DIALOG_DATA, MatDialogRef } from "@angular/material";
 import { ConfirmDialogService } from '../../../shared/services/confirm-dialog.service';
 import { TaskService } from '../../../shared/services/task.service';
-// import swal from 'sweetalert';
-// import * as _swal from 'sweetalert';
-// import { SweetAlert } from 'sweetalert/typings/core';
+
+import Swal from 'sweetalert2';
+// import Swal from 'sweetalert';
+
+import { SweetAlert } from 'sweetalert/typings/core';
 
 // const swal: SweetAlert = _swal as any;
 
@@ -90,7 +92,8 @@ export class ActivityDetailModalComponent implements OnInit {
 
           // this._observableService.totalTask.next(this.data.totalTask);  //This value will be passed to all componnets.
 
-          // swal("Removed!", "Task has been removed", "success");
+          Swal.fire("Removed!", "Task has been removed", "success");
+          //  Swal("Created!", "Task has been added", "success");
 
           //get all the activity and subscribe to the user
            this._taskService.getAllActivity()

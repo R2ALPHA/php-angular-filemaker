@@ -22,17 +22,21 @@ export class ProfileComponent implements OnInit {
     private _profileService: ProfileService,
     private dialog:MatDialog,
     private _taskService:TaskService
-  ) { }
-
-  private user_name = localStorage.getItem('user_name');
-
-  ngOnInit() {
+  ) { 
+    
     this._profileService.getProfile(this.user_name)
       .subscribe(data => {
         this.profile = data
         localStorage.setItem('player_id',this.profile[0].id);
-        this._profileService.setProfileData(this.profile);
+        this._profileService.setProfileData(this.profile);    //TO-DO
       });
+  }
+
+  private user_name = localStorage.getItem('user_name');
+
+  ngOnInit() {
+
+    
       // this._taskService.getAllActivity();
   }
 
