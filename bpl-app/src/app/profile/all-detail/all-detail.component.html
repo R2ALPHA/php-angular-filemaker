@@ -39,15 +39,41 @@
 
                         Player Data {{ selectedPlayerData | json}}
                     </div>
+
+                    <ng-template #modalContent let-close="close">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Status</h5>
+                            <button type="button" class="close" (click)="close()">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                        </div>
+                        <div class="modal-body">
+                            <div>
+                                <pre>Posted By  ::- {{modalData?.playerDetail[0].user_name}} </pre>
+                            </div>
+                            <div class="status-scroller">
+                                <pre>Status </pre>
+                                <span>{{modalData?.statusDetail}}</span>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-outline-secondary" (click)="close()">
+                                OK
+                            </button>
+                        </div>
+                    </ng-template>
+
                 </mat-tab>
 
                 <mat-tab label="Add Photo">
 
                     <div class="d-flex">
-                        <div class="col-md-3 drag-image">
+                        <div class="col-md-3 col-sm-12 drag-image">
 
-                            <div class="row image-div" ng2FileDrop [ngClass]="{'nv-file-over': hasBaseDropZoneOver}" (fileOver)="fileOverBase($event)" [uploader]="uploader" class="well my-drop-zone">
-                                <img class="drop-img" src="../../assets//image/drop3.png">
+                            <div class="contaienr">
+                                <div class="row image-div" ng2FileDrop [ngClass]="{'nv-file-over': hasBaseDropZoneOver}" (fileOver)="fileOverBase($event)" [uploader]="uploader" class="well my-drop-zone">
+                                    <img class="drop-img" src="../../assets//image/drop3.png">
+                                </div>
                             </div>
 
                             <div class="upload-btn-wrapper">
@@ -56,7 +82,7 @@
                             </div>
                         </div>
 
-                        <div class="col-md-9">
+                        <div class="col-md-9 col-sm-12">
 
                             <div class="col-md-12 ">
                                 <table class="table  table-responsive table-striped scroll">

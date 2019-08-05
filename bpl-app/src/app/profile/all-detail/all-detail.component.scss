@@ -33,11 +33,6 @@ mat-form-field {
     border: solid 1px green;
 }
 
-html,
-body {
-    /* height: 100%; */
-}
-
 .image-text {
     justify-content: center;
     text-align: center;
@@ -189,13 +184,6 @@ img {
     height: 50%;
 }
 
-.example-header-image {
-    // background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
-    // background-size: cover;
-}
-
-.mat-card-image {}
-
 .activity-btn {
     z-index: 5;
     position: fixed;
@@ -243,4 +231,8 @@ mat-card-subtitle {
     height: 50px;
     width: 15px;
     opacity: 5;
+}
+
+.status-scroller {
+    overflow-y: auto;
 }

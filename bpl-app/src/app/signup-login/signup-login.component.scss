@@ -11,313 +11,311 @@ $gutter: 10px;
 // Mixin
 // ================================================
 @mixin mq($point) {
-  @if $point==laptop {
-    @media (min-width: 64em) {
-      @content;
+    @if $point==laptop {
+        @media (min-width: 64em) {
+            @content;
+        }
     }
-  }
 }
 
 // ================================================
 // Styles
 // ================================================
 * {
-  box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 .login {
-  font: 1rem $font-family;
-  font-weight: 100;
-  line-height: 1.7;
-  &-bg {
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    @include mq(laptop) {
-      position: initial;
-      height: 100vh;
-      object-fit: cover;
-    }
-  }
-  &:before {
-    content: "";
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    right: 0;
-    background: linear-gradient(to right, $color-main 0%, rgba(darken($color-main, 18%), .85) 41%, rgba(darken($color-main, 32%), .9) 100%);
-    z-index: 1;
-  }
-  &:after {
-    content: "";
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    right: 0;
-    background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAATklEQVQoU2NkYGAwZmBgOMuAACA+CKCIMSIpADGRNaEYgKwQ3WQUjTCF6CYhWw2WAynEpgjmIpg7jUlSiM0TWK2GWUOUZ7ApxggeogIcABHJFtftKVfJAAAAAElFTkSuQmCC") repeat;
-    opacity: 0.5;
-    z-index: 2;
-  }
-  .box-login {
-    width: 90%;
-    background-color: rgba(#000, .5);
-    min-height: 90vh;
-    position: absolute;
-    left: 50%;
-    top: 0;
-    transform: translate(-50%, 5%);
-    z-index: 5;
-    border-radius: 5px;
-    padding: $gutter;
-    display: flex;
-    @include mq(laptop) {
-      min-height: 24rem;
-      width: 60%;
-      padding: $gutter * 3;
-      top: 50%;
-      transform: translate(-50%, -50%);
-      align-items: center;
-    }
-    &-content {
-      position: relative;
-      display: flex;
-      flex-direction: column;
-      @include mq(laptop) {
-        flex-direction: row;
-        align-items: center;
-        justify-content: space-between;
-        min-height: 100%;
-      }
-      &:before {
-        content: "";
-      }
-      &:before {
-        content: "";
-        background-color: rgba($color-white, 1);
-        border-radius: 5px;
-        min-height: 25rem;
+    font: 1rem $font-family;
+    font-weight: 100;
+    line-height: 1.7;
+    &-bg {
+        position: fixed;
         width: 100%;
-        position: absolute;
-        visibility: visible;
-        z-index: 10;
-        top: 18rem;
+        height: 100%;
         @include mq(laptop) {
-          animation-timing-function: ease-in;
-          animation-duration: 0.3s;
-          width: calc(100% / 2);
-          top: 50%;
-          transform: translateY(-50%);
+            position: initial;
+            height: 100vh;
+            object-fit: cover;
         }
-      }
-      &.is--login {
-        &:before {
-          @include mq(laptop) {
+    }
+    &:before {
+        content: "";
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        right: 0;
+        background: linear-gradient(to right, $color-main 0%, rgba(darken($color-main, 18%), .85) 41%, rgba(darken($color-main, 32%), .9) 100%);
+        z-index: 1;
+    }
+    &:after {
+        content: "";
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        right: 0;
+        background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAATklEQVQoU2NkYGAwZmBgOMuAACA+CKCIMSIpADGRNaEYgKwQ3WQUjTCF6CYhWw2WAynEpgjmIpg7jUlSiM0TWK2GWUOUZ7ApxggeogIcABHJFtftKVfJAAAAAElFTkSuQmCC") repeat;
+        opacity: 0.5;
+        z-index: 2;
+    }
+    .box-login {
+        width: 90%;
+        background-color: rgba(#000, .5);
+        min-height: 90vh;
+        position: absolute;
+        left: 50%;
+        top: 0;
+        transform: translate(-50%, 5%);
+        z-index: 5;
+        border-radius: 5px;
+        padding: $gutter;
+        display: flex;
+        @include mq(laptop) {
+            min-height: 24rem;
+            width: 60%;
+            padding: $gutter * 3;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            align-items: center;
+        }
+        &-content {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            @include mq(laptop) {
+                flex-direction: row;
+                align-items: center;
+                justify-content: space-between;
+                min-height: 100%;
+            }
+            &:before {
+                content: "";
+            }
+            &:before {
+                content: "";
+                background-color: rgba($color-white, 1);
+                border-radius: 5px;
+                min-height: 25rem;
+                width: 100%;
+                position: absolute;
+                visibility: visible;
+                z-index: 10;
+                top: 18rem;
+                @include mq(laptop) {
+                    animation-timing-function: ease-in;
+                    animation-duration: 0.3s;
+                    width: calc(100% / 2);
+                    top: 50%;
+                    transform: translateY(-50%);
+                }
+            }
+            &.is--login {
+                &:before {
+                    @include mq(laptop) {
+                        right: 0;
+                        box-shadow: -8px 0 12px 1px rgba(#000000, 0.45);
+                        animation-name: Login;
+                    }
+                }
+                .form--login {
+                    visibility: visible;
+                    opacity: 1;
+                }
+                .box-text:nth-child(1) {
+                    display: none;
+                    @include mq(laptop) {
+                        display: block;
+                    }
+                }
+            }
+            // is--login
+            &.is--signup {
+                &:before {
+                    @include mq(laptop) {
+                        right: 50%;
+                        box-shadow: 8px 0 12px 1px rgba(#000000, 0.45);
+                        animation-name: Signup;
+                    }
+                }
+                .form--signup {
+                    visibility: visible;
+                    opacity: 1;
+                }
+                .box-text:nth-child(2) {
+                    display: none;
+                    @include mq(laptop) {
+                        display: block;
+                    }
+                }
+            }
+            // is--signup
+        }
+    }
+    // box-login
+    @keyframes Signup {
+        0% {
             right: 0;
-            box-shadow: -8px 0 12px 1px rgba(#000000, 0.45);
-            animation-name: Login;
-          }
         }
-        .form--login {
-          visibility: visible;
-          opacity: 1;
+        70% {
+            right: 55%;
         }
-        .box-text:nth-child(1) {
-          display: none;
-          @include mq(laptop) {
-            display: block;
-          }
-        }
-      }
-      // is--login
-      &.is--signup {
-        &:before {
-          @include mq(laptop) {
+        100% {
             right: 50%;
-            box-shadow: 8px 0 12px 1px rgba(#000000, 0.45);
-            animation-name: Signup;
-          }
         }
-        .form--signup {
-          visibility: visible;
-          opacity: 1;
+    }
+    @keyframes Login {
+        0% {
+            right: 50%;
         }
-        .box-text:nth-child(2) {
-          display: none;
-          @include mq(laptop) {
+        70% {
+            right: -5%;
+        }
+        100% {
+            right: 0;
+        }
+    }
+    // box-text
+    // ================================================
+    .box-text {
+        position: relative;
+        width: 100%;
+        color: $color-white;
+        .box-text--title {
+            font-size: $font-size + 0.5;
+            font-weight: bold;
+            border-bottom: 1px $color-white solid;
+            display: inline-block;
+            padding: $gutter / 2 0;
+            margin-bottom: $gutter;
+        }
+        // box-text--title
+        p {
+            margin: $gutter * 2 0;
+        }
+        .button {
+            border: 1px $color-white solid;
+            text-align: center;
             display: block;
-          }
+            padding: 10px;
+            border-radius: 30px;
+            margin-top: $gutter;
+            @include mq(laptop) {
+                min-width: 10vw;
+                display: inline-block;
+                cursor: pointer;
+            }
         }
-      }
-      // is--signup
+        @include mq(laptop) {
+            width: calc(100% / 2);
+            padding: $gutter * 2;
+            &:nth-child(1) {
+                padding-left: 0;
+                padding-right: $gutter * 4;
+            }
+            &:nth-child(2) {
+                padding-right: 0;
+                padding-left: $gutter * 4;
+            }
+        }
     }
-  }
-  // box-login
-  @keyframes Signup {
-    0% {
-      right: 0;
+    // box-forms
+    // ================================================
+    .box-forms {
+        border-radius: 0;
+        min-height: 18rem;
+        border-radius: 5px;
+        padding: $gutter * 3;
+        width: 100%;
+        top: 18rem;
+        position: absolute;
+        z-index: 15;
+        visibility: hidden;
+        opacity: 0;
+        transition: opacity 0.55s ease-in-out;
+        &.form--login {
+            right: 0;
+        }
+        &.form--signup {
+            right: 0;
+        }
+        @include mq(laptop) {
+            min-height: 44vh;
+            width: calc(100% / 2);
+            top: 50%;
+            transform: translateY(-50%);
+            &.form--signup {
+                right: 50%;
+            }
+        }
+        &--title {
+            color: $color-main;
+            font-size: $font-size + 0.5;
+            font-weight: bold;
+            margin-bottom: $gutter * 2;
+        }
+        // box-forms-title
     }
-    70% {
-      right: 55%;
-    }
-    100% {
-      right: 50%;
-    }
-  }
-  @keyframes Login {
-    0% {
-      right: 50%;
-    }
-    70% {
-      right: -5%;
-    }
-    100% {
-      right: 0;
-    }
-  }
-  // box-text
-  // ================================================
-  .box-text {
-    position: relative;
-    width: 100%;
-    color: $color-white;
-    .box-text--title {
-      font-size: $font-size + 0.5;
-      font-weight: bold;
-      border-bottom: 1px $color-white solid;
-      display: inline-block;
-      padding: $gutter / 2 0;
-      margin-bottom: $gutter;
-    }
-    // box-text--title
-    p {
-      margin: $gutter * 2 0;
-    }
-    .button {
-      border: 1px $color-white solid;
-      text-align: center;
-      display: block;
-      padding: 10px;
-      border-radius: 30px;
-      margin-top: $gutter;
-      @include mq(laptop) {
-        min-width: 10vw;
-        display: inline-block;
+    // box-forms
+    // forms
+    // ================================================    
+    label {
+        width: 100%;
+        font-weight: normal;
+        vertical-align: middle;
         cursor: pointer;
-      }
+        display: block;
+        input[type="checkbox"] {
+            width: initial;
+            margin-left: $gutter / 2;
+        }
     }
-    @include mq(laptop) {
-      width: calc(100% / 2);
-      padding: $gutter * 2;
-      &:nth-child(1) {
-        padding-left: 0;
-        padding-right: $gutter * 4;
-      }
-      &:nth-child(2) {
-        padding-right: 0;
-        padding-left: $gutter * 4;
-      }
+    button,
+    input {
+        background-color: transparent;
+        padding: 10px;
+        outline: 0;
+        border: 1px #ccc solid;
+        width: 100%;
+        border-radius: 30px;
     }
-  }
-  // box-forms
-  // ================================================
-  .box-forms {
-    border-radius: 0;
-    min-height: 18rem;
-    border-radius: 5px;
-    padding: $gutter * 3;
-    width: 100%;
-    top: 18rem;
-    position: absolute;
-    z-index: 15;
-    visibility: hidden;
-    opacity: 0;
-    transition: opacity 0.55s ease-in-out;
-    &.form--login {
-      right: 0;
+    .form-group {
+        margin-bottom: $gutter * 2;
+        &:last-of-type {
+            margin-bottom: 0;
+        }
     }
-    &.form--signup {
-      right: 0;
+    .button-submit {
+        border: 0;
+        color: $color-white;
+        background-color: $color-main;
+        cursor: pointer;
     }
-    @include mq(laptop) {
-      min-height: 44vh;
-      width: calc(100% / 2);
-      top: 50%;
-      transform: translateY(-50%);
-      &.form--signup {
-        right: 50%;
-      }
+    .forget-password {
+        position: relative;
+        text-align: center;
+        width: 100%;
+        display: inline-block;
+        color: $color-text;
+        text-decoration: none;
+        span {
+            vertical-align: middle;
+        }
+        .icon-svg {
+            display: inline-block;
+            vertical-align: middle;
+        }
     }
-    &--title {
-      color: $color-main;
-      font-size: $font-size + 0.5;
-      font-weight: bold;
-      margin-bottom: $gutter * 2;
-    }
-    // box-forms-title
-  }
-  // box-forms
-  // forms
-  // ================================================    
-  label {
-    width: 100%;
-    font-weight: normal;
-    vertical-align: middle;
-    cursor: pointer;
-    display: block;
-    input[type="checkbox"] {
-      width: initial;
-      margin-left: $gutter / 2;
-    }
-  }
-  button,
-  input {
-    background-color: transparent;
-    padding: 10px;
-    outline: 0;
-    border: 1px #ccc solid;
-    width: 100%;
-    border-radius: 30px;
-  }
-  .form-group {
-    margin-bottom: $gutter * 2;
-    &:last-of-type {
-      margin-bottom: 0;
-    }
-  }
-  .button-submit {
-    border: 0;
-    color: $color-white;
-    background-color: $color-main;
-    cursor: pointer;
-  }
-  .forget-password {
-    position: relative;
-    text-align: center;
-    width: 100%;
-    display: inline-block;
-    color: $color-text;
-    text-decoration: none;
-    span {
-      vertical-align: middle;
-    }
-    .icon-svg {
-      display: inline-block;
-      vertical-align: middle;
-    }
-  }
 }
 
 // tagline
 //=================================================
-
-.punch-line{
-
-  font-style: normal;
-  font-size: 22px;
+.punch-line {
+    font-style: normal;
+    font-size: 22px;
 }
 
 button {
-  color:red;
+    color: red;
 }

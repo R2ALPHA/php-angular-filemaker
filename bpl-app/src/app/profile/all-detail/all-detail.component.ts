@@ -1,16 +1,24 @@
-import { Component, OnInit, EventEmitter, HostListener } from '@angular/core';
+import { Component, OnInit, EventEmitter, HostListener, ViewChild, TemplateRef } from '@angular/core';
 import { FileUploader } from 'ng2-file-upload';
 import { HttpHeaders, HttpClient } from "@angular/common/http";
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { StatusService } from '../../../shared/services/status.service';
 import { ProfileService } from '../../../shared/services/profile.service';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { ITask } from 'src/shared/interfaces/task';
+import { IStatus} from 'src/shared/interfaces/status';
+import { IProfile} from 'src/shared/interfaces/profile';
 
 @Component({
   selector: 'app-all-detail',
   templateUrl: './all-detail.component.html',
   styleUrls: ['./all-detail.component.scss']
 })
+
+
 export class AllDetailComponent implements OnInit {
+
+  @ViewChild('modalContent', { static: true }) modalContent: TemplateRef<any>;
 
   @HostListener("window:scroll", [])
 
@@ -20,6 +28,12 @@ export class AllDetailComponent implements OnInit {
 
   private _url = 'http://localhost:8080/file';
 
+
+  modalData: {
+    playerDetail: IProfile[];
+    statusDetail: IStatus[];
+    // eventsToShow: string;
+  };
   /** Variable Declaration */
 
   // File uploader Variable
@@ -46,6 +60,7 @@ export class AllDetailComponent implements OnInit {
     private statusFB: FormBuilder,
     private _statusService: StatusService,
     private _profileService: ProfileService,
+    private modal: NgbModal,
 
   ) {
 
@@ -77,7 +92,7 @@ export class AllDetailComponent implements OnInit {
     //Storing the response in the response variable
     this.uploader.response.subscribe(res => {
       this.response = res,
-        alert("response   " + this.response);
+        alert(" response " + this.response);
     });
   }
 
@@ -138,19 +153,21 @@ export class AllDetailComponent implements OnInit {
 
   display(data) {
 
-    alert(data.message);
     let player_id = data.player_id;
-  
-    alert(player_id);
+    let statusDetail = data.message;
 
     //get the selected playerdata
     this.isSelected = false;
     this._profileService.getProfileById(player_id)
-    .subscribe( data =>{
-      this.selectedPlayerData = data;
-      this.isSelected = true;
+    .subscribe( 
+      data =>
+      {
+        this.selectedPlayerData = data;
+        this.isSelected = true;
+        let playerDetail = this.selectedPlayerData;
+        this.modalData = {playerDetail, statusDetail};
+        this.modal.open(this.modalContent, { size: 'lg' });
     })
-    
   }
 }
 
